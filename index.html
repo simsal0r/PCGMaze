@@ -2,10 +2,10 @@
 
     <head>
 
-        <script src='Box2dWeb.min.js'></script>
-        <script src="Three.js"></script>
-        <script src="keyboard.js"></script>
-        <script src="jquery.js"></script>
+        <script src='libraries/Box2dWeb.min.js'></script>
+        <script src="libraries/Three.js"></script>
+        <script src="libraries/keyboard.js"></script>
+        <script src="libraries/jquery.js"></script>
         <script src="maze.js"></script>
 
         <script>
@@ -23,9 +23,9 @@
                 ballMesh       = undefined,
                 ballRadius     = 0.25,
                 keyAxis        = [0, 0],
-                ironTexture    = THREE.ImageUtils.loadTexture('./ball.png'),
-                planeTexture   = THREE.ImageUtils.loadTexture('./concrete.png'),
-                brickTexture   = THREE.ImageUtils.loadTexture('./brick.png'),
+                ironTexture    = THREE.ImageUtils.loadTexture('./assets/ball.png'),
+                planeTexture   = THREE.ImageUtils.loadTexture('./assets/concrete.png'),
+                brickTexture   = THREE.ImageUtils.loadTexture('./assets/brick.png'),
                 gameState      = undefined,
 
             // Box2D shortcuts
