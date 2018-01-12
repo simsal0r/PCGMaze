@@ -30,7 +30,7 @@
                 gameState      = undefined,
 
                 zoomlevel = 20,
-                algoritm_id = 0,
+                algoritm_id = "astray",
 
             // Box2D shortcuts
                 b2World        = Box2D.Dynamics.b2World,
@@ -190,12 +190,14 @@
                 switch(gameState) {
 
                     case 'initialize':
-                        if (algoritm_id == 1)
-                        {
+                        if (algoritm_id == "astray")
+                        {   maze = generateSquareMaze(mazeDimension);
+                        }
+                        else if (algoritm_id == "trees") {
                             maze = generateGrowingTreeMaze(mazeDimension);
                         }
-                        else {
-                            maze = generateSquareMaze(mazeDimension);
+                        else if (algoritm_id == "laura1") {
+                            maze = alg_Laura(mazeDimension);
                         }
                         maze[mazeDimension-1][mazeDimension-2] = false;
                         createPhysicsWorld();
@@ -269,20 +271,30 @@
 
                 if ( x == "trees")
                 {
-                    algoritm_id =1;
-
+                    algoritm_id = x;
+                    text = "Tree Algorithm with no Adjustments";
                     gameState = 'initialize';
-
-                    //requestAnimationFrame(gameLoop);
+                }
+                else if (x == "laura1")
+                {
+                    algoritm_id = x;
+                    text = "An Algorithm"
+                    gameState = 'initialize';
+                }
+                else if (x == "astray")
+                {
+                    algoritm_id = x;
+                    text = "The Algorithm of the Game Astray"
+                    gameState = 'initialize';
                 }
 
-                // If x is Not a Number or less than one or greater than 10
-                if (isNaN(x) || x < 1 || x > 10) {
-                    text = "Input not valid";
-                } else {
-                    text = "Input OK";
-                }
-                document.getElementById("info").innerHTML = text;
+                // // If x is Not a Number or less than one or greater than 10
+                // if (isNaN(x) || x < 1 || x > 10) {
+                //     text = "Input not valid";
+                // } else {
+                //     text = "Input OK";
+                // }
+                 document.getElementById("info").innerHTML = text;
             }
 
 
@@ -438,10 +450,9 @@
     <div id='choose'>
 
         <select id= "numb" name="cars">
-            <option value="volvo">Not valid</option>
-            <option value="volvo">Not valid</option>
-            <option value="3">Valid</option>
+            <option value="astray">Astray Standard</option>
             <option value="trees">Tree Algorithm</option>
+            <option value="laura1">Laura 1</option>
         </select>
         <br><br>
         <button type="button" onclick="myFunction()">Submit</button>
