@@ -30,8 +30,19 @@ function gameLoop() {
             var mazeY = Math.floor(ballMesh.position.y + 0.5);
             return mazeX == mazeDimension && mazeY == mazeDimension - 2
         }
+        function checkForChests() {
+            var mazeX = Math.floor(ballMesh.position.x + 0.5);
+            var mazeY = Math.floor(ballMesh.position.y + 0.5);
+            if(chests[mazeX][mazeY] != null) {
+                scene.remove(chestMesh);
+                chests[mazeX][mazeY] = null;
+                chestMesh = generateChestMesh(maze);
+                scene.add(chestMesh);
+            }
+        }
         updatePhysicsWorld();
         updateRenderWorld();
+        checkForChests();
         renderer.render(scene, camera);
         if (isVictory()) {
             mazeDimension += 2;
@@ -74,7 +85,8 @@ function createRenderWorld() {
     generateBallMesh();
     scene.add(ballMesh);
     scene.add(generateMazeMesh(maze));
-    scene.add(generateChestMesh(maze));
+    chestMesh = generateChestMesh(maze);
+    scene.add(chestMesh);
     createGround();
     scene.add(groundMesh);
 }

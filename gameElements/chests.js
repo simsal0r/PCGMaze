@@ -2,7 +2,7 @@ var CHANCE_OF_CHEST_APPEARING = 0.1;
 var CHEST_ITEMS = ["zoom_out", "jump_scare", "random_teleportation"];
 var chestTexture = THREE.ImageUtils.loadTexture('./assets/chest.jpg');
 var chests = undefined;
-
+var chestMesh = undefined;
 
 function createChests(maze) {
     var chests = new Array(maze.dimension);
@@ -39,4 +39,8 @@ function generateChestMesh(maze) {
     var material = new THREE.MeshPhongMaterial({map: chestTexture});
     var mesh = new THREE.Mesh(dummy, material);
     return mesh;
+}
+
+function updateChestMesh() {
+
 }
