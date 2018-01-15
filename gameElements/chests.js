@@ -1,5 +1,6 @@
 var CHANCE_OF_CHEST_APPEARING = 0.4;
 var CHEST_ITEMS = ["zoom_out", "jump_scare", "move_to_start"];
+var CHEST_PROBABILITIES = [0.88, 0.1, 0.02];
 var chestTexture = THREE.ImageUtils.loadTexture('./assets/chest.jpg');
 var chests = undefined;
 var chestMesh = undefined;
@@ -19,6 +20,15 @@ function createChests(maze) {
 }
 
 function getRandomChestItem() {
+    var random = Math.random();
+    var cumulativeProbabilities = []
+    CHEST_PROBABILITIES.reduce(function(a,b,i) { return cumulativeProbabilities[i] = a+b; },0);
+    console.log(cumulativeProbabilities);
+    for(var i = 0; i < cumulativeProbabilities.length; i++) {
+        if(random < cumulativeProbabilities[i]){
+            return CHEST_ITEMS[i];
+        }
+    }
     return CHEST_ITEMS[Math.floor(Math.random() * CHEST_ITEMS.length)];
 }
 

@@ -44,7 +44,9 @@ function gameLoop() {
             mazeDimension += 2;
             gameState = 'fade out';
         }
-        checkForChests();
+        else {
+            checkForChests();
+        }
     }
     function fadeGameOut() {
         updatePhysicsWorld();
