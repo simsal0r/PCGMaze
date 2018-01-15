@@ -22,20 +22,6 @@ function getRandomChestItem() {
     return CHEST_ITEMS[Math.floor(Math.random() * CHEST_ITEMS.length)];
 }
 
-function createChestBody(positionX, positionY) {
-    var chestBodyDef = new b2BodyDef();
-    chestBodyDef.type = b2Body.b2_staticBody;
-    var chestFixDef = new b2FixtureDef();
-    chestFixDef.density = 1.0;
-    chestFixDef.friction = 0.0;
-    chestFixDef.restitution = 0.25;
-    chestFixDef.shape = new b2PolygonShape();
-    chestFixDef.shape.SetAsBox(0.4, 0.4);
-    chestBodyDef.position.x = positionX + 0.05;
-    chestBodyDef.position.y = positionY + 0.05;
-    physicsWorld.CreateBody(chestBodyDef).CreateFixture(chestFixDef);
-}
-
 function generateChestMesh(maze) {
     var dummy = new THREE.Geometry();
     for (var i = 0; i < maze.dimension; i++) {

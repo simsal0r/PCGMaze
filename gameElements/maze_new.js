@@ -16,9 +16,6 @@ function createMazeBody() {
                 bodyDef.position.y = j;
                 physicsWorld.CreateBody(bodyDef).CreateFixture(fixDef);
             }
-            if(chests[i][j] != null) {
-                createChestBody(i, j);
-            }
         }
     }
 }
