@@ -1,5 +1,5 @@
-var CHANCE_OF_CHEST_APPEARING = 0.1;
-var CHEST_ITEMS = ["zoom_out", "jump_scare", "random_teleportation"];
+var CHANCE_OF_CHEST_APPEARING = 0.4;
+var CHEST_ITEMS = ["zoom_out", "jump_scare", "move_to_start"];
 var chestTexture = THREE.ImageUtils.loadTexture('./assets/chest.jpg');
 var chests = undefined;
 var chestMesh = undefined;
@@ -41,6 +41,34 @@ function generateChestMesh(maze) {
     return mesh;
 }
 
-function updateChestMesh() {
+function handleChest(mazeX, mazeY) {
+    scene.remove(chestMesh);
+    var typeOfChest = chests[mazeX][mazeY];
+    chests[mazeX][mazeY] = null;
+    chestMesh = generateChestMesh(maze);
+    scene.add(chestMesh);
+    switch(typeOfChest){
+        case "zoom_out": chest_zoomOut(); break;
+        case "move_to_start": chest_moveToStart(); break;
+        case "jump_scare": chest_jumpScare(); break;
+        default: break;
+    }
+}
 
+function chest_zoomOut() {
+    ZOOM_LEVEL = 10;
+    setTimeout(function(){
+        ZOOM_LEVEL = 6;
+        }, 3000);
+}
+
+function chest_jumpScare() {
+    $('#instructions').show();
+    setTimeout(function(){
+        $('#instructions').hide();
+        }, 500);
+}
+
+function chest_moveToStart() {
+    moveBallTo(1,1);
 }

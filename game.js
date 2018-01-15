@@ -34,20 +34,17 @@ function gameLoop() {
             var mazeX = Math.floor(ballMesh.position.x + 0.5);
             var mazeY = Math.floor(ballMesh.position.y + 0.5);
             if(chests[mazeX][mazeY] != null) {
-                scene.remove(chestMesh);
-                chests[mazeX][mazeY] = null;
-                chestMesh = generateChestMesh(maze);
-                scene.add(chestMesh);
+                handleChest(mazeX, mazeY);
             }
         }
         updatePhysicsWorld();
         updateRenderWorld();
-        checkForChests();
         renderer.render(scene, camera);
         if (isVictory()) {
             mazeDimension += 2;
             gameState = 'fade out';
         }
+        checkForChests();
     }
     function fadeGameOut() {
         updatePhysicsWorld();
@@ -72,7 +69,7 @@ function gameLoop() {
 
 function createPhysicsWorld() {
     physicsWorld = new b2World(new b2Vec2(0, 0), true);
-    createBallBody();
+    createBallBody(1,1);
     createMazeBody();
 }
 

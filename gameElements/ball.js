@@ -3,17 +3,25 @@ var ballMesh = undefined;
 var ballRadius = 0.25;
 var ballTexture = THREE.ImageUtils.loadTexture('./assets/ball.png');
 
-function createBallBody() {
-    var bodyDef = new b2BodyDef();
-    bodyDef.type = b2Body.b2_dynamicBody;
-    bodyDef.position.Set(1, 1);
-    ball = physicsWorld.CreateBody(bodyDef);
-    var fixDef = new b2FixtureDef();
-    fixDef.density = 1.0;
-    fixDef.friction = 0.0;
-    fixDef.restitution = 0.25;
-    fixDef.shape = new b2CircleShape(ballRadius);
-    ball.CreateFixture(fixDef);
+function createBallBody(positionX, positionY) {
+    createBallBodyDef(positionX, positionY);
+    createBallBodyFixture();
+}
+
+function createBallBodyDef(positionX, positionY) {
+    var ballBodyDef = new b2BodyDef();
+    ballBodyDef.type = b2Body.b2_dynamicBody;
+    ballBodyDef.position.Set(positionX, positionY);
+    ball = physicsWorld.CreateBody(ballBodyDef);
+}
+
+function createBallBodyFixture(){
+    var ballFixture = new b2FixtureDef();
+    ballFixture.density = 1.0;
+    ballFixture.friction = 0.0;
+    ballFixture.restitution = 0.25;
+    ballFixture.shape = new b2CircleShape(ballRadius);
+    ball.CreateFixture(ballFixture);
 }
 
 function generateBallMesh() {
@@ -56,4 +64,10 @@ function moveBall() {
     var f = new b2Vec2(keyAxis[0]*ball.GetMass()*0.25, keyAxis[1]*ball.GetMass()*0.25);
     ball.ApplyImpulse(f, ball.GetPosition());
     keyAxis = [0,0];
+}
+
+function moveBallTo(x, y) {
+    physicsWorld.DestroyBody(ball);
+    createBallBody(x, y);
+    updateBallMeshPosition(x,y);
 }

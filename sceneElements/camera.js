@@ -1,7 +1,8 @@
 var camera = undefined;
 var ZOOM_LEVEL = 5;
+var ZOOM_LEVEL_INITIAL = ZOOM_LEVEL;
 
-function createCamera() {
+    function createCamera() {
     var aspect = window.innerWidth/window.innerHeight;
     camera = new THREE.PerspectiveCamera(60, aspect, 1, 1000);
     camera.position.set(1, 1, ZOOM_LEVEL);
@@ -14,5 +15,5 @@ function updateCamera() {
 }
 
 function initializeCamera() {
-    camera.position.set(1, 1, ZOOM_LEVEL);
+    camera.position.set(1, 1, ZOOM_LEVEL_INITIAL);
 }
