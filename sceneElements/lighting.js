@@ -1,5 +1,6 @@
 var light = undefined;
 var LIGHT_HEIGHT = 1.3;
+var LIGHT_MIN_HEIGHT = 3;
 
 function createLight() {
     light= new THREE.PointLight(0xffffff, 1);
@@ -9,7 +10,7 @@ function createLight() {
 function updateLight() {
     light.position.x = camera.position.x;
     light.position.y = camera.position.y;
-    light.position.z = camera.position.z - 3.7;
+    light.position.z = Math.max(camera.position.z - 3.7, LIGHT_MIN_HEIGHT);
 }
 
 function initializeLighting() {

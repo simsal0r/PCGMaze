@@ -59,6 +59,7 @@ $(document).ready(function() {
     // Prepare the instructions.
     $('#instructions').center();
     $('#instructions').hide();
+    $('#jump_scare').hide();
     KeyboardJS.bind.key('i', function(){$('#instructions').show()},
         function(){$('#instructions').hide()});
 

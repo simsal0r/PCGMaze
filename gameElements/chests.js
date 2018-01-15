@@ -58,14 +58,14 @@ function handleChest(mazeX, mazeY) {
 function chest_zoomOut() {
     ZOOM_LEVEL = 10;
     setTimeout(function(){
-        ZOOM_LEVEL = 6;
+        ZOOM_LEVEL = ZOOM_LEVEL_INITIAL;
         }, 3000);
 }
 
 function chest_jumpScare() {
-    $('#instructions').show();
+    $('#jump_scare').show();
     setTimeout(function(){
-        $('#instructions').hide();
+        $('#jump_scare').hide();
         }, 500);
 }
 
