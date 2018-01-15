@@ -24,8 +24,8 @@
                 ballMesh       = undefined,
                 ballRadius     = 0.25,
                 keyAxis        = [0, 0],
-                ironTexture    = THREE.ImageUtils.loadTexture('./assets/bball.png'), //ball
-                planeTexture   = THREE.ImageUtils.loadTexture('./assets/wfloor.jpg'), //Floor
+                ironTexture    = THREE.ImageUtils.loadTexture('./assets/bball.png'),
+                planeTexture   = THREE.ImageUtils.loadTexture('./assets/wfloor.jpg'),
                 brickTexture   = THREE.ImageUtils.loadTexture('./assets/brick.png'),
                 gameState      = undefined,
 
@@ -45,7 +45,6 @@
             // Box2D world variables 
                 wWorld         = undefined,
                 wBall          = undefined;
-
 
             function createPhysicsWorld() {
                 // Create the world object.
