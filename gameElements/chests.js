@@ -21,9 +21,8 @@ function createChests(maze) {
 
 function getRandomChestItem() {
     var random = Math.random();
-    var cumulativeProbabilities = []
+    var cumulativeProbabilities = [];
     CHEST_PROBABILITIES.reduce(function(a,b,i) { return cumulativeProbabilities[i] = a+b; },0);
-    console.log(cumulativeProbabilities);
     for(var i = 0; i < cumulativeProbabilities.length; i++) {
         if(random < cumulativeProbabilities[i]){
             return CHEST_ITEMS[i];
@@ -80,5 +79,5 @@ function chest_jumpScare() {
 }
 
 function chest_moveToStart() {
-    moveBallTo(1,1);
+    movePlayerTo(1,1);
 }

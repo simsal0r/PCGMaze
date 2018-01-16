@@ -20,19 +20,19 @@ function gameLoop() {
         increaseLighting();
         renderer.render(scene, camera);
         if (lightingIsOn()) {
-            setLightingIntensity(1);
+            setLightingMaxIntensity();
             gameState = 'play'
         }
     }
     function playGame() {
         function isVictory() {
-            var mazeX = Math.floor(ballMesh.position.x + 0.5);
-            var mazeY = Math.floor(ballMesh.position.y + 0.5);
+            var mazeX = Math.floor(headMesh.position.x + 0.5);
+            var mazeY = Math.floor(headMesh.position.y + 0.5);
             return mazeX == mazeDimension && mazeY == mazeDimension - 2
         }
         function checkForChests() {
-            var mazeX = Math.floor(ballMesh.position.x + 0.5);
-            var mazeY = Math.floor(ballMesh.position.y + 0.5);
+            var mazeX = Math.floor(headMesh.position.x + 0.5);
+            var mazeY = Math.floor(headMesh.position.y + 0.5);
             if(chests[mazeX][mazeY] != null) {
                 handleChest(mazeX, mazeY);
             }
@@ -71,7 +71,7 @@ function gameLoop() {
 
 function createPhysicsWorld() {
     physicsWorld = new b2World(new b2Vec2(0, 0), true);
-    createBallBody(1,1);
+    createPlayerBody(1,1);
     createMazeBody();
 }
 
@@ -79,10 +79,14 @@ function createRenderWorld() {
     scene = new THREE.Scene();
     createLight();
     scene.add(light);
+    createTorch();
+    scene.add(torch);
     createCamera();
     scene.add(camera);
-    generateBallMesh();
-    scene.add(ballMesh);
+    generatePlayerMesh();
+    scene.add(playerMesh);
+    generateHeadMesh();
+    scene.add(headMesh);
     scene.add(generateMazeMesh(maze));
     chestMesh = generateChestMesh(maze);
     scene.add(chestMesh);
@@ -91,12 +95,12 @@ function createRenderWorld() {
 }
 
 function updatePhysicsWorld() {
-    moveBall();
+    movePlayer();
     physicsWorld.Step(1/60, 8, 3);
 }
 
 function updateRenderWorld() {
-    updateBallMesh();
+    updatePlayerMesh();
     updateCamera();
     updateLight();
 }

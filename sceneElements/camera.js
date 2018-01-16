@@ -1,6 +1,6 @@
 var camera = undefined;
 var ZOOM_LEVEL_INITIAL = 3;
-var ZOOM_LEVEL = ZOOM_LEVEL_INITIAL;
+var ZOOM_LEVEL = 3;
 
 function createCamera() {
     var aspect = window.innerWidth/window.innerHeight;
@@ -9,8 +9,8 @@ function createCamera() {
 }
 
 function updateCamera() {
-    camera.position.x += (ballMesh.position.x - camera.position.x) * 0.1;
-    camera.position.y += (ballMesh.position.y - camera.position.y) * 0.1;
+    camera.position.x += (headMesh.position.x - camera.position.x) * 0.1;
+    camera.position.y += (headMesh.position.y - camera.position.y) * 0.1;
     camera.position.z += (ZOOM_LEVEL - camera.position.z) * 0.1;
 }
 
