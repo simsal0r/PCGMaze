@@ -5,6 +5,8 @@ var headTexture = THREE.ImageUtils.loadTexture('./assets/hair.jpg');
 var playerTexture = THREE.ImageUtils.loadTexture('./assets/skin.jpg');
 var player = undefined;
 var playerMesh = undefined;
+var leftHandMesh = undefined;
+var rightHandMesh = undefined;
 
 function createPlayerBody(positionX, positionY) {
     createPlayerBodyDef(positionX, positionY);
@@ -37,8 +39,18 @@ function generateHeadMesh() {
 
 function generatePlayerMesh() {
     var g = new THREE.CubeGeometry(2*headRadius,headRadius,1-(headRadius*2),1,1,1);
-    var m = new THREE.MeshPhongMaterial({map:playerTexture});
-    playerMesh = new THREE.Mesh(g, m);
+    var leftHandg = new THREE.SphereGeometry(0.25*headRadius,32,16);
+    var rightHandg = new THREE.SphereGeometry(0.25*headRadius,32,16);
+    leftHandMesh = new THREE.Mesh(leftHandg);
+    rightHandMesh = new THREE.Mesh(rightHandg);
+    leftHandMesh.position.x = -headRadius;
+    leftHandMesh.position.y = 0.5*headRadius;
+    rightHandMesh.position.x = headRadius;
+    rightHandMesh.position.y = 0.5*headRadius;
+    THREE.GeometryUtils.merge(g, leftHandMesh);
+    THREE.GeometryUtils.merge(g, rightHandMesh);
+    var material = new THREE.MeshPhongMaterial({map:playerTexture});
+    playerMesh = new THREE.Mesh(g, material);
     playerMesh.position.set(1, 1, (1-(headRadius*2))/2);
 }
 
@@ -60,16 +72,12 @@ function updatePlayerRotation(stepX, stepY) {
     var roundingFactor = 100;
     var roundedX = Math.round(stepX * roundingFactor)/roundingFactor;
     var roundedY = Math.round(stepY * roundingFactor)/roundingFactor;
-    var angle = 0;
-    if(roundedX == 0){
-        angle = (roundedY > 0 ? 180 : 0) * Math.PI/180;
+    if(roundedX != 0 || roundedY != 0) {
+        var angle = Math.atan2(roundedX, roundedY);
+        headMesh.rotation.z = -angle;
+        playerMesh.rotation.z = -angle;
+        player.SetAngle(-angle);
     }
-    else{
-        angle = Math.atan2(roundedX, roundedY);
-    }
-    headMesh.rotation.z = -angle;
-    playerMesh.rotation.z = -angle;
-    player.SetAngle(-angle);
 }
 
 function movePlayer() {

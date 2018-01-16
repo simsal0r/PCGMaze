@@ -3,6 +3,10 @@ var LIGHT_HEIGHT = 1.3;
 var LIGHT_MIN_HEIGHT = 3;
 var LIGHT_MAX_INTENSITY = 0.8;
 var torch = undefined;
+var torch_flickering = true;
+var TORCH_MIN_DISTANCE = 2.5;
+var TORCH_MAX_DISTANCE = 3;
+var TORCH_FLICKERING_INTENSITY = 0.01;
 
 function createLight() {
     light= new THREE.PointLight(0xffffff, 1);
@@ -10,11 +14,17 @@ function createLight() {
 }
 
 function updateLight() {
+    torch.distance = torch_flickering? torch.distance - TORCH_FLICKERING_INTENSITY : torch.distance + TORCH_FLICKERING_INTENSITY;
+    if(torch.distance > TORCH_MAX_DISTANCE || torch.distance < TORCH_MIN_DISTANCE){
+        torch_flickering = !torch_flickering;
+    }
+    console.log(light.distance);
     light.position.x = camera.position.x;
     light.position.y = camera.position.y;
     light.position.z = Math.max(camera.position.z - 3.7, LIGHT_MIN_HEIGHT);
-    torch.position.x = camera.position.x;
-    torch.position.y = camera.position.y;
+    torch.position.x = headMesh.position.x;
+    torch.position.y = headMesh.position.y;
+    torch.position.z = headMesh.position.z;
 }
 
 function initializeLighting() {
@@ -47,6 +57,6 @@ function setLightingMaxIntensity() {
 }
 
 function createTorch() {
-    torch = new THREE.PointLight( 0x990000, 10, 3);
+    torch = new THREE.PointLight( 0xe25822, 10, 3);
     torch.position.set(1,1,1);
 }
