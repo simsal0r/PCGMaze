@@ -1,6 +1,6 @@
-var CHANCE_OF_CHEST_APPEARING = 0.4;
+var CHANCE_OF_CHEST_APPEARING = 0.1;
 var CHEST_ITEMS = ["zoom_out", "jump_scare", "move_to_start"];
-var CHEST_PROBABILITIES = [0.88, 0.1, 0.02];
+var CHEST_PROBABILITIES = [0.3, 0.68, 0.02];
 var chestTexture = THREE.ImageUtils.loadTexture('./assets/chest.jpg');
 var chests = undefined;
 var chestMesh = undefined;
@@ -16,6 +16,7 @@ function createChests(maze) {
             }
         }
     }
+    chests[1][1] = null;
     return chests;
 }
 
@@ -73,6 +74,7 @@ function chest_zoomOut() {
 
 function chest_jumpScare() {
     $('#jump_scare').show();
+    playScream();
     setTimeout(function(){
         $('#jump_scare').hide();
         }, 500);

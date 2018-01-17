@@ -92,6 +92,7 @@ function createRenderWorld() {
     scene.add(chestMesh);
     createGround();
     scene.add(groundMesh);
+    playBackground();
 }
 
 function updatePhysicsWorld() {

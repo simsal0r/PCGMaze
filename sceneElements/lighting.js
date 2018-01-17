@@ -1,7 +1,7 @@
 var light = undefined;
 var LIGHT_HEIGHT = 1.3;
 var LIGHT_MIN_HEIGHT = 3;
-var LIGHT_MAX_INTENSITY = 0.8;
+var LIGHT_MAX_INTENSITY = 0.3;
 var torch = undefined;
 var torch_flickering = true;
 var TORCH_MIN_DISTANCE = 2.5;
@@ -18,7 +18,6 @@ function updateLight() {
     if(torch.distance > TORCH_MAX_DISTANCE || torch.distance < TORCH_MIN_DISTANCE){
         torch_flickering = !torch_flickering;
     }
-    console.log(light.distance);
     light.position.x = camera.position.x;
     light.position.y = camera.position.y;
     light.position.z = Math.max(camera.position.z - 3.7, LIGHT_MIN_HEIGHT);

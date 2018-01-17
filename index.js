@@ -77,7 +77,6 @@ $(document).ready(function() {
 
     // Start the game loop.
     requestAnimationFrame(gameLoop);
-
 })
 
 
