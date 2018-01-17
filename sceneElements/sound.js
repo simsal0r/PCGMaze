@@ -8,6 +8,11 @@ function playScream() {
     screamSound.play();
 }
 
+function playSteps() {
+    var stepSound = new Audio("assets/steps.mp3");
+    stepSound.play();
+}
+
 function playBackgroundSound(){
     var d = Math.random();
     if (d < 0.2){
