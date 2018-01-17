@@ -12,6 +12,11 @@ function gameLoop() {
         chests = createChests(maze);
         createPhysicsWorld();
         createRenderWorld();
+        KeyboardJS.unbind.key("left");
+        KeyboardJS.unbind.key("right");
+        KeyboardJS.unbind.key("down");
+        KeyboardJS.unbind.key("up");
+        KeyboardJS.bind.axis('left', 'right', 'down', 'up', onMoveKey);
         initializeCamera();
         initializeLighting();
         setLevel();

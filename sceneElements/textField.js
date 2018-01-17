@@ -1,4 +1,4 @@
-function writeToTextField(text, color="white", seconds=2) {
+function writeToTextField(text, color="red", seconds=2) {
     $('#textField').text(text);
     $('#textFieldContainer').css('color', color);
     setTimeout(function(){

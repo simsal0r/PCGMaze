@@ -1,6 +1,6 @@
 var CHANCE_OF_CHEST_APPEARING = 0.1;
 var CHEST_ITEMS = ["zoom_out", "jump_scare", "move_to_start", "rotate_maze", "light_darker", "increase_time", "decrease_time"];
-var CHEST_PROBABILITIES = [0.0, 0.0, 0.0, 0.0, 0., 0.0, 1.0];
+var CHEST_PROBABILITIES = [0.0, 0.0, 0.0, 1.0, 0., 0.0, 0.0];
 var chestTexture = THREE.ImageUtils.loadTexture('./assets/chest.jpg');
 var chests = undefined;
 var chestMesh = undefined;
@@ -70,7 +70,58 @@ function handleChest(mazeX, mazeY) {
 }
 
 function chest_rotateMaze() {
-    camera.rotation.z += 180*Math.PI/180;
+    var possibleDegrees = [90, 180, 270, -90, -180, -270];
+    var rotation_degree = possibleDegrees[Math.floor(Math.random() * possibleDegrees.length)];
+    KeyboardJS.unbind.key("left");
+    KeyboardJS.unbind.key("right");
+    KeyboardJS.unbind.key("down");
+    KeyboardJS.unbind.key("up");
+    writeToTextField("Opened rotation chest!");
+    var oldRotation = Math.round(camera.rotation.z * 180/Math.PI);
+    ZOOM_LEVEL = 8;
+    if(rotation_degree > 0){
+        var rotation = setInterval(function(){
+            var currentRotation = Math.round(camera.rotation.z * 180/Math.PI);
+            if(currentRotation != oldRotation+rotation_degree){
+                camera.rotation.z += Math.PI/180;
+            }
+            else {
+                camera.rotation.z = Math.round(camera.rotation.z * 180/Math.PI) * Math.PI/180;
+                camera.rotation.z = (camera.rotation.z * 180/Math.PI) >= 360 ? (camera.rotation.z * 180/Math.PI) % 360 : camera.rotation.z;
+                switch(camera.rotation.z * 180/Math.PI){
+                    case 0: KeyboardJS.bind.axis('left', 'right', 'down', 'up', onMoveKey);
+                    case 90: KeyboardJS.bind.axis('up', 'down', 'left', 'right', onMoveKey);
+                    case 180: KeyboardJS.bind.axis('right', 'left', 'up', 'down', onMoveKey);
+                    case 270: KeyboardJS.bind.axis('down', 'up', 'right', 'left', onMoveKey);
+                }
+                ZOOM_LEVEL = 3;
+                window.clearInterval(rotation);
+            }
+        }, 10);
+    }
+    else {
+        var rotation = setInterval(function(){
+            var currentRotation = Math.round(camera.rotation.z * 180/Math.PI);
+            if(currentRotation != oldRotation+rotation_degree){
+                camera.rotation.z -= Math.PI/180;
+            }
+            else {
+                camera.rotation.z = Math.round(camera.rotation.z * 180/Math.PI) * Math.PI/180;
+                camera.rotation.z = (camera.rotation.z * 180/Math.PI) <= -360 ? (camera.rotation.z * 180/Math.PI) % 360 : camera.rotation.z;
+                switch(camera.rotation.z * 180/Math.PI){
+                    case 0: KeyboardJS.bind.axis('left', 'right', 'down', 'up', onMoveKey);
+                    case -90: KeyboardJS.bind.axis('down', 'up', 'right', 'left', onMoveKey);
+                    case -180: KeyboardJS.bind.axis('right', 'left', 'up', 'down', onMoveKey);
+                    case -270: KeyboardJS.bind.axis('up', 'down', 'left', 'right', onMoveKey);
+                }
+                ZOOM_LEVEL = 3;
+                window.clearInterval(rotation);
+            }
+        }, 10);
+    }
+
+    //camera.rotation.z += 90*Math.PI/180;
+
 }
 
 function chest_lightDarker() {

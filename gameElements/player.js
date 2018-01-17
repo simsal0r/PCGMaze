@@ -86,7 +86,6 @@ function movePlayer() {
     player.SetLinearVelocity(lv);
 
     // Apply user-directed force.
-    console.log(keyAxis[0] + "---" + keyAxis[1]);
     var f = new b2Vec2(keyAxis[0]*player.GetMass()*0.25, keyAxis[1]*player.GetMass()*0.25);
     player.ApplyImpulse(f, player.GetPosition());
     keyAxis = [0,0];

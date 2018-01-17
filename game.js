@@ -71,7 +71,6 @@ $(document).ready(function() {
     document.body.appendChild(renderer.domElement);
 
     // Bind keyboard and resize events.
-    KeyboardJS.bind.axis('left', 'right', 'down', 'up', onMoveKey);
     $(window).resize(onResize);
 
     // Set the initial game state.
