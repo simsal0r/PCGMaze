@@ -55,3 +55,16 @@ body {
     height:5vh;
     width:auto;
 }
+
+#timer {
+    position:absolute;
+    bottom:0;
+    right:0;
+    height:auto;
+    width:auto;
+}
+
+#timerText{
+    color:white;
+    font-size:4em;
+}
