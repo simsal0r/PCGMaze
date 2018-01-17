@@ -10,7 +10,9 @@ function createChests(maze) {
     for (var i = 0; i < maze.dimension; i++) {
         chests[i] = new Array(maze.dimension);
         for (var j = 0; j < maze.dimension; j++) {
-            if(!maze[i][j]){
+            var noChestNearX = j > 0 ? chests[i][j-1] == null : true;
+            var noChestNearY = i > 0 ? chests[i-1][j] == null : true;
+            if(!maze[i][j] && noChestNearX && noChestNearY){
                 var isChest = Math.random() < CHANCE_OF_CHEST_APPEARING;
                 chests[i][j] = isChest ? getRandomChestItem() : null;
             }
@@ -120,9 +122,6 @@ function chest_rotateMaze() {
             }
         }, 10);
     }
-
-    //camera.rotation.z += 90*Math.PI/180;
-
 }
 
 function chest_lightDarker() {
