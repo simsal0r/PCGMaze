@@ -79,12 +79,16 @@ function generateSquareMaze(dimension) {
         deadends.forEach(function(x){
             var dx = x[0];
             var dy = x[1];
+
             var npos = get_next_position(grid, dx, dy);
             var nx = npos[0];
             var ny = npos[1];
             var fork = is_fork(grid, nx, ny);
             while(fork != 0){
                 grid[nx][ny] = fork;
+                if(nx == 0 || ny == 0 || nx == dimension-1 || ny == dimension-1){
+                    break;
+                }
                 var nnpos = get_next_position(grid, nx, ny);
                 nx = nnpos[0];
                 ny = nnpos[1];
@@ -162,41 +166,45 @@ function generateSquareMaze(dimension) {
     field = carve_passage(field, 1, 1);
     console.log(field);
 
-    var grid = new Array(dimension);
-    grid.dimension = dimension;
+    var grid1 = new Array(dimension);
+    var grid2 = new Array(dimension);
+    var grid3 = new Array(dimension);
+    grid1.dimension = dimension;
+    grid2.dimension = dimension;
+    grid3.dimension = dimension;
     for(var k = 0; k < dimension; k++) {
-        grid[k] = new Array(dimension);
+        grid1[k] = new Array(dimension);
+        grid2[k] = new Array(dimension);
+        grid3[k] = new Array(dimension);
         for (var m = 0; m < dimension; m++) {
             if(field[k][m] == true) {
-                grid[k][m] = -1;
+                grid1[k][m] = -1;
+                grid2[k][m] = -1;
+                grid3[k][m] = -1;
             } else {
-                grid[k][m] = 0;
+                grid1[k][m] = 0;
+                grid2[k][m] = 0;
+                grid3[k][m] = 0;
             }
         }
     }
     //Generate first
-    grid[dimension-1][dimension-2] = 0;
+    grid1[dimension-1][dimension-2] = 0;
     var exit1 = [dimension-1, dimension-2];
-    var grid1 = deadend_algorithm(grid);
-    grid[dimension-1][dimension-2] = -1;
+    grid1 = deadend_algorithm(grid1);
     //Generate second
-    grid[dimension-1][1] = 0;
+    grid2[dimension-1][1] = 0;
     var exit2 = [dimension-1, 1];
-    var grid2 = deadend_algorithm(grid);
-    grid[dimension-1][1] = -1;
+    grid2 = deadend_algorithm(grid2);
     //Generate third
-    grid[0][dimension-2] = 0;
+    grid3[0][dimension-2] = 0;
     var exit3 = [dimension-2, 0];
-    var grid3 = deadend_algorithm(grid);
-    grid[0][dimension-2] = -1;
+    grid3 = deadend_algorithm(grid3);
 
-    console.log('grid');
-    console.log(grid);
-    mc1 = computeMazeCoefficient(grid1, dimension, exit1);
-    mc2 = computeMazeCoefficient(grid2, dimension, exit2);
-    mc3 = computeMazeCoefficient(grid3, dimension, exit3);
+    var mc1 = computeMazeCoefficient(grid1, dimension, exit1);
+    var mc2 = computeMazeCoefficient(grid2, dimension, exit2);
+    var mc3 = computeMazeCoefficient(grid3, dimension, exit3);
 
-    var maze = 0;
     if (mc1>mc2)
         if (mc1>mc3)
             field[dimension-1][dimension-2] = false;
