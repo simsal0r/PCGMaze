@@ -1,4 +1,3 @@
-
 function alg_Laura(dimension) {
 
     //field = growingtree.create(dimension, dimension, 20);
@@ -92,7 +91,7 @@ function alg_Laura(dimension) {
     }
 
 
-            // Initialize the field.
+    // Initialize the field.
     var field = new Array(dimension);
     field.dimension = dimension;
     for(var i = 0; i < dimension; i++) {
@@ -185,95 +184,3 @@ function generateGrowingTreeMaze(dimension) {
     return field;
 
 }
-
-function test1(dimension){
-    var field = new Array(dimension);
-    field.dimension = dimension;
-    for(var i = 0; i < dimension; i++) {
-        field[i] = new Array(dimension);
-        for (var j = 0; j < dimension; j++) {
-            field[i][j] = true;
-        }
-    }
-
-    field[10][10]=false;
-    field[0][0]=false;
-    field[0][1]=false; //[]right []amount top
-
-    return field;
-}
-
-function convert(field){
-
-    var feld = new Array(field.dimension);
-
-    for(var i = 0; i < field.dimension; i++) {
-        feld[i] = new Array(field.dimension);
-        for (var j = 0; j < field.dimension; j++) {
-            feld[i][j] = " ";
-        }
-    }
-
-
-
-    for (var j = 0; j<field.dimension; j++)
-        {
-            for (var i = 0; i<field.dimension; i++)
-            {
-                if (field[i][j] == true)
-                {
-                    feld[i][j] = "X";
-                }
-            }
-        }
-
-    console.log(feld)
-}
-
-function find_possiblities(field){
-
-    var free = " ";
-    var feld = new Array(field.dimension);
-    for(var i = 0; i < field.dimension; i++)
-    {
-        feld[i] = new Array(field.dimension);
-    }
-
-    for (var j = 0; j<field.dimension; j++)
-    {
-        for (var i = 0; i<field.dimension; i++)
-        {
-            r = false;
-            t = false;
-            l = false;
-            d = false;
-            if (field[i][j] == free)
-            {
-                if (field[i+1][j] == free)
-                {
-                    r = true;
-                }
-                if (field[i][j+1] == free)
-                {
-                    t = true;
-                }
-                if (field[i-1][j] == free)
-                {
-                    l = true;
-                }
-                if (field[i][j-1] == free)
-                {
-                    d = true;
-                }
-            }
-            var dir = {r:r,t:t,l:l,d:d};
-            feld[i][j] = dir;
-        }
-    }
-    return feld;
-}
-
-
-//var mz = alg_Laura(11);
-//find_possiblities(mz)
-//convert(mz)
