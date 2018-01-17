@@ -1,6 +1,6 @@
 var CHANCE_OF_CHEST_APPEARING = 0.1;
 var CHEST_ITEMS = ["zoom_out", "jump_scare", "move_to_start"];
-var CHEST_PROBABILITIES = [0.49, 0.49, 0.02];
+var CHEST_PROBABILITIES = [0.78, 0.2, 0.02];
 var chestTexture = THREE.ImageUtils.loadTexture('./assets/chest.jpg');
 var chests = undefined;
 var chestMesh = undefined;
@@ -68,7 +68,7 @@ function handleChest(mazeX, mazeY) {
 function chest_zoomOut() {
     writeToTextField("Opened zoom out chest!");
     ZOOM_LEVEL = 8;
-    startPietimer(4, function(){ZOOM_LEVEL = ZOOM_LEVEL_INITIAL;});
+    startPietimer(4, function(){ZOOM_LEVEL = ZOOM_LEVEL_INITIAL});
 }
 
 function chest_jumpScare() {

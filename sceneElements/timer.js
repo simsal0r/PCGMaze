@@ -14,6 +14,9 @@ function timeToString(time) {
 }
 
 function startPietimer(seconds, callbackFunction) {
+    if($('#pietimer').pietimer != null) {
+        $('#pietimer').pietimer('pause');
+    }
     $('#pietimer').pietimer({
             seconds: seconds,
             color: 'rgba(255, 255, 255, 0.8)',
