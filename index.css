@@ -12,80 +12,23 @@ body {
     letter-spacing:2px;
 }
 
-#instructions {
-    background-color: rgba(0,0,0,0.75);
-    color: white;
-    text-align: center;
-    padding: 32px;
-    margin: 0px;
-    display: inline;
-    border: 2px solid white;
+#gameTitleContainer{
+    margin-top:20%;
+    text-align:center;
 }
 
-#jump_scare {
-    height:100vh;
-    width:100vw;
-    position:absolute;
-    top:0;
-    left:0;
-}
-
-#help {
-    position: absolute;
-    left: 0px;
-    bottom: 0px;
-    padding: 4px;
-    color: white;
-}
-
-#level {
-    position: absolute;
-    left: 0px;
-    top: 0px;
-    padding: 4px;
-    color: yellow;
-    font-weight: bold;
-}
-
-#lvlmenu {
-    position: absolute;
-    left: 0px;
-    top: 22px;
-    padding: 4px;
-    color: white;
-}
-
-#pietimer {
-    position: absolute;
-    top:0;
-    right:0;
-    height:5vh;
-    width:auto;
-}
-
-#timer {
-    position:absolute;
-    bottom:0;
-    right:0;
-    height:auto;
-    width:auto;
-}
-
-#timerText{
-    color:white;
-    font-size:4em;
-}
-
-#textFieldContainer{
-    height: 40%;
-    width: 100%;
-    display: flex;
-    position: fixed;
-    align-items: center;
-    justify-content: center;
+#gameTitle {
     color:white;
     font-size:3em;
+
 }
 
-#textField {
+#menu {
+    margin-top: 5%;
+    text-align: center;
+}
+
+#start {
+    color:white;
+    font-size:1.5em;
 }
