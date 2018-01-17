@@ -1,6 +1,6 @@
 var CHANCE_OF_CHEST_APPEARING = 0.1;
-var CHEST_ITEMS = ["zoom_out", "jump_scare", "move_to_start", "rotate_maze", "light_darker", "increase_time", "decrease_time"];
-var CHEST_PROBABILITIES = [0.0, 0.0, 0.0, 1.0, 0., 0.0, 0.0];
+var CHEST_ITEMS = ["zoom_out", "jump_scare", "move_to_start", "rotate_maze", "light_darker", "increase_time", "decrease_time", "random_teleportation"];
+var CHEST_PROBABILITIES = [0.2, 0.1, 0.04, 0.14, 0.14, 0.10, 0.10, 0.18];
 var chestTexture = THREE.ImageUtils.loadTexture('./assets/chest.jpg');
 var chests = undefined;
 var chestMesh = undefined;
@@ -11,7 +11,7 @@ function createChests(maze) {
         chests[i] = new Array(maze.dimension);
         for (var j = 0; j < maze.dimension; j++) {
             if(!maze[i][j]){
-                isChest = Math.random() < CHANCE_OF_CHEST_APPEARING;
+                var isChest = Math.random() < CHANCE_OF_CHEST_APPEARING;
                 chests[i][j] = isChest ? getRandomChestItem() : null;
             }
         }
@@ -65,6 +65,7 @@ function handleChest(mazeX, mazeY) {
         case "light_darker": chest_lightDarker(); break;
         case "increase_time": chest_increaseTime(); break;
         case "decrease_time": chest_decreaseTime(); break;
+        case "random_teleportation": chest_randomTeleportation(); break;
         default: break;
     }
 }
@@ -131,13 +132,15 @@ function chest_lightDarker() {
 }
 
 function chest_increaseTime() {
-    writeToTextField("Opened increase time chest!");
-    timer_duration += Math.floor((mazeDimension*4)*0.1);
+    var value = Math.floor((mazeDimension*4)*0.1);
+    writeToTextField("Opened increase time chest! +" + value + "s");
+    timer_duration += value;
 }
 
 function chest_decreaseTime() {
-    writeToTextField("Opened decrease time chest!");
-    timer_duration -= Math.floor((mazeDimension*4)*0.1);
+    var value = Math.floor((mazeDimension*4)*0.1);
+    writeToTextField("Opened decrease time chest! -" + value + "s");
+    timer_duration -= value;
 }
 
 function chest_zoomOut() {
@@ -166,6 +169,20 @@ function chest_jumpScare() {
     setTimeout(function(){
         $('#jump_scare').hide();
     }, 500);
+}
+
+function chest_randomTeleportation(){
+    writeToTextField("Opened random teleportation chest!");
+    var possibleValues = _.range(1, maze.dimension, 2);
+    var newXValue = possibleValues[Math.floor(Math.random() * possibleValues.length)];
+    var newYValue = possibleValues[Math.floor(Math.random() * possibleValues.length)];
+    ZOOM_LEVEL = 8;
+    setTimeout(function(){
+        movePlayerTo(newXValue, newYValue);
+        setTimeout(function(){
+            ZOOM_LEVEL = 3
+        },500);
+    },500);
 }
 
 function chest_moveToStart() {
