@@ -184,4 +184,45 @@ function generateSquareMaze(dimension) {
 
 }
 
+function computeMazeCoefficient(maze, dimension) {
+    if (maze != undefined && maze != null && dimension != undefined && dimension != null) {
+        var quantDeadEnds = 0;
+        var deadEndDepth = 0;
+        var lengthDeadends = 0;
+        var lengthShortestWay = 0;
+        var crossRoadsShortestWay = 0;
+
+        // most likely for upper bound has to be dimension-2, to avoid indexoutofbound exceptions when computing the number of squares on shortest paths out.
+        for (var i = 1; i < dimension-1; i++) {
+            for (var j = 1; j < dimension-2; j++) {
+
+                // increment quantity of deadends and length of all deadends
+                if (maze[i][j] == -2) {
+                    quantDeadEnds = quantDeadEnds + 1;
+                    lengthDeadends = lengthDeadends + 1;
+
+                // increment length of the shortest way out and the number of crossroads on the shortest way out.
+                } else if (maze[i][j] == 0) {
+                    lengthShortestWay = lengthShortestWay + 1; 
+
+                    if (maze[i-1][j] == 0 && maze[i+1][j] == 0 && maze[i][j-1] == 0 
+                        || maze[i+1][j] == 0 && maze[i][j-1] == 0 && maze[i][j+1] == 0
+                        || maze[i][j-1] == 0 && maze[i][j+1] == 0 && maze[i-1][j] == 0
+                        || maze[i][j+1] == 0 && maze[i-1][j] == 0 && maze[i+1][j] == 0) 
+
+                            crossRoadsShortestWay = crossRoadsShortestWay + 1;
+            
+                // increment length of all deadends(here points which are not the deadendpoint but rather the way are considered) and get the max level of depth
+                } else if (maze[i][j] > 0) {
+                    lengthDeadends = lengthDeadends + 1;
+                    if (maze[i][j] > deadEndDepth)
+                        deadEndDepth = maze[i][j];
+                }
+
+            }
+        }
+    } else {
+        console.log("In method computeMazeCoeffiecent either the paramater maze and/or dimension is null/undefined!")
+    }
+}
 
