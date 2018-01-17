@@ -35,7 +35,7 @@ function gameLoop() {
             return mazeX == mazeDimension && mazeY == mazeDimension - 2
         }
         function isTimeout() {
-            return timer_duration == 0;
+            return timer_duration < 0;
         }
         function checkForChests() {
             var mazeX = Math.floor(headMesh.position.x + 0.5);

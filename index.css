@@ -1,8 +1,14 @@
+@font-face {
+    font-family: "scaryFont";
+    src: url("assets/scaryFont.ttf");
+}
+
 body {
     background: black;
     margin: 0;
     padding: 0;
-    font-family: 'Helvetica';
+    font-family: 'scaryFont';
+    font-size:1.5em;
 }
 
 #instructions {
@@ -67,4 +73,12 @@ body {
 #timerText{
     color:white;
     font-size:4em;
+}
+
+#textFieldContainer{
+
+}
+
+#textField {
+
 }
