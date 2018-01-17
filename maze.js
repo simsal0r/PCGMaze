@@ -162,38 +162,66 @@ function generateSquareMaze(dimension) {
     field = carve_passage(field, 1, 1);
     console.log(field);
 
-    var grid1 = new Array(dimension);
-    grid1.dimension = dimension;
+    var grid = new Array(dimension);
+    grid.dimension = dimension;
     for(var k = 0; k < dimension; k++) {
-        grid1[k] = new Array(dimension);
+        grid[k] = new Array(dimension);
         for (var m = 0; m < dimension; m++) {
             if(field[k][m] == true) {
-                grid1[k][m] = -1;
+                grid[k][m] = -1;
             } else {
-                grid1[k][m] = 0;
+                grid[k][m] = 0;
             }
         }
     }
-    grid1[dimension-1][dimension-2] = 0;
-    var grid = deadend_algorithm(grid1);
+    //Generate first
+    grid[dimension-1][dimension-2] = 0;
+    var exit1 = [dimension-1, dimension-2];
+    var grid1 = deadend_algorithm(grid);
+    grid[dimension-1][dimension-2] = -1;
+    //Generate second
+    grid[dimension-1][1] = 0;
+    var exit2 = [dimension-1, 1];
+    var grid2 = deadend_algorithm(grid);
+    grid[dimension-1][1] = -1;
+    //Generate third
+    grid[0][dimension-2] = 0;
+    var exit3 = [dimension-2, 0];
+    var grid3 = deadend_algorithm(grid);
+    grid[0][dimension-2] = -1;
+
     console.log('grid');
     console.log(grid);
+    mc1 = computeMazeCoefficient(grid1, dimension, exit1);
+    mc2 = computeMazeCoefficient(grid2, dimension, exit2);
+    mc3 = computeMazeCoefficient(grid3, dimension, exit3);
 
-
+    var maze = 0;
+    if (mc1>mc2)
+        if (mc1>mc3)
+            field[dimension-1][dimension-2] = false;
+        else
+            field[0][dimension-2] = false;
+    else
+        if(mc2>mc3)
+            field[dimension-1][1] = false;
+        else
+            field[0][dimension-2] = false;
+            
     return field;
 
 }
 
-function computeMazeCoefficient(maze, dimension) {
-    if (maze != undefined && maze != null && dimension != undefined && dimension != null) {
+function computeMazeCoefficient(maze, dimension, exit) {
+    if (maze != undefined && maze != null && dimension != undefined && dimension != null && exit != undefined && exit != null) {
         var quantDeadEnds = 0;
         var deadEndDepth = 0;
         var lengthDeadends = 0;
         var lengthShortestWay = 0;
         var crossRoadsShortestWay = 0;
+        var badSquares = 0;
 
-        // most likely for upper bound has to be dimension-2, to avoid indexoutofbound exceptions when computing the number of squares on shortest paths out.
-        for (var i = 1; i < dimension-1; i++) {
+        for (var i = 1; i < dimension-2; i++) {
             for (var j = 1; j < dimension-2; j++) {
 
                 // increment quantity of deadends and length of all deadends
@@ -205,12 +233,17 @@ function computeMazeCoefficient(maze, dimension) {
                 } else if (maze[i][j] == 0) {
                     lengthShortestWay = lengthShortestWay + 1; 
 
-                    if (maze[i-1][j] == 0 && maze[i+1][j] == 0 && maze[i][j-1] == 0 
-                        || maze[i+1][j] == 0 && maze[i][j-1] == 0 && maze[i][j+1] == 0
-                        || maze[i][j-1] == 0 && maze[i][j+1] == 0 && maze[i-1][j] == 0
-                        || maze[i][j+1] == 0 && maze[i-1][j] == 0 && maze[i+1][j] == 0) 
+                    if (maze[i-1][j] != -1 && maze[i+1][j] != -1 && maze[i][j-1] != -1 
+                        || maze[i+1][j] != -1 && maze[i][j-1] != -1 && maze[i][j+1] != -1
+                        || maze[i][j-1] != -1 && maze[i][j+1] != -1 && maze[i-1][j] != -1
+                        || maze[i][j+1] != -1 && maze[i-1][j] != -1 && maze[i+1][j] != -1) {
 
                             crossRoadsShortestWay = crossRoadsShortestWay + 1;
+                            if (i - exit[1] >= -3 && i - exit[1] <= 3)
+                                if (j - exit[2] >= -3 && j - exit[2] <= 3)
+                                    badSquares = badSquares + 1;
+                        }
+
             
                 // increment length of all deadends(here points which are not the deadendpoint but rather the way are considered) and get the max level of depth
                 } else if (maze[i][j] > 0) {
@@ -221,6 +254,11 @@ function computeMazeCoefficient(maze, dimension) {
 
             }
         }
+      
+
+        mazeCoeff = (lengthShortestWay + lengthDeadends * quantDeadEnds/deadEndDepth) * (1 + crossRoadsShortestWay - badSquares);
+        console.log(mazeCoeff);
+        return (mazeCoeff);
     } else {
         console.log("In method computeMazeCoeffiecent either the paramater maze and/or dimension is null/undefined!")
     }
