@@ -1,5 +1,5 @@
 var groundMesh = undefined;
-var groundTexture =  THREE.ImageUtils.loadTexture('./assets/dark_ground.jpg');
+var groundTexture =  THREE.ImageUtils.loadTexture('./assets/dark_ground2.jpg');
 
 function createGround() {
     g = new THREE.PlaneGeometry(mazeDimension*10, mazeDimension*10, mazeDimension, mazeDimension);

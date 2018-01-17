@@ -1,7 +1,7 @@
 var maze = undefined;
 var mazeMesh = undefined;
 var mazeDimension = 11;
-var mazeTexture   = THREE.ImageUtils.loadTexture('./assets/forest.jpg');
+var mazeTexture   = THREE.ImageUtils.loadTexture('./assets/hedge.jpg');
 
 function createMazeBody() {
     var bodyDef = new b2BodyDef();
