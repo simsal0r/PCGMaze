@@ -409,21 +409,50 @@ function generate_random(dim,start_x,start_y,end_x,end_y)
     }
     gra1[start_y][start_x] = 1;
     gra1[end_y][end_x] = 1;
-    console.log(gra1)
+    //console.log(gra1)
     return gra1;
 }
 
 
-var graph = new Graph(generate_random(11,1,1,10,9));
 
 // var graph = new Graph([
 //     [1,1,1,1],
 //     [0,1,0,0],
 //     [0,0,0,1]
 // ]);
-var start = graph.grid[1][1];
-var end = graph.grid[9][10];
-var result = astar.search(graph, start, end);
 
+for (var i=0;i<=100;i++) {
+    //var generate_random(11, 1, 1, 10, 9)
+    var graph = new Graph();
+    var start = graph.grid[1][1];
+    var end = graph.grid[9][10];
+    var result = astar.search(graph, start, end);
 
-console.log(result)
+    var tok = result.length - 1;
+    if (result.length > 0) {
+        console.log("Nr. " + i + " f/distance to goal: " + result[tok].f + " g/steps: " + result[tok].g)
+        console.log(graph)
+    }
+}
+//result[0].f //distance to goal
+//result[0].g //steps taken
+// GridNode {
+//     x: 2,
+//         y: 1,
+//         weight: 1,
+//         f: 17,
+//         g: 1,
+//         h: 16,
+//         visited: true,
+//         closed: true,
+//         parent:
+//     GridNode {
+//         x: 1,
+//             y: 1,
+//             weight: 1,
+//             f: 0,
+//             g: 0,
+//             h: 17,
+//             visited: false,
+//             closed: true,
+//             parent: null } }
