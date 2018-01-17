@@ -66,15 +66,9 @@ function handleChest(mazeX, mazeY) {
 }
 
 function chest_zoomOut() {
+    writeToTextField("Opened zoom out chest!");
     ZOOM_LEVEL = 8;
-    $('#pietimer').pietimer({
-            seconds: 4,
-            color: 'rgba(255, 255, 255, 0.8)',
-            height: 100,
-            width: 100
-        },
-        function(){ZOOM_LEVEL = ZOOM_LEVEL_INITIAL;});
-    $('#pietimer').pietimer('start');
+    startPietimer(4, function(){ZOOM_LEVEL = ZOOM_LEVEL_INITIAL;});
 }
 
 function chest_jumpScare() {
@@ -86,5 +80,6 @@ function chest_jumpScare() {
 }
 
 function chest_moveToStart() {
+    writeToTextField("Opened move to start chest!");
     movePlayerTo(1,1);
 }

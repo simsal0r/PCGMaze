@@ -9,6 +9,7 @@ body {
     padding: 0;
     font-family: 'scaryFont';
     font-size:1.5em;
+    letter-spacing:2px;
 }
 
 #instructions {
@@ -76,9 +77,15 @@ body {
 }
 
 #textFieldContainer{
-
+    height: 40%;
+    width: 100%;
+    display: flex;
+    position: fixed;
+    align-items: center;
+    justify-content: center;
+    color:white;
+    font-size:3em;
 }
 
 #textField {
-
 }

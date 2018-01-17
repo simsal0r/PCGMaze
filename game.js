@@ -10,7 +10,7 @@ function gameLoop() {
         }
         maze = generateSquareMaze(mazeDimension);
         maze[mazeDimension-1][mazeDimension-2] = false;
-        timer_duration = mazeDimension * 1;
+        timer_duration = mazeDimension * 4;
         chests = createChests(maze);
         createPhysicsWorld();
         createRenderWorld();
@@ -52,6 +52,7 @@ function gameLoop() {
             gameState = 'fade out';
         }
         else if(isTimeout()) {
+            writeToTextField("Time's up! You got caught!", "red", 2);
             gameState = 'fade out';
         }
         else {
@@ -118,19 +119,4 @@ function updateRenderWorld() {
     updatePlayerMesh();
     updateCamera();
     updateLight();
-}
-
-function startTimer() {
-    $('#timerText').text(timeToString(timer_duration));
-    timer_duration--;
-    timer = setInterval(function() {
-        $('#timerText').text(timeToString(timer_duration));
-        timer_duration--;
-    }, 1000);
-}
-
-function timeToString(time) {
-    var minutes = Math.floor(time/60);
-    var seconds = time%60 == 0 ? "00" : (time%60 < 10 ? ("0" + time%60) : time%60);
-    return minutes + ":" + seconds;
 }
