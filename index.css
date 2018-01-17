@@ -46,5 +46,12 @@ body {
     top: 22px;
     padding: 4px;
     color: white;
+}
 
+#pietimer {
+    position: absolute;
+    top:0;
+    right:0;
+    height:5vh;
+    width:auto;
 }

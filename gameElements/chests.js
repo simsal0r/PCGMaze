@@ -67,9 +67,14 @@ function handleChest(mazeX, mazeY) {
 
 function chest_zoomOut() {
     ZOOM_LEVEL = 8;
-    setTimeout(function(){
-        ZOOM_LEVEL = ZOOM_LEVEL_INITIAL;
-        }, 4000);
+    $('#pietimer').pietimer({
+            seconds: 4,
+            color: 'rgba(255, 255, 255, 0.8)',
+            height: 100,
+            width: 100
+        },
+        function(){ZOOM_LEVEL = ZOOM_LEVEL_INITIAL;});
+    $('#pietimer').pietimer('start');
 }
 
 function chest_jumpScare() {
@@ -77,7 +82,7 @@ function chest_jumpScare() {
     playScream();
     setTimeout(function(){
         $('#jump_scare').hide();
-        }, 500);
+    }, 500);
 }
 
 function chest_moveToStart() {
