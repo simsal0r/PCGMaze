@@ -422,8 +422,8 @@ function generate_random(dim,start_x,start_y,end_x,end_y)
 // ]);
 
 for (var i=0;i<=100;i++) {
-    //var generate_random(11, 1, 1, 10, 9)
-    var graph = new Graph();
+    var maze1 =  generate_random(11, 1, 1, 10, 9);
+    var graph = new Graph(maze1);
     var start = graph.grid[1][1];
     var end = graph.grid[9][10];
     var result = astar.search(graph, start, end);
@@ -431,7 +431,7 @@ for (var i=0;i<=100;i++) {
     var tok = result.length - 1;
     if (result.length > 0) {
         console.log("Nr. " + i + " f/distance to goal: " + result[tok].f + " g/steps: " + result[tok].g)
-        console.log(graph)
+        console.log(maze1)
     }
 }
 //result[0].f //distance to goal
