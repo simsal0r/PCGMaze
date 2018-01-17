@@ -8,23 +8,25 @@
 </head>
 <body>
 <div id="gameTitleContainer">
-    <span id="gameTitle"> Happy Fun PCG Maze Adventure</span>
+    <span id="gameTitle"><mark>Happy Fun PCG Maze Adventure</mark></span>
 </div>
 <div id="menu">
     <form action="javascript:handleSubmit(document.getElementById('startDifficulty').value)">
-        Start difficulty: <input id="startDifficulty" type="number" name="startDifficulty" value="11">
+        <mark>Start difficulty: <input id="startDifficulty" type="number" name="startDifficulty" value="11"></mark>
         <div class="container">
             <ul>
                 <li>
-                    <a id="horror-option" href="index.html">Horror</a>
+
+                    <a id="horror-option" href="index.html"><img src="assets/circle.png" height="25" width="25"> Horror Setting</a>
+
                 </li>
                 <li>
-                    <a id="happy-option" href="">Happy</a>
+                    <a id="happy-option" href=""><img src="assets/circle.png" height="25" width="25"> Happy Setting</a>
                 </li>
             </ul>
         </div>
         <br>
-        <input type="submit" value="Start">
+        <input class="button" type="submit" value="Start">
     </form>
 </div>
 </body>
