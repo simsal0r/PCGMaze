@@ -1,5 +1,6 @@
 var timer_duration = 60;
 var timer = undefined;
+var stepsPlayed = false;
 
 function startTimer() {
     $('#timerText').text(timeToString(timer_duration));
@@ -7,6 +8,10 @@ function startTimer() {
     timer = setInterval(function() {
         $('#timerText').text(timeToString(timer_duration));
         timer_duration--;
+        if(!stepsPlayed && timer_duration < 8){
+            playSteps();
+            stepsPlayed = true;
+        }
     }, 1000);
 }
 
