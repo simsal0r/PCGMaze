@@ -47,6 +47,13 @@ function gameLoop() {
                 handleChest(mazeX, mazeY);
             }
         }
+        function backgroundNoise()
+        {
+             var rng = Math.floor(Math.random()*10000);
+             if (rng <= 5 ) {
+                playBackgroundSound();
+             }
+        }
         updatePhysicsWorld();
         updateRenderWorld();
         renderer.render(scene, camera);
@@ -60,7 +67,9 @@ function gameLoop() {
         }
         else {
             checkForChests();
-        }
+            backgroundNoise();
+            }
+
 
     }
     function fadeGameOut() {
