@@ -6,7 +6,7 @@ function gameLoop() {
     function initializeGame() {
         function setLevel() {
             var level = Math.floor((mazeDimension-1)/2 - 4);
-            $('#level').html('Level ' + level);
+            $('#level').html('Difficulty ' + level);
         }
         maze = generateSquareMaze(mazeDimension);
         maze[mazeDimension-1][mazeDimension-2] = false;

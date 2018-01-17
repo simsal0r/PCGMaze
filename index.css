@@ -4,12 +4,17 @@
 }
 
 body {
-    background: black;
+    background: url("assets/HedgeMaze.jpg") no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
     margin: 0;
     padding: 0;
     font-family: 'scaryFont';
     font-size:1.5em;
     letter-spacing:2px;
+    color:rgb(138,7,7);
 }
 
 #gameTitleContainer{
@@ -18,17 +23,29 @@ body {
 }
 
 #gameTitle {
-    color:white;
-    font-size:3em;
+    font-size:5em;
 
 }
 
 #menu {
+    font-size:2.5em;
     margin-top: 5%;
     text-align: center;
 }
 
-#start {
-    color:white;
-    font-size:1.5em;
+input[type=number] {
+    background:none;
+    border: none;
+    font-family: "scaryFont";
+    font-size:1.2em;
+    width:1.2em;
+    color:rgb(138,7,7);
+}
+
+input[type=submit] {
+    background:none;
+    font-size:1.2em;
+    font-family: "scaryFont";
+    color:rgb(138,7,7);
+    border: none;
 }

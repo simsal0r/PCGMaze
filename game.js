@@ -55,7 +55,9 @@ jQuery.fn.center = function () {
 
 
 $(document).ready(function() {
-
+    if(localStorage.getItem("startDifficulty") != null) {
+        mazeDimension = parseInt(localStorage.getItem("startDifficulty"));
+    }
     // Prepare the instructions.
     $('#instructions').center();
     $('#instructions').hide();
