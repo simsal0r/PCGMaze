@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>PCG Maze</title>
+    <link rel="stylesheet" type="text/css" href="index_happy.css">
+    <script src="index.js"></script>
+</head>
+<body>
+<div id="gameTitleContainer">
+    <span id="gameTitle"> Happy Fun PCG Maze Adventure</span>
+</div>
+<div id="menu">
+    <form action="javascript:handleSubmit(document.getElementById('startDifficulty').value)">
+        Start difficulty: <input id="startDifficulty" type="number" name="startDifficulty" value="11">
+        <div class="container">
+            <ul>
+                <li>
+                    <a id="horror-option" href="index.html">Horror</a>
+                </li>
+                <li>
+                    <a id="happy-option" href="">Happy</a>
+                </li>
+            </ul>
+        </div>
+        <br>
+        <input type="submit" value="Start">
+    </form>
+</div>
+</body>
+</html>

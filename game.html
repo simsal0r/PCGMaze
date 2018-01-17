@@ -1,0 +1,55 @@
+<html>
+    <head>
+        <script src='libraries/Box2dWeb.js'></script>
+        <script src="libraries/three.min.js"></script>
+        <script src="libraries/keyboard.js"></script>
+        <script src="libraries/jquery.js"></script>
+        <script src="libraries/jquery.pietimer.min.js"></script>
+        <script src="pcg/growingTree.js"></script>
+        <script src="maze.js"></script>
+        <script src="gameElements/chests.js"></script>
+        <script src="gameElements/player.js"></script>
+        <script src="gameElements/maze_new.js"></script>
+        <script src="gameElements/ground.js"></script>
+        <script src="sceneElements/camera.js"></script>
+        <script src="sceneElements/lighting.js"></script>
+        <script src="sceneElements/sound.js"></script>
+        <script src="sceneElements/timer.js"></script>
+        <script src="sceneElements/textField.js"></script>
+        <script src="gameLoop.js"></script>
+        <script src="game.js"></script>
+
+        <link rel="stylesheet" type="text/css" href="game.css">
+    </head>
+    <body>
+        <div id='instructions'>
+            How to play Spooky Horror PCG Maze Adventure:
+            <br><br>
+            Use the arrow keys to move the player and find the exit to the maze.
+            <br><br>
+            Have fun!
+        </div>
+        <div id="jump_scare">
+            <img style="height:100vh; width:100vw;" src="assets/jumpScare.png" loop="infinite">
+        </div>
+        <div id="lvlmenu">
+            <a href="world0.html">Test Environment</a>
+        </div>
+        <div id='help'>
+            Hold down the 'I' key for instructions.
+        </div>
+        <div id='level'>
+            Level 1
+        </div>
+        <div id="textFieldContainer">
+            <span id="textField"></span>
+        </div>
+        <div id="timer">
+            <span id="timerText"></span>
+        </div>
+        <div id="pietimer">
+
+        </div>
+    </body>
+</html>
+
