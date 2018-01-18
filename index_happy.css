@@ -128,3 +128,13 @@ input[type=submit] {
 input[type=submit]:hover {
     background: #f3ae1f;
 }
+
+#highscore {
+    position:absolute;
+    left:0;
+    bottom:0;
+    font-size:2em;
+    font-family:"happyFont";
+    background-color: #f3ae1f;
+    color:#ffffff;
+}

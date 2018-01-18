@@ -69,8 +69,12 @@ function gameLoop() {
         }
         else if(isTimeout()) {
             writeToTextField("Time's up! You got caught!", "red", 2);
+            localStorage.setItem("highscore", Math.floor((mazeDimension-1)/2 - 4));
             removeControls();
-            setTimeout(function(){gameState = 'fade out';}, 1000);
+            setTimeout(function(){
+                gameState = 'fade out';
+                mazeDimension = parseInt(localStorage.getItem("startDifficulty"));
+            }, 1000);
         }
         else {
             checkForChests();

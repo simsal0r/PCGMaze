@@ -58,6 +58,7 @@ body {
     top: 22px;
     padding: 4px;
     color: white;
+    z-index: 99;
 }
 
 #pietimer {

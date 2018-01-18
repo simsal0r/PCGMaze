@@ -81,11 +81,17 @@ a:link, a:visited {
     border-width: medium;
 }
 
-
 a:hover, a:active {
     color:white;
 }
 
 #horror-option {
     overflow:hidden;
+}
+
+#highscore {
+    position:absolute;
+    left:0;
+    bottom:0;
+    font-size:2em;
 }

@@ -55,9 +55,7 @@ jQuery.fn.center = function () {
 
 
 $(document).ready(function() {
-    if(localStorage.getItem("startDifficulty") != null) {
-        mazeDimension = parseInt(localStorage.getItem("startDifficulty"));
-    }
+    mazeDimension = parseInt(localStorage.getItem("startDifficulty"));
     document.body.style.fontFamily = getAtmosphere(localStorage.getItem("atmosphere"), "font-family");
     // Prepare the instructions.
     $('#instructions').center();
