@@ -66,6 +66,7 @@ function gameLoop() {
                     mazeDimension += 2;
                     gameState = 'fade out';
                 }, 1000);
+                clearPietimer();
                 escaped=true;
             }
         }
