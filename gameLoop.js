@@ -69,7 +69,10 @@ function gameLoop() {
         }
         else if(isTimeout()) {
             writeToTextField("Time's up! You got caught!", "red", 2);
-            localStorage.setItem("highscore", Math.floor((mazeDimension-1)/2 - 4));
+            var score = Math.floor((mazeDimension-1)/2 - 4);
+            if(score > localStorage.getItem("highscore")) {
+                localStorage.setItem("highscore", score);
+            }
             removeControls();
             setTimeout(function(){
                 gameState = 'fade out';
