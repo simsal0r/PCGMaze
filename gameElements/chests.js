@@ -1,7 +1,7 @@
 var CHANCE_OF_CHEST_APPEARING = 0.1;
 var CHEST_ITEMS = ["zoom_out", "jump_scare", "move_to_start", "rotate_maze", "light_darker", "increase_time", "decrease_time", "random_teleportation"];
 //var CHEST_PROBABILITIES = [0.2, 0.1, 0.04, 0.14, 0.14, 0.10, 0.10, 0.18];
-var CHEST_PROBABILITIES = [0.5, 0, 0, 0, 0.5, 0, 0, 0];
+var CHEST_PROBABILITIES = [0, 0, 0, 1, 0, 0, 0, 0];
 var chestTexture = THREE.ImageUtils.loadTexture('./assets/chest.jpg');
 var chests = undefined;
 var chestMesh = undefined;
@@ -83,6 +83,7 @@ function chest_rotateMaze() {
     writeToTextField("Opened rotation chest!");
     var oldRotation = Math.round(camera.rotation.z * 180/Math.PI);
     ZOOM_LEVEL = 8;
+    var rotationSpeed = 1000/Math.sqrt(Math.pow(rotation_degree,2));
     if(rotation_degree > 0){
         var rotation = setInterval(function(){
             var currentRotation = Math.round(camera.rotation.z * 180/Math.PI);
@@ -101,7 +102,7 @@ function chest_rotateMaze() {
                 ZOOM_LEVEL = 3;
                 window.clearInterval(rotation);
             }
-        }, 10);
+        }, rotationSpeed);
     }
     else {
         var rotation = setInterval(function(){
@@ -121,7 +122,7 @@ function chest_rotateMaze() {
                 ZOOM_LEVEL = 3;
                 window.clearInterval(rotation);
             }
-        }, 10);
+        }, rotationSpeed);
     }
 }
 
@@ -133,7 +134,7 @@ function chest_lightDarker() {
 
 function chest_increaseTime() {
     var value = Math.floor((mazeDimension*4)*0.1);
-    writeToTextField("Opened increase time chest! +" + value + "s");
+    writeToTextField("Opened increase time chest! +" + value + "s", "green");
     timer_duration += value;
 }
 
@@ -144,7 +145,7 @@ function chest_decreaseTime() {
 }
 
 function chest_zoomOut() {
-    writeToTextField("Opened zoom out chest!");
+    writeToTextField("Opened zoom out chest!", "green");
     ZOOM_LEVEL = 8;
     startPietimer(4, function(){ZOOM_LEVEL = ZOOM_LEVEL_INITIAL}, "zoom_out");
 }
