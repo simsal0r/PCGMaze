@@ -3,6 +3,11 @@
     src: url("assets/scaryFont.ttf");
 }
 
+@font-face {
+    font-family: "happyFont";
+    src: url("assets/happyFont.ttf");
+}
+
 body {
     background: black;
     margin: 0;
