@@ -76,7 +76,9 @@ function gameLoop() {
         }
         else {
             checkForChests();
-            backgroundNoise();
+            if(localStorage.getItem("atmosphere") == "horror"){
+                backgroundNoise();
+            }
         }
 
 

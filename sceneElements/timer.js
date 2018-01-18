@@ -9,7 +9,9 @@ function startTimer() {
         $('#timerText').text(timeToString(timer_duration));
         timer_duration--;
         if(!stepsPlayed && timer_duration < 8){
-            playSteps();
+            if(localStorage.getItem("atmosphere") == "horror"){
+                playSteps();
+            }
             stepsPlayed = true;
         }
     }, 1000);
