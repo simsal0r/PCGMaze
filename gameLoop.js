@@ -115,8 +115,10 @@ function createRenderWorld() {
     scene = new THREE.Scene();
     createLight();
     scene.add(light);
-    createTorch();
-    scene.add(torch);
+    if(localStorage.getItem("atmosphere") == "horror"){
+        createTorch();
+        scene.add(torch);
+    }
     createCamera();
     scene.add(camera);
     generatePlayerMesh();
