@@ -1,8 +1,8 @@
 var head = undefined;
 var headMesh = undefined;
 var headRadius = 0.25;
-var headTexture = THREE.ImageUtils.loadTexture('./assets/hair.jpg');
-var playerTexture = THREE.ImageUtils.loadTexture('./assets/cloak.jpg');
+var headTexture = getAtmosphere(localStorage.getItem("atmosphere"), "head_texture");
+var playerTexture = getAtmosphere(localStorage.getItem("atmosphere"), "player_texture");
 var player = undefined;
 var playerMesh = undefined;
 var leftHandMesh = undefined;

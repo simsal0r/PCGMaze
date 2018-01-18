@@ -1,7 +1,7 @@
 var CHANCE_OF_CHEST_APPEARING = 0.1;
 var CHEST_ITEMS = getAtmosphere(localStorage.getItem("atmosphere"), "chest_items");
 var CHEST_PROBABILITIES = getAtmosphere(localStorage.getItem("atmosphere"), "chest_probabilities");
-var chestTexture = THREE.ImageUtils.loadTexture('./assets/chest.jpg');
+var chestTexture = getAtmosphere(localStorage.getItem("atmosphere"), "chest_texture");
 var chests = undefined;
 var chestMesh = undefined;
 

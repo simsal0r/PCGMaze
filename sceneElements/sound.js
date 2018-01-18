@@ -1,5 +1,5 @@
 function playBackground() {
-    var backgroundSound = new Audio("assets/background.mp3");
+    var backgroundSound = new Audio(getAtmosphere(localStorage.getItem("atmosphere"), "background_music"));
     backgroundSound.play();
 }
 
