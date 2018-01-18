@@ -1,7 +1,7 @@
 var CHANCE_OF_CHEST_APPEARING = 0.1;
 var CHEST_ITEMS = ["zoom_out", "jump_scare", "move_to_start", "rotate_maze", "light_darker", "increase_time", "decrease_time", "random_teleportation"];
-//var CHEST_PROBABILITIES = [0.2, 0.1, 0.04, 0.14, 0.14, 0.10, 0.10, 0.18];
-var CHEST_PROBABILITIES = [0, 0, 0, 1, 0, 0, 0, 0];
+var CHEST_PROBABILITIES = [0.3, 0.1, 0.04, 0.05, 0.05, 0.18, 0.18, 0.1];
+//var CHEST_PROBABILITIES = [0, 0, 0, 1, 0, 0, 0, 0];
 var chestTexture = THREE.ImageUtils.loadTexture('./assets/chest.jpg');
 var chests = undefined;
 var chestMesh = undefined;

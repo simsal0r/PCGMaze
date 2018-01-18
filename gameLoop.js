@@ -1,4 +1,5 @@
 var gameState = undefined;
+var escaped = false;
 
 function gameLoop() {
     function initializeGame() {
@@ -20,6 +21,7 @@ function gameLoop() {
         initializeCamera();
         initializeLighting();
         setLevel();
+        escaped = false;
         gameState = 'fade in';
     }
     function fadeGameIn() {
@@ -43,23 +45,29 @@ function gameLoop() {
         function checkForChests() {
             var mazeX = Math.floor(headMesh.position.x + 0.5);
             var mazeY = Math.floor(headMesh.position.y + 0.5);
-            if(chests[mazeX][mazeY] != null) {
+            if(mazeX <= mazeDimension && mazeY <= mazeDimension && chests[mazeX][mazeY] != null) {
                 handleChest(mazeX, mazeY);
             }
         }
         function backgroundNoise()
         {
-             var rng = Math.floor(Math.random()*10000);
-             if (rng <= 5 ) {
+            var rng = Math.floor(Math.random()*10000);
+            if (rng <= 5 ) {
                 playBackgroundSound();
-             }
+            }
         }
         updatePhysicsWorld();
         updateRenderWorld();
         renderer.render(scene, camera);
         if (isVictory()) {
-            mazeDimension += 2;
-            gameState = 'fade out';
+            if(!escaped) {
+                writeToTextField("You escaped! Increasing difficulty...", "green");
+                setTimeout(function(){
+                    mazeDimension += 2;
+                    gameState = 'fade out';
+                }, 1000);
+                escaped=true;
+            }
         }
         else if(isTimeout()) {
             writeToTextField("Time's up! You got caught!", "red", 2);
@@ -68,7 +76,7 @@ function gameLoop() {
         else {
             checkForChests();
             backgroundNoise();
-            }
+        }
 
 
     }
