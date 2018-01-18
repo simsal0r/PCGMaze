@@ -64,6 +64,10 @@ function gameLoop() {
                     mazeDimension += 2;
                     gameState = 'fade out';
                 }, 1000);
+                var score = Math.floor((mazeDimension-1)/2 - 4);
+                if(score > localStorage.getItem("highscore")) {
+                    localStorage.setItem("highscore", score);
+                }
                 escaped=true;
             }
         }
