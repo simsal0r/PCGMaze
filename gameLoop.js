@@ -13,11 +13,7 @@ function gameLoop() {
         chests = createChests(maze);
         createPhysicsWorld();
         createRenderWorld();
-        KeyboardJS.unbind.key("left");
-        KeyboardJS.unbind.key("right");
-        KeyboardJS.unbind.key("down");
-        KeyboardJS.unbind.key("up");
-        KeyboardJS.bind.axis('left', 'right', 'down', 'up', onMoveKey);
+        assignControls();
         initializeCamera();
         initializeLighting();
         setLevel();
@@ -62,17 +58,19 @@ function gameLoop() {
         if (isVictory()) {
             if(!escaped) {
                 writeToTextField("You escaped! Increasing difficulty...", "green");
+                removeControls();
+                clearPietimer();
                 setTimeout(function(){
                     mazeDimension += 2;
                     gameState = 'fade out';
                 }, 1000);
-                clearPietimer();
                 escaped=true;
             }
         }
         else if(isTimeout()) {
             writeToTextField("Time's up! You got caught!", "red", 2);
-            gameState = 'fade out';
+            removeControls();
+            setTimeout(function(){gameState = 'fade out';}, 1000);
         }
         else {
             checkForChests();

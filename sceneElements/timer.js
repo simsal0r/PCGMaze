@@ -39,6 +39,6 @@ function startPietimer(seconds, callbackFunction, type) {
 }
 
 function clearPietimer() {
-    $("#pietimer").pietimer = null;
-    $("#pietimer2").pietimer = null
+    $("#pietimer").empty();
+    $("#pietimer2").empty();
 }
