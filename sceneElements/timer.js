@@ -21,16 +21,17 @@ function timeToString(time) {
     return minutes + ":" + seconds;
 }
 
-function startPietimer(seconds, callbackFunction) {
-    if($('#pietimer').pietimer != null) {
-        $('#pietimer').pietimer('pause');
+function startPietimer(seconds, callbackFunction, type) {
+    var pietimer = type == "zoom_out" ? "#pietimer" : "#pietimer2";
+    if($(pietimer).pietimer != null) {
+        $(pietimer).pietimer('pause');
     }
-    $('#pietimer').pietimer({
+    $(pietimer).pietimer({
             seconds: seconds,
             color: 'rgba(255, 255, 255, 0.8)',
             height: 100,
             width: 100
         },
         callbackFunction);
-    $('#pietimer').pietimer('start');
+    $(pietimer).pietimer('start');
 }

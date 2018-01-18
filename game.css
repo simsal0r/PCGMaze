@@ -63,6 +63,14 @@ body {
     width:auto;
 }
 
+#pietimer2 {
+    position: absolute;
+    top:100px;
+    right:0;
+    height:5vh;
+    width:auto;
+}
+
 #timer {
     position:absolute;
     bottom:0;

@@ -1,7 +1,7 @@
 var CHANCE_OF_CHEST_APPEARING = 0.1;
 var CHEST_ITEMS = ["zoom_out", "jump_scare", "move_to_start", "rotate_maze", "light_darker", "increase_time", "decrease_time", "random_teleportation"];
-var CHEST_PROBABILITIES = [0.2, 0.1, 0.04, 0.14, 0.14, 0.10, 0.10, 0.18];
-//var CHEST_PROBABILITIES = [0, 1, 0, 0, 0, 0, 0, 0];
+//var CHEST_PROBABILITIES = [0.2, 0.1, 0.04, 0.14, 0.14, 0.10, 0.10, 0.18];
+var CHEST_PROBABILITIES = [0.5, 0, 0, 0, 0.5, 0, 0, 0];
 var chestTexture = THREE.ImageUtils.loadTexture('./assets/chest.jpg');
 var chests = undefined;
 var chestMesh = undefined;
@@ -128,7 +128,7 @@ function chest_rotateMaze() {
 function chest_lightDarker() {
     writeToTextField("Opened light darker chest!");
     light.intensity = 0.1;
-    startPietimer(30, function(){light.intensity = 0.5;});
+    startPietimer(30, function(){light.intensity = 0.5;}, "light_darker");
 }
 
 function chest_increaseTime() {
@@ -146,7 +146,7 @@ function chest_decreaseTime() {
 function chest_zoomOut() {
     writeToTextField("Opened zoom out chest!");
     ZOOM_LEVEL = 8;
-    startPietimer(4, function(){ZOOM_LEVEL = ZOOM_LEVEL_INITIAL});
+    startPietimer(4, function(){ZOOM_LEVEL = ZOOM_LEVEL_INITIAL}, "zoom_out");
 }
 
 function chest_jumpScare() {
