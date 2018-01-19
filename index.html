@@ -188,7 +188,6 @@
 
                     case 'initialize':
                         maze = generateSquareMaze(mazeDimension);
-                   //     maze[mazeDimension-1][mazeDimension-2] = false;
                         createPhysicsWorld();
                         createRenderWorld();
                         camera.position.set(1, 1, 20);
@@ -197,6 +196,7 @@
                         var level = Math.floor((mazeDimension-1)/2 - 4);
                         $('#level').html('Level ' + level);
                         gameState = 'fade in';
+                        exit = getExit(maze, mazeDimension);
                         break;
 
                     case 'fade in':
@@ -212,11 +212,12 @@
                         updatePhysicsWorld();
                         updateRenderWorld();
                         renderer.render(scene, camera);
-
                         // Check for victory.
                         var mazeX = Math.floor(ballMesh.position.x + 0.5);
                         var mazeY = Math.floor(ballMesh.position.y + 0.5);
-                        if (mazeX == mazeDimension && mazeY == mazeDimension - 2) {
+                        if ((mazeX == mazeDimension-1 && mazeY == mazeDimension-2)
+                            || (mazeX == 0 && mazeY == mazeDimension-2)
+                            || (mazeX == mazeDimension-1 && mazeY == 1)) {
                             mazeDimension += 2;
                             gameState = 'fade out';
                         }

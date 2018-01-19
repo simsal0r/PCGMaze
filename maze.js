@@ -1,4 +1,3 @@
-
 function generateSquareMaze(dimension) {
 
     function shuffleArray(array) {
@@ -189,6 +188,7 @@ function generateSquareMaze(dimension) {
         }
     }
     //Generate first
+    var exit;
     grid1[dimension-1][dimension-2] = 0;
     var exit1 = [dimension-1, dimension-2];
     grid1 = deadend_algorithm(grid1);
@@ -213,19 +213,28 @@ function generateSquareMaze(dimension) {
     console.log('mc3: '+mc3);
 
     if (mc1>mc2)
-        if (mc1>mc3)
+        if (mc1>mc3) {
+            exit = exit1;
             field[dimension-1][dimension-2] = false;
-        else
+        } else {
+            exit = exit3;
             field[0][dimension-2] = false;
+        }
     else
-        if(mc2>mc3)
+        if(mc2>mc3) {
+            exit = exit2;
             field[dimension-1][1] = false;
-        else
+        } else {
+            exit = exit3;
             field[0][dimension-2] = false;
+        }
             
     return field;
 
 }
+
+
+
 
 function computeMazeCoefficient(maze, dimension, exit) {
     if (maze != undefined && maze != null && dimension != undefined && dimension != null && exit != undefined && exit != null) {
@@ -269,7 +278,6 @@ function computeMazeCoefficient(maze, dimension, exit) {
 
             }
         }
-      
 
         mazeCoeff = (5*lengthShortestWay + lengthDeadends * quantDeadEnds/deadEndDepth) * (1 + crossRoadsShortestWay - badSquares);
         console.log('lengthShortestWay: '+lengthShortestWay);
@@ -283,4 +291,3 @@ function computeMazeCoefficient(maze, dimension, exit) {
         console.log("In method computeMazeCoeffiecent either the paramater maze and/or dimension is null/undefined!")
     }
 }
-
