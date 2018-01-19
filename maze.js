@@ -90,6 +90,7 @@ function generateSquareMaze(dimension) {
                     break;
                 }
                 var nnpos = get_next_position(grid, nx, ny);
+                console.log(nnpos);
                 nx = nnpos[0];
                 ny = nnpos[1];
                 fork = is_fork(grid, nx, ny);
@@ -116,13 +117,17 @@ function generateSquareMaze(dimension) {
     }
 
     function is_fork(grid, cx, cy){
-        if(cx == dimension-1 || cy == dimension-1){
+        if(cx == dimension-1 || cy == dimension-1 || cx == 0 || cy == 0){
             return 0;
         }
         var nu = grid[cx][cy+1];
+        console.log('nu: '+nu);
         var nd = grid[cx][cy-1];
+        console.log('nd: '+nd);
         var nr = grid[cx+1][cy];
+        console.log('nr: '+nr);
         var nl = grid[cx-1][cy];
+        console.log('nl: '+nl);
         var paths = 0;
         if(nu == 0){
             paths++;
@@ -162,7 +167,7 @@ function generateSquareMaze(dimension) {
             field[i][j] = true;
         }
     }
-
+    field[1][1] = false;
     field = carve_passage(field, 1, 1);
     console.log(field);
 
