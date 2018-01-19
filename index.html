@@ -214,9 +214,9 @@
                         // Check for victory.
                         var mazeX = Math.floor(ballMesh.position.x + 0.5);
                         var mazeY = Math.floor(ballMesh.position.y + 0.5);
-                        if ((mazeX == mazeDimension-1 && mazeY == mazeDimension-2)
-                            || (mazeX == 0 && mazeY == mazeDimension-2)
-                            || (mazeX == mazeDimension-1 && mazeY == 1)) {
+                        if ((mazeX == mazeDimension && mazeY == mazeDimension-2)
+                            || (mazeX == -1 && mazeY == mazeDimension-2)
+                            || (mazeX == mazeDimension && mazeY == 1)) {
                             mazeDimension += 2;
                             gameState = 'fade out';
                         }
