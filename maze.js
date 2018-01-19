@@ -68,7 +68,7 @@ function generateSquareMaze(dimension) {
                 var nd = grid_org[i][j-1];
                 var nl = grid_org[i+1][j];
                 var nr = grid_org[i-1][j];
-                if(nu+nd+nl+nr === -3 && grid[i][j] === 0 && (i!==1 && j!==1)){
+                if(nu+nd+nl+nr == -3 && grid[i][j] == 0 && !(i==1 && j==1)){
                     deadends.push([i,j]);
                     grid[i][j] = -2;
                 }
@@ -122,6 +122,7 @@ function generateSquareMaze(dimension) {
         var nd = grid[cx][cy-1];
         var nr = grid[cx+1][cy];
         var nl = grid[cx-1][cy];
+        //console.log('nu: '+nu+', nd: '+nd+', nr: '+nr+', nl: '+nl);
         var paths = 0;
         if(nu == 0){
             paths++;
@@ -138,11 +139,14 @@ function generateSquareMaze(dimension) {
         var max = Math.max(nu,nd,nr,nl);
         if((nu > 0 && nd > 0) || (nu > 0 && nl > 0) || (nu > 0 && nr > 0) || (nd > 0 && nr > 0) ||
             (nd > 0 && nl > 0) || (nr > 0 && nl > 0)) {
+            //console.log('deadendsfork');
             return(max+1);
         }
         if(paths>1){
+            //console.log('fork');
             return 0;
         } else if(cx == 1 && cy == 1) {
+            //console.log('start');
             return 0;
         } else if(max == 0) {
             return 1;
@@ -228,7 +232,7 @@ function generateSquareMaze(dimension) {
             exit = exit3;
             field[0][dimension-2] = false;
         }
-            
+    field[dimension-1][dimension-2] = false;
     return field;
 
 }
