@@ -80,6 +80,8 @@ function updatePlayerRotation(stepX, stepY) {
     }
 }
 
+var stepSound = new Audio("assets/walk.mp3");
+stepSound.volume = 0.02;
 function movePlayer() {
     var lv = player.GetLinearVelocity();
     lv.Multiply(0.95);
@@ -88,8 +90,14 @@ function movePlayer() {
     // Apply user-directed force.
     var f = new b2Vec2(keyAxis[0]*player.GetMass()*0.25, keyAxis[1]*player.GetMass()*0.25);
     player.ApplyImpulse(f, player.GetPosition());
+    if (keyAxis[0]+keyAxis[1] != 0)
+    {
+        stepSound.play();
+    }
     keyAxis = [0,0];
 }
+
+
 
 function movePlayerTo(x, y) {
     physicsWorld.DestroyBody(player);

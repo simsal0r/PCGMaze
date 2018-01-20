@@ -1,11 +1,16 @@
 function playBackground() {
     var backgroundSound = new Audio(getAtmosphere(localStorage.getItem("atmosphere"), "background_music"));
+    backgroundSound.volume = 0.1;
     backgroundSound.play();
 }
 
 function playScream() {
     var screamSound = new Audio("assets/scream.wav");
     screamSound.play();
+}
+function playSlam() {
+    var slamSound = new Audio("assets/slam.mp3");
+    slamSound.play();
 }
 
 function playSteps() {
@@ -17,23 +22,23 @@ function playBackgroundSound(){
     var d = Math.random();
     if (d < 0.2){
     var soundBG = new Audio("assets/backgroundScream1.wav");
-    soundBG.volume = 0.2;
+    soundBG.volume = 0.1;
     }
     else if (d < 0.4){
         var soundBG = new Audio("assets/bg1.wav");
-        soundBG.volume = 0.2;
+        soundBG.volume = 0.1;
     }
     else if (d < 0.6){
         var soundBG = new Audio("assets/bg2.mp3");
-        soundBG.volume = 0.4;
+        soundBG.volume = 0.3;
     }
     else if (d < 0.8){
         var soundBG = new Audio("assets/bg3.mp3");
-        soundBG.volume = 0.3;
+        soundBG.volume = 0.2;
     }
     else {
         var soundBG = new Audio("assets/bg4.mp3");
-        soundBG.volume = 0.4;
+        soundBG.volume = 0.3;
     }
     soundBG.play();
 }

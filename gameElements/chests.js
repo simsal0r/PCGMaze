@@ -125,26 +125,33 @@ function chest_zoomOut() {
 }
 
 function chest_jumpScare() {
-    playScream();
-    /*setTimeout(function(){
-        $('#jump_scare').hide();
+    var d = Math.random();
+    if (d < 0.5)
+    {
+        playScream();
         setTimeout(function(){
-            $('#jump_scare').show();
+        $('#jump_scare2').hide();
+        setTimeout(function(){
+            $('#jump_scare2').show();
             setTimeout(function(){
-                $('#jump_scare').hide();
+                $('#jump_scare2').hide();
                 setTimeout(function(){
-                    $('#jump_scare').show();
+                    $('#jump_scare2').show();
                     setTimeout(function(){
-                        $('#jump_scare').hide();
+                        $('#jump_scare2').hide();
                     }, 500);
                 }, 100);
             }, 100);
         }, 100);
-    }, 100);*/
-    $('#jump_scare').show();
-    setTimeout(function(){
-        $('#jump_scare').hide();
-    }, 500);
+    }, 100);
+    }
+    else {
+        playSlam();
+        $('#jump_scare').show();
+        setTimeout(function(){
+            $('#jump_scare').hide();
+        }, 500);
+    }
 }
 
 function chest_randomTeleportation(){

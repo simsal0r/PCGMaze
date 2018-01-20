@@ -19,6 +19,7 @@ function gameLoop() {
         setLevel();
         escaped = false;
         gameState = 'fade in';
+
     }
     function fadeGameIn() {
         increaseLighting();
@@ -143,6 +144,8 @@ function createRenderWorld() {
     scene.add(groundMesh);
     playBackground();
 }
+
+
 
 function updatePhysicsWorld() {
     movePlayer();
