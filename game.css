@@ -43,6 +43,21 @@ body {
     left:0;
 }
 
+#jump_scare3 {
+    height:100vh;
+    width:100vw;
+    position:absolute;
+    top:0;
+    left:0;
+}
+#jump_scare4 {
+    height:100vh;
+    width:100vw;
+    position:absolute;
+    top:0;
+    left:0;
+}
+
 #help {
     position: absolute;
     left: 0px;

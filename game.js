@@ -62,6 +62,8 @@ $(document).ready(function() {
     $('#instructions').hide();
     $('#jump_scare').hide();
     $('#jump_scare2').hide();
+    $('#jump_scare3').hide();
+    $('#jump_scare4').hide();
     KeyboardJS.bind.key('i', function(){$('#instructions').show()},
         function(){$('#instructions').hide()});
 

@@ -3,11 +3,23 @@ function playBackground() {
     backgroundSound.volume = 0.1;
     backgroundSound.play();
 }
+function playEndSound() {
+    var EndSound = new Audio("assets/ghastlyboom.mp3");
+    EndSound.volume = 0.5;
+    EndSound.play();
+}
+
+function playDeathSound() {
+    var DeathSound = new Audio("assets/gong.wav");
+    DeathSound.volume = 0.20;
+    DeathSound.play();
+}
 
 function playScream() {
     var screamSound = new Audio("assets/scream.wav");
     screamSound.play();
 }
+
 function playSlam() {
     var slamSound = new Audio("assets/slam.mp3");
     slamSound.play();
@@ -15,6 +27,7 @@ function playSlam() {
 
 function playSteps() {
     var stepSound = new Audio("assets/steps.mp3");
+    stepSound.volume=0.3;
     stepSound.play();
 }
 

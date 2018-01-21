@@ -1,4 +1,4 @@
-var CHANCE_OF_CHEST_APPEARING = 0.1;
+var CHANCE_OF_CHEST_APPEARING = 0.07;
 var CHEST_ITEMS = getAtmosphere(localStorage.getItem("atmosphere"), "chest_items");
 var CHEST_PROBABILITIES = getAtmosphere(localStorage.getItem("atmosphere"), "chest_probabilities");
 var chestTexture = getAtmosphere(localStorage.getItem("atmosphere"), "chest_texture");
@@ -126,7 +126,7 @@ function chest_zoomOut() {
 
 function chest_jumpScare() {
     var d = Math.random();
-    if (d < 0.5)
+    if (d < 0.25)
     {
         playScream();
         setTimeout(function(){
@@ -146,11 +146,28 @@ function chest_jumpScare() {
     }, 100);
     }
     else {
-        playSlam();
-        $('#jump_scare').show();
-        setTimeout(function(){
-            $('#jump_scare').hide();
-        }, 500);
+        if(d<0.5) {
+            playSlam();
+            $('#jump_scare').show();
+            setTimeout(function () {
+                $('#jump_scare').hide();
+            }, 500);
+        }
+        else{
+            if(d<0.75) {
+                playSlam();
+                $('#jump_scare3').show();
+                setTimeout(function () {
+                    $('#jump_scare3').hide();
+                }, 600);
+            }else {
+                playSlam();
+                $('#jump_scare4').show();
+                setTimeout(function () {
+                    $('#jump_scare4').hide();
+                }, 600);
+            }
+        }
     }
 }
 

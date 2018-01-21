@@ -58,13 +58,14 @@ function gameLoop() {
         renderer.render(scene, camera);
         if (isVictory()) {
             if(!escaped) {
+                playEndSound();
                 writeToTextField("You escaped! Increasing difficulty...", "green");
                 removeControls();
                 clearPietimer();
                 setTimeout(function(){
                     mazeDimension += 2;
                     gameState = 'fade out';
-                }, 1000);
+                }, 1200);
                 var score = Math.floor((mazeDimension-1)/2 - 4);
                 if(score > localStorage.getItem("highscore")) {
                     localStorage.setItem("highscore", score);
@@ -79,6 +80,7 @@ function gameLoop() {
                 localStorage.setItem("highscore", score);
             }
             removeControls();
+            playDeathSound();
             setTimeout(function(){
                 gameState = 'fade out';
                 mazeDimension = parseInt(localStorage.getItem("startDifficulty"));
@@ -143,6 +145,7 @@ function createRenderWorld() {
     createGround();
     scene.add(groundMesh);
     playBackground();
+
 }
 
 

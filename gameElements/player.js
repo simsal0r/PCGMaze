@@ -92,6 +92,7 @@ function movePlayer() {
     player.ApplyImpulse(f, player.GetPosition());
     if (keyAxis[0]+keyAxis[1] != 0)
     {
+
         stepSound.play();
     }
     keyAxis = [0,0];
