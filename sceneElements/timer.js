@@ -8,13 +8,14 @@ function startTimer() {
     timer = setInterval(function() {
         $('#timerText').text(timeToString(timer_duration));
         timer_duration--;
-        if(!stepsPlayed && timer_duration < 8){
+        if(!stepsPlayed && timer_duration < 10){
             if(localStorage.getItem("atmosphere") == "horror"){
                 playSteps();
             }
             stepsPlayed = true;
         }
     }, 1000);
+    stepsPlayed=false;
 }
 
 function timeToString(time) {

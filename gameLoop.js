@@ -74,13 +74,13 @@ function gameLoop() {
             }
         }
         else if(isTimeout()) {
+            playDeathSound();
             writeToTextField("Time's up! You got caught!", "red", 2);
             var score = Math.floor((mazeDimension-1)/2 - 4);
             if(score > localStorage.getItem("highscore")) {
                 localStorage.setItem("highscore", score);
             }
             removeControls();
-            playDeathSound();
             setTimeout(function(){
                 gameState = 'fade out';
                 mazeDimension = parseInt(localStorage.getItem("startDifficulty"));

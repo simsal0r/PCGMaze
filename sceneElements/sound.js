@@ -4,13 +4,13 @@ function playBackground() {
     backgroundSound.play();
 }
 function playEndSound() {
-    var EndSound = new Audio("assets/ghastlyboom.mp3");
+    var EndSound = new Audio(getAtmosphere(localStorage.getItem("atmosphere"), "end_sound"));
     EndSound.volume = 0.5;
     EndSound.play();
 }
 
 function playDeathSound() {
-    var DeathSound = new Audio("assets/gong.wav");
+    var DeathSound = new Audio(getAtmosphere(localStorage.getItem("atmosphere"), "death_sound"));
     DeathSound.volume = 0.20;
     DeathSound.play();
 }
@@ -25,9 +25,20 @@ function playSlam() {
     slamSound.play();
 }
 
+function playKick() {
+    var kickSound = new Audio("assets/kick_scare.mp3");
+    kickSound.play();
+}
+
+function playScare() {
+    var scareSound = new Audio("assets/jumpscare4.wav");
+    scareSound.volume=0.5;
+    scareSound.play();
+}
+
 function playSteps() {
-    var stepSound = new Audio("assets/steps.mp3");
-    stepSound.volume=0.3;
+    var stepSound = new Audio("assets/10-2 closeEnd.wav");
+    stepSound.volume=0.8;
     stepSound.play();
 }
 

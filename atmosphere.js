@@ -10,6 +10,8 @@ function getAtmosphere(atmosphere, item) {
             case "ground_texture": return THREE.ImageUtils.loadTexture('./assets/dark_ground2.jpg'); break;
             case "wall_texture": return THREE.ImageUtils.loadTexture('./assets/hedge.jpg'); break;
             case "background_music": return "assets/background.mp3"; break;
+            case "death_sound": return "assets/gong.wav"; break;
+            case "end_sound": return "assets/ghastlyboom.mp3"; break;
             case "light_intensity": return 0.5; break;
         }
     }
@@ -25,6 +27,8 @@ function getAtmosphere(atmosphere, item) {
             case "wall_texture": return THREE.ImageUtils.loadTexture('./assets/flower.jpg'); break;
             case "background_music": return "assets/happyBackground.mp3"; break;
             case "light_intensity": return 2; break;
+            case "death_sound": return "assets/jingle_fail.wav"; break;
+            case "end_sound": return "assets/shipsbell.wav"; break;
         }
     }
 }

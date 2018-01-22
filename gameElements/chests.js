@@ -155,13 +155,13 @@ function chest_jumpScare() {
         }
         else{
             if(d<0.75) {
-                playSlam();
+                playKick();
                 $('#jump_scare3').show();
                 setTimeout(function () {
                     $('#jump_scare3').hide();
                 }, 600);
             }else {
-                playSlam();
+                playScare();
                 $('#jump_scare4').show();
                 setTimeout(function () {
                     $('#jump_scare4').hide();
