@@ -120,6 +120,7 @@ function gameLoop() {
 function createPhysicsWorld() {
     physicsWorld = new b2World(new b2Vec2(0, 0), true);
     createPlayerBody(1,1);
+    createEnemyBody(1,1);
     createMazeBody();
 }
 
@@ -137,6 +138,10 @@ function createRenderWorld() {
     scene.add(playerMesh);
     generateHeadMesh();
     scene.add(headMesh);
+
+    generateEnemyMesh(1,1);
+    scene.add(EnemyMesh);
+
     scene.add(generateMazeMesh(maze));
     chestMesh = generateChestMesh(maze);
     scene.add(chestMesh);
@@ -149,11 +154,13 @@ function createRenderWorld() {
 
 function updatePhysicsWorld() {
     movePlayer();
+    moveEnemy();
     physicsWorld.Step(1/60, 8, 3);
 }
 
 function updateRenderWorld() {
     updatePlayerMesh();
+    updateEnemyMesh();
     updateCamera();
     updateLight();
 }
