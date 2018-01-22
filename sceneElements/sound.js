@@ -11,7 +11,7 @@ function playEndSound() {
 
 function playDeathSound() {
     var DeathSound = new Audio(getAtmosphere(localStorage.getItem("atmosphere"), "death_sound"));
-    DeathSound.volume = 0.20;
+    DeathSound.volume = 0.1;
     DeathSound.play();
 }
 
