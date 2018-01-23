@@ -69,14 +69,52 @@ function updateEnemyRotation(stepX, stepY) {
     }
 }
 
+function moveEnemyToCoordinate(goal_x,goal_y){
+    var x = Enemy.GetPosition().x;
+    var y = Enemy.GetPosition().y;
+    var xo;
+    var yo;
 
-function moveEnemy() {
+        if (goal_x - x < 0)
+        {
+            xo = -1;
+        }
+        if (goal_x - x > 0)
+        {
+            xo = 1;
+        }
+        if (goal_y - y < 0)
+        {
+            yo = -1;
+        }
+        if (goal_y - y > 0)
+        {
+            yo = 1;
+        }
+        if (goal_y - y == 0)
+        {
+            yo = 0;
+        }
+        if (goal_x - x == 0)
+        {
+            xo = 0;
+        }
+
+
+        moveEnemy(xo,yo);
+
+        x = Enemy.GetPosition().x;
+        y = Enemy.GetPosition().y;
+
+}
+
+function moveEnemy(xi,yi) {
     var lv = Enemy.GetLinearVelocity();
     lv.Multiply(0.95);
     Enemy.SetLinearVelocity(lv);
 
-    var x = Math.random();
-    var y = Math.random();
+    var x = xi;
+    var y = yi;
 
     // Apply user-directed force.
     var f = new b2Vec2(x*Enemy.GetMass()*0.25,y*Enemy.GetMass()*0.25);
