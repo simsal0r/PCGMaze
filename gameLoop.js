@@ -201,7 +201,7 @@ function updatePhysicsWorld() {
     movePlayer();
     if (notSpawned == false)
     {
-        if (ended()==false) {
+        if (stopit()==false) {
             var enemyPath = findNextStep();
             moveEnemyToCoordinate(enemyPath[0], enemyPath[1]);
         }
@@ -222,4 +222,9 @@ function ended(){
     var mazeX = Math.floor(headMesh.position.x + 0.5);
     var mazeY = Math.floor(headMesh.position.y + 0.5);
     return(mazeX == mazeDimension && mazeY == mazeDimension - 2  || mazeX == -1 && mazeY == mazeDimension - 2 || mazeX == mazeDimension && mazeY == 1);
+}
+function stopit(){
+    var mazeX = Math.floor(headMesh.position.x + 0.5);
+    var mazeY = Math.floor(headMesh.position.y + 0.5);
+    return(mazeX == mazeDimension -1 && mazeY == mazeDimension - 2  || mazeX == 0 && mazeY == mazeDimension - 2 || mazeX == mazeDimension-1 && mazeY == 1);
 }

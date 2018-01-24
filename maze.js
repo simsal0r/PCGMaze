@@ -246,8 +246,8 @@ function computeMazeCoefficient(maze, dimension, exit) {
         var crossRoadsShortestWay = 0;
         var badSquares = 0;
 
-        for (var i = 1; i < dimension-2; i++) {
-            for (var j = 1; j < dimension-2; j++) {
+        for (var i = 1; i < dimension-1; i++) {
+            for (var j = 1; j < dimension-1; j++) {
 
                 // increment quantity of deadends and length of all deadends
                 if (maze[i][j] == -2) {
