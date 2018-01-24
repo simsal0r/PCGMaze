@@ -130,6 +130,25 @@ function gameLoop() {
             if(!deathSoundPlayed) {
                 playDeathSound();
                 deathSoundPlayed = true;
+                setTimeout(function(){
+                    gameState = 'fade out';
+                    confirmationNeeded = IN_SURVEY_MODE;
+                    if (IN_SURVEY_MODE) {
+                        switch(mazeDimension){
+                            case 13: mazeDimension = 15; break;
+                            case 15: mazeDimension = 17; break;
+                            case 17: mazeDimension = 21; break;
+                            case 21: mazeDimension = 27; break;
+                            case 27: mazeDimension = localStorage.setItem("atmosphere", "happy");
+                                localStorage.setItem("startDifficulty", 13);
+                                window.location = "game.html"; break;
+                            default: mazeDimension += 2; break;
+                        }
+                    }
+                    else {
+                        mazeDimension = parseInt(localStorage.getItem("startDifficulty"));
+                    }
+                }, 1000);
             }
             if (breathe != null) {
                 breathe.pause();
@@ -140,25 +159,6 @@ function gameLoop() {
                 localStorage.setItem("highscore", score);
             }
             removeControls();
-            setTimeout(function(){
-                gameState = 'fade out';
-                confirmationNeeded = IN_SURVEY_MODE;
-                if (IN_SURVEY_MODE) {
-                    switch(mazeDimension){
-                        case 13: mazeDimension = 15; break;
-                        case 15: mazeDimension = 17; break;
-                        case 17: mazeDimension = 21; break;
-                        case 21: mazeDimension = 27; break;
-                        case 27: mazeDimension = localStorage.setItem("atmosphere", "happy");
-                            localStorage.setItem("startDifficulty", 13);
-                            window.location = "game.html"; break;
-                        default: mazeDimension += 2; break;
-                    }
-                }
-                else {
-                    mazeDimension = parseInt(localStorage.getItem("startDifficulty"));
-                }
-            }, 1000);
         }
         else {
             if (!escaped) {
@@ -179,6 +179,37 @@ function gameLoop() {
                         notcaught = false;
                         playSlam();
                         playGong();
+                        setTimeout(function () {
+                            gameState = 'fade out';
+                            confirmationNeeded = IN_SURVEY_MODE;
+                            if (IN_SURVEY_MODE) {
+                                switch (mazeDimension) {
+                                    case 13:
+                                        mazeDimension = 15;
+                                        break;
+                                    case 15:
+                                        mazeDimension = 17;
+                                        break;
+                                    case 17:
+                                        mazeDimension = 21;
+                                        break;
+                                    case 21:
+                                        mazeDimension = 27;
+                                        break;
+                                    case 27:
+                                        mazeDimension = localStorage.setItem("atmosphere", "happy");
+                                        localStorage.setItem("startDifficulty", 13);
+                                        window.location = "game.html";
+                                        break;
+                                    default:
+                                        mazeDimension += 2;
+                                        break;
+                                }
+                            }
+                            else {
+                                mazeDimension = parseInt(localStorage.getItem("startDifficulty"));
+                            }
+                        }, 500);
                     }
 
                     var score = Math.floor((mazeDimension - 1) / 2 - 4);
@@ -186,26 +217,6 @@ function gameLoop() {
                         localStorage.setItem("highscore", score);
                     }
                     removeControls();
-                    setTimeout(function () {
-                        gameState = 'fade out';
-                        confirmationNeeded = IN_SURVEY_MODE;
-                        if (IN_SURVEY_MODE) {
-                            switch(mazeDimension){
-                                case 13: mazeDimension = 15; break;
-                                case 15: mazeDimension = 17; break;
-                                case 17: mazeDimension = 21; break;
-                                case 21: mazeDimension = 27; break;
-                                case 27: mazeDimension = localStorage.setItem("atmosphere", "happy");
-                                    localStorage.setItem("startDifficulty", 13);
-                                    window.location = "game.html";; break;
-                                default: mazeDimension += 2; break;
-                            }
-                        }
-                        else {
-                            mazeDimension = parseInt(localStorage.getItem("startDifficulty"));
-                        }
-                    }, 500);
-
                 }
             }
         }
