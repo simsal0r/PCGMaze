@@ -1,6 +1,7 @@
 var gameState = undefined;
 var escaped = false;
 var notcaught = true;
+var deathSoundPlayed = false;
 var confirmationNeeded = false;
 var breathe = null;
 
@@ -9,11 +10,28 @@ var IN_SURVEY_MODE = true;
 function gameLoop() {
     function initializeGame() {
         function setLevel() {
-            var level = Math.floor((mazeDimension-1)/2 - 4);
-            $('#level').html('Difficulty ' + level);
+            var level = 0;
+            if(IN_SURVEY_MODE){
+                switch(mazeDimension) {
+                    case 13: level = 1; break;
+                    case 15: level = 2; break;
+                    case 17: level = 3; break;
+                    case 21: level = 4; break;
+                    case 27: level = 5; break;
+                    default: level = Math.floor((mazeDimension-1)/2 - 4); break;
+                }
+            }
+            else {
+                level = Math.floor((mazeDimension-1)/2 - 4);
+            }
+            $('#level').html('Level ' + level);
         }
-        maze = generateSquareMaze(mazeDimension);
-        //maze[mazeDimension-1][mazeDimension-2] = false;
+        if(IN_SURVEY_MODE) {
+            maze = getHardcodedMaze(mazeDimension);//generateSquareMaze(mazeDimension);
+        }
+        else {
+            maze = generateSquareMaze(mazeDimension);
+        }
         timer_duration = mazeDimension * 4;
         chests = createChests(maze);
         notSpawned = true;
@@ -25,8 +43,8 @@ function gameLoop() {
         setLevel();
         escaped = false;
         notcaught = true;
+        deathSoundPlayed = false;
         gameState = 'fade in';
-
     }
     function fadeGameIn() {
         increaseLighting();
@@ -39,8 +57,6 @@ function gameLoop() {
     }
     function playGame() {
         function isVictory() {
-            var mazeX = Math.floor(headMesh.position.x + 0.5);
-            var mazeY = Math.floor(headMesh.position.y + 0.5);
             return ended();
 
         }
@@ -48,13 +64,12 @@ function gameLoop() {
             return timer_duration < 0;
         }
         function checkForChests() {
-            function isInMaze() {
-                return (mazeX <= mazeDimension && mazeY <= mazeDimension) && (mazeX >= 1 && mazeY >= 1)
-            }
             var mazeX = Math.floor(headMesh.position.x + 0.5);
             var mazeY = Math.floor(headMesh.position.y + 0.5);
-            if(isInMaze() && chests[mazeX][mazeY] != null) {
-                handleChest(mazeX, mazeY);
+            if(!ended()) {
+                if(chests[mazeX][mazeY] != null){
+                    handleChest(mazeX, mazeY);
+                }
             }
         }
         function backgroundNoise()
@@ -82,7 +97,19 @@ function gameLoop() {
                 removeControls();
                 clearPietimer();
                 setTimeout(function(){
-                    mazeDimension += 2;
+                    if(IN_SURVEY_MODE) {
+                        switch(mazeDimension){
+                            case 13: mazeDimension = 15; break;
+                            case 15: mazeDimension = 17; break;
+                            case 17: mazeDimension = 21; break;
+                            case 21: mazeDimension = 27; break;
+                            case 27: mazeDimension = 29; break;
+                            default: mazeDimension += 2; break;
+                        }
+                    }
+                    else {
+                        mazeDimension += 2;
+                    }
                     gameState = 'fade out';
                 }, 1200);
                 var score = Math.floor((mazeDimension-1)/2 - 4);
@@ -95,7 +122,10 @@ function gameLoop() {
         }
         else if(isTimeout()) {
             writeToTextField("You are out of time!", "red", 2);
-            playDeathSound();
+            if(!deathSoundPlayed) {
+                playDeathSound();
+                deathSoundPlayed = true;
+            }
             var score = Math.floor((mazeDimension-1)/2 - 4);
             if(score > localStorage.getItem("highscore")) {
                 localStorage.setItem("highscore", score);

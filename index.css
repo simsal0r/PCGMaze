@@ -87,6 +87,7 @@ a:hover, a:active {
 
 #horror-option {
     overflow:hidden;
+    text-decoration: underline;
 }
 
 #highscore {
