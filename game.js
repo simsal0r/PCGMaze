@@ -60,6 +60,7 @@ $(document).ready(function() {
     // Prepare the instructions.
     $('#instructions').center();
     $('#instructions').hide();
+    $('#confirmationPopup').hide();
     $('#jump_scare').hide();
     $('#jump_scare2').hide();
     $('#jump_scare3').hide();
@@ -81,5 +82,10 @@ $(document).ready(function() {
     // Start the game loop.
     requestAnimationFrame(gameLoop);
 })
+
+function confirmLevel() {
+    confirmationNeeded = false;
+    $('#confirmationPopup').hide();
+}
 
 

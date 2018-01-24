@@ -40,6 +40,7 @@ function playSteps() {
     var stepSound = new Audio("assets/10-2 closeEnd.wav");
     stepSound.volume=0.8;
     stepSound.play();
+    return stepSound;
 }
 
 function playBackgroundSound(){

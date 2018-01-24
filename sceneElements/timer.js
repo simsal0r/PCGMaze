@@ -3,6 +3,7 @@ var max_time;
 var timer = undefined;
 var stepsPlayed = false;
 var notSpawned = true;
+var steps = null;
 
 function startTimer() {
     max_time = timer_duration;
@@ -13,7 +14,7 @@ function startTimer() {
         timer_duration--;
         if(!stepsPlayed && timer_duration < 10){
             if(localStorage.getItem("atmosphere") == "horror"){
-                playSteps();
+                steps = playSteps();
             }
             stepsPlayed = true;
         }
