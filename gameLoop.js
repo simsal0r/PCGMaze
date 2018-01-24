@@ -57,6 +57,7 @@ function gameLoop() {
             }
         }
         if (timeToSpawnEnemy()){
+            writeToTextField("He is coming for you...", "red");
             createEnemyBody(1,1);
             generateEnemyMesh(1,1);
             scene.add(EnemyMesh);
@@ -93,7 +94,14 @@ function gameLoop() {
                 mazeDimension = parseInt(localStorage.getItem("startDifficulty"));
             }, 1000);
         }
-        else if (notSpawned == false)
+        else {
+            checkForChests();
+            if (localStorage.getItem("atmosphere") == "horror") {
+                backgroundNoise();
+            }
+        }
+
+        if (notSpawned == false)
         {
             if (caughtByEnemy())
             {
@@ -116,10 +124,8 @@ function gameLoop() {
 
             }
         }
-            checkForChests();
-            if(localStorage.getItem("atmosphere") == "horror"){
-                backgroundNoise();
-        }
+
+
 
 
     }
