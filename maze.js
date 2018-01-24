@@ -372,7 +372,7 @@ function getHardcodedMaze(dimension) {
     mazelv4[18] = [true, false, true, true, true, false, true, false, true, true, true, false, true, false, true, false, true, false, true, false, true];
     mazelv4[19] = [true, false, false, false, false, false, false, false, true, false, false, false, false, false, true, false, false, false, true, false, true];
     mazelv4[20] = [true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true];
-    mazelv4.dimension = 19;
+    mazelv4.dimension = 21;
 
     var mazelv5 = [];
     mazelv5[0] = [true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true];
@@ -402,7 +402,7 @@ function getHardcodedMaze(dimension) {
     mazelv5[24] = [true, false, true, true, true, false, true, false, true, false, true, true, true, true, true, true, true, false, true, false, true, true, true, true, true, false, true];
     mazelv5[25] = [true, false, false, false, false, false, true, false, false, false, false, false, false, false, false, false, false, false, true, false, false, false, false, false, false, false, true];
     mazelv5[26] = [true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, false, true];
-    mazelv5.dimension = 21;
+    mazelv5.dimension = 27;
 
     if(dimension == 13) {
         console.log(generateSquareMaze(dimension));
@@ -412,9 +412,8 @@ function getHardcodedMaze(dimension) {
         case 13: return mazelv1; break;
         case 15: return mazelv2; break;
         case 17: return mazelv3; break;
-        case 19: return mazelv4; break;
-        case 21: return mazelv5; break;
+        case 21: return mazelv4; break;
+        case 27: return mazelv5; break;
         default: return generateSquareMaze(dimension); break;
-
     }
 }

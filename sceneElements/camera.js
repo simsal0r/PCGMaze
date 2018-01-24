@@ -1,6 +1,6 @@
 var camera = undefined;
-var ZOOM_LEVEL_INITIAL = 3;
-var ZOOM_LEVEL = 3;
+var ZOOM_LEVEL_INITIAL = 25;
+var ZOOM_LEVEL = 25;
 
 function createCamera() {
     var aspect = window.innerWidth/window.innerHeight;
