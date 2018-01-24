@@ -1,6 +1,7 @@
 var gameState = undefined;
 var escaped = false;
 var notcaught = true;
+var deathSoundPlayed = false;
 var confirmationNeeded = false;
 
 var IN_SURVEY_MODE = true;
@@ -23,8 +24,8 @@ function gameLoop() {
         setLevel();
         escaped = false;
         notcaught = true;
+        deathSoundPlayed = false;
         gameState = 'fade in';
-
     }
     function fadeGameIn() {
         increaseLighting();
@@ -92,7 +93,10 @@ function gameLoop() {
         }
         else if(isTimeout()) {
             writeToTextField("You are out of time!", "red", 2);
-            playDeathSound();
+            if(!deathSoundPlayed) {
+                playDeathSound();
+                deathSoundPlayed = true;
+            }
             var score = Math.floor((mazeDimension-1)/2 - 4);
             if(score > localStorage.getItem("highscore")) {
                 localStorage.setItem("highscore", score);
