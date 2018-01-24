@@ -52,7 +52,7 @@ function timeToSpawnEnemy()
 {
     if (notSpawned)
     {
-        if (timer_duration < max_time/2) // max_time - timer_duration > 7  appears after 1/4 of time
+        if (timer_duration < max_time/4) // max_time - timer_duration > 7  appears after 1/4 of time
         {
             console.log(max_time + " " + timer_duration)
             //debugger;
