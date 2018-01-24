@@ -173,22 +173,22 @@ function gameLoop() {
                         playGong();
                     }
 
-                var score = Math.floor((mazeDimension - 1) / 2 - 4);
-                if (score > localStorage.getItem("highscore")) {
-                    localStorage.setItem("highscore", score);
-                }
-                removeControls();
-                setTimeout(function () {
-                    gameState = 'fade out';
-                    if(IN_SURVEY_MODE) {
-                        localStorage.setItem("atmosphere", "happy");
-                        localStorage.setItem("startDifficulty", 13);
-                        window.location = "game.html";
+                    var score = Math.floor((mazeDimension - 1) / 2 - 4);
+                    if (score > localStorage.getItem("highscore")) {
+                        localStorage.setItem("highscore", score);
                     }
-                    else {
-                        mazeDimension = parseInt(localStorage.getItem("startDifficulty"));
-                    }
-                }, 500);
+                    removeControls();
+                    setTimeout(function () {
+                        gameState = 'fade out';
+                        if (IN_SURVEY_MODE) {
+                            localStorage.setItem("atmosphere", "happy");
+                            localStorage.setItem("startDifficulty", 13);
+                            window.location = "game.html";
+                        }
+                        else {
+                            mazeDimension = parseInt(localStorage.getItem("startDifficulty"));
+                        }
+                    }, 500);
 
                 }
             }
