@@ -32,7 +32,7 @@ function gameLoop() {
         else {
             maze = generateSquareMaze(mazeDimension);
         }
-        timer_duration = Math.floor(0.63 * Math.pow(mazeDimension, 1.63));
+        timer_duration = Math.floor(0.67 * Math.pow(mazeDimension, 1.55));
         chests = createChests(maze);
         notSpawned = true;
         createPhysicsWorld();
@@ -108,8 +108,18 @@ function gameLoop() {
                             case 15: mazeDimension = 17; break;
                             case 17: mazeDimension = 21; break;
                             case 21: mazeDimension = 27; break;
-                            case 27: mazeDimension = 29; break;
-                            default: mazeDimension += 2; break;
+                            case 27: mazeDimension = 29;
+                            if (localStorage.getItem("atmosphere") == "happy")
+                            {
+                                writeToTextField("Thanks for Playing!", "red",10);
+                            }
+                            break;
+                            default: mazeDimension += 2;
+                                if (localStorage.getItem("atmosphere") == "happy")
+                                {
+                                    writeToTextField("Thanks for Playing!", "red",10);
+                                }
+                            break;
                         }
                     }
                     else {
@@ -142,7 +152,12 @@ function gameLoop() {
                             case 27: mazeDimension = localStorage.setItem("atmosphere", "happy");
                                 localStorage.setItem("startDifficulty", 13);
                                 window.location = "game.html"; break;
-                            default: mazeDimension += 2; break;
+                            default: mazeDimension += 2;
+                                if (localStorage.getItem("atmosphere") == "happy")
+                                {
+                                    writeToTextField("Thanks for Playing!", "red",10);
+                                }
+                                break;
                         }
                     }
                     else {
@@ -203,6 +218,10 @@ function gameLoop() {
                                         break;
                                     default:
                                         mazeDimension += 2;
+                                        if (localStorage.getItem("atmosphere") == "happy")
+                                        {
+                                            writeToTextField("Thanks for Playing!", "red",10);
+                                        }
                                         break;
                                 }
                             }
