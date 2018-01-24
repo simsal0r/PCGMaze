@@ -8,28 +8,31 @@ var rightHandMeshEnemy = undefined;
 
 function findNextStep()
 {
-
-    var xp = getPositionX();
-    var yp = getPositionY();
-    var xe = getEnemyPositionX();
-    var ye = getEnemyPositionY();
-    //debugger;
-    if (Math.abs(xp - xe)<1 && Math.abs(yp - ye)<1 || getPositionX() > maze.dimension-2 && getPositionY() >= maze.dimension-2.5)
-    {
-        return[xe,ye];
+    try {
+        var xp = getPositionX();
+        var yp = getPositionY();
+        var xe = getEnemyPositionX();
+        var ye = getEnemyPositionY();
+        //debugger;
+        if (Math.abs(xp - xe) < 1 && Math.abs(yp - ye) < 1 || getPositionX() > maze.dimension - 2 && getPositionY() >= maze.dimension - 2.5) {
+            return [xe, ye];
+        }
+        var result = useAStar(maze, xe, ye, xp, yp);
+        if (result.length == 0) {
+            return [xe, ye];
+        }
+        var goal_x = result[0].x;
+        var goal_y = result[0].y;
+        //console.log("Player pos: " +  xp + " " + yp);
+        //console.log("Enemy pos: " +  xe + " " + ye);
+        //console.log("Goal: " +  goal_x + " " + goal_y);
+        //debugger;
+        return [goal_x, goal_y];
     }
-    var result = useAStar(maze,xe,ye,xp,yp);
-    if (result.length == 0)
+    catch (e)
     {
-        return[xe,ye];
+        return [xe, ye];
     }
-    var goal_x = result[0].x;
-    var goal_y = result[0].y;
-    //console.log("Player pos: " +  xp + " " + yp);
-    //console.log("Enemy pos: " +  xe + " " + ye);
-    //console.log("Goal: " +  goal_x + " " + goal_y);
-    //debugger;
-    return[goal_x,goal_y];
 }
 
 function caughtByEnemy(){

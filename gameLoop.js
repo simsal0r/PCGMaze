@@ -40,7 +40,8 @@ function gameLoop() {
         function isVictory() {
             var mazeX = Math.floor(headMesh.position.x + 0.5);
             var mazeY = Math.floor(headMesh.position.y + 0.5);
-            return mazeX == mazeDimension && mazeY == mazeDimension - 2
+            return ended();
+
         }
         function isTimeout() {
             return timer_duration < 0;
@@ -201,8 +202,10 @@ function updatePhysicsWorld() {
     movePlayer();
     if (notSpawned == false)
     {
-        var enemyPath = findNextStep();
-        moveEnemyToCoordinate(enemyPath[0], enemyPath[1]);
+        if (ended()==false) {
+            var enemyPath = findNextStep();
+            moveEnemyToCoordinate(enemyPath[0], enemyPath[1]);
+        }
     }
     physicsWorld.Step(1/60, 8, 3);
 }
@@ -214,4 +217,10 @@ function updateRenderWorld() {
     }
     updateCamera();
     updateLight();
+}
+
+function ended(){
+    var mazeX = Math.floor(headMesh.position.x + 0.5);
+    var mazeY = Math.floor(headMesh.position.y + 0.5);
+    return(mazeX == mazeDimension && mazeY == mazeDimension - 2  || mazeX == -1 && mazeY == mazeDimension - 2 || mazeX == mazeDimension && mazeY == 1);
 }
