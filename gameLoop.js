@@ -97,9 +97,11 @@ function gameLoop() {
             }, 1000);
         }
         else {
-            checkForChests();
-            if (localStorage.getItem("atmosphere") == "horror") {
-                backgroundNoise();
+            if (!escaped) {
+                checkForChests();
+                if (localStorage.getItem("atmosphere") == "horror") {
+                    backgroundNoise();
+                }
             }
         }
 
@@ -126,10 +128,6 @@ function gameLoop() {
 
             }
         }
-
-
-
-
     }
     function fadeGameOut() {
         if(timer) {
@@ -182,8 +180,6 @@ function createRenderWorld() {
     scene.add(groundMesh);
     playBackground();
 }
-
-
 
 function updatePhysicsWorld() {
     movePlayer();
