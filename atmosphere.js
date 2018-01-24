@@ -26,7 +26,7 @@ function getAtmosphere(atmosphere, item) {
             case "head_texture": return THREE.ImageUtils.loadTexture('./assets/hairHappy.jpg'); break;
             case "player_texture": return THREE.ImageUtils.loadTexture('./assets/cloakHappy.png'); break;
             case "ground_texture": return THREE.ImageUtils.loadTexture('./assets/ground1.jpg'); break;
-            case "wall_texture": return THREE.ImageUtils.loadTexture('./assets/flowers3.jpg'); break;
+            case "wall_texture": return THREE.ImageUtils.loadTexture('./assets/flowerHedge.jpg'); break;
             case "background_music": return "assets/happyBackground.mp3"; break;
             case "light_intensity": return 1; break;
             case "death_sound": return "assets/jingle_fail.wav"; break;
