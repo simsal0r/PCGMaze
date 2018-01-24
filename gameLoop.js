@@ -9,7 +9,7 @@ function gameLoop() {
             $('#level').html('Difficulty ' + level);
         }
         maze = generateSquareMaze(mazeDimension);
-        maze[mazeDimension-1][mazeDimension-2] = false;
+        //maze[mazeDimension-1][mazeDimension-2] = false;
         timer_duration = mazeDimension * 4;
         chests = createChests(maze);
         notSpawned = true;

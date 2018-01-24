@@ -95,7 +95,7 @@ function generateSquareMaze(dimension) {
             }
         });
 
-        return grid
+        return grid;
     }
 
     function get_next_position(grid, cx, cy){
@@ -232,13 +232,10 @@ function generateSquareMaze(dimension) {
             exit = exit3;
             field[0][dimension-2] = false;
         }
-    field[dimension-1][dimension-2] = false;
+    //field[dimension-1][dimension-2] = false;
     return field;
 
 }
-
-
-
 
 function computeMazeCoefficient(maze, dimension, exit) {
     if (maze != undefined && maze != null && dimension != undefined && dimension != null && exit != undefined && exit != null) {
