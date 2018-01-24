@@ -59,6 +59,11 @@ function setLightingMaxIntensity() {
 }
 
 function createTorch() {
-    torch = new THREE.PointLight( 0xe25822, TORCH_INTENSITY, 3);
+    if(localStorage.getItem("atmosphere") == "happy"){
+        torch = new THREE.PointLight( 0xffffff, TORCH_INTENSITY/10, 30);
+    }
+    else {
+        torch = new THREE.PointLight( 0xe25822, TORCH_INTENSITY, 3);
+    }
     torch.position.set(1,1,1);
 }
