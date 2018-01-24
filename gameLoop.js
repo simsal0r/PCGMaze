@@ -1,6 +1,9 @@
 var gameState = undefined;
 var escaped = false;
 var notcaught = true;
+var confirmationNeeded = false;
+
+var IN_SURVEY_MODE = true;
 
 function gameLoop() {
     function initializeGame() {
@@ -83,7 +86,8 @@ function gameLoop() {
                 if(score > localStorage.getItem("highscore")) {
                     localStorage.setItem("highscore", score);
                 }
-                escaped=true;
+                escaped = true;
+                confirmationNeeded = IN_SURVEY_MODE;
             }
         }
         else if(isTimeout()) {
@@ -147,7 +151,12 @@ function gameLoop() {
         if (lightingIsOff()) {
             setLightingIntensity(0.0);
             renderer.render(scene, camera);
-            gameState = 'initialize'
+            if(!confirmationNeeded) {
+                gameState = 'initialize'
+            }
+            else{
+                $('#confirmationPopup').show();
+            }
         }
     }
 
