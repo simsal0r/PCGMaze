@@ -8,6 +8,14 @@ var playerMesh = undefined;
 var leftHandMesh = undefined;
 var rightHandMesh = undefined;
 
+function getPositionX(){
+    return player.GetPosition().x;
+}
+
+function getPositionY(){
+    return player.GetPosition().y;
+}
+
 function createPlayerBody(positionX, positionY) {
     createPlayerBodyDef(positionX, positionY);
     createPlayerBodyFixture();

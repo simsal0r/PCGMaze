@@ -1,8 +1,11 @@
 var timer_duration = 60;
+var max_time;
 var timer = undefined;
 var stepsPlayed = false;
+var notSpawned = true;
 
 function startTimer() {
+    max_time = timer_duration;
     $('#timerText').text(timeToString(timer_duration));
     timer_duration--;
     timer = setInterval(function() {
@@ -42,4 +45,19 @@ function startPietimer(seconds, callbackFunction, type) {
 function clearPietimer() {
     $("#pietimer").empty();
     $("#pietimer2").empty();
+}
+
+function timeToSpawnEnemy()
+{
+    if (notSpawned)
+    {
+        if (timer_duration < max_time/4) // max_time - timer_duration > 7  appears after 1/4 of time
+        {
+            console.log(max_time + " " + timer_duration)
+            //debugger;
+            notSpawned = false;
+            return true;
+        }
+    }
+    return false;
 }
