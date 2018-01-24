@@ -89,7 +89,7 @@ function updatePlayerRotation(stepX, stepY) {
 }
 
 var stepSound = new Audio("assets/walk.mp3");
-stepSound.volume = 0.02;
+stepSound.volume = 0.05;
 function movePlayer() {
     var lv = player.GetLinearVelocity();
     lv.Multiply(0.95);

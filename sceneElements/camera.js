@@ -1,5 +1,5 @@
 var camera = undefined;
-var ZOOM_LEVEL_INITIAL = 3;
+var ZOOM_LEVEL_INITIAL =3;
 var ZOOM_LEVEL = 3;
 
 function createCamera() {
