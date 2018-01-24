@@ -6,6 +6,53 @@ var EnemyMesh = undefined;
 var leftHandMeshEnemy = undefined;
 var rightHandMeshEnemy = undefined;
 
+function findNextStep()
+{
+
+    var xp = getPositionX();
+    var yp = getPositionY();
+    var xe = getEnemyPositionX();
+    var ye = getEnemyPositionY();
+    //debugger;
+    if (Math.abs(xp - xe)<1 && Math.abs(yp - ye)<1 || getPositionX() > maze.dimension-2 && getPositionY() >= maze.dimension-2.5)
+    {
+        return[xe,ye];
+    }
+    var result = useAStar(maze,xe,ye,xp,yp);
+    if (result.length == 0)
+    {
+        return[xe,ye];
+    }
+    var goal_x = result[0].x;
+    var goal_y = result[0].y;
+    //console.log("Player pos: " +  xp + " " + yp);
+    //console.log("Enemy pos: " +  xe + " " + ye);
+    //console.log("Goal: " +  goal_x + " " + goal_y);
+    //debugger;
+    return[goal_x,goal_y];
+}
+
+function caughtByEnemy(){
+    var xp = getPositionX();
+    var yp = getPositionY();
+    var xe = getEnemyPositionX();
+    var ye = getEnemyPositionY();
+    //debugger;
+    if (Math.abs(xp - xe)<1 && Math.abs(yp - ye)<1)
+    {
+        return true;
+    }
+    return false;
+}
+
+function getEnemyPositionX(){
+    return Enemy.GetPosition().x;
+}
+
+function getEnemyPositionY(){
+    return Enemy.GetPosition().y;
+}
+
 function createEnemyBody(positionX, positionY) {
     createEnemyBodyDef(positionX, positionY);
     createEnemyBodyFixture();
@@ -103,8 +150,6 @@ function moveEnemyToCoordinate(goal_x,goal_y){
 
         moveEnemy(xo,yo);
 
-        x = Enemy.GetPosition().x;
-        y = Enemy.GetPosition().y;
 
 }
 

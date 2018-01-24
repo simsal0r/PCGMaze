@@ -1,5 +1,6 @@
 var gameState = undefined;
 var escaped = false;
+var notcaught = true;
 
 function gameLoop() {
     function initializeGame() {
@@ -11,6 +12,7 @@ function gameLoop() {
         maze[mazeDimension-1][mazeDimension-2] = false;
         timer_duration = mazeDimension * 4;
         chests = createChests(maze);
+        notSpawned = true;
         createPhysicsWorld();
         createRenderWorld();
         assignControls();
@@ -18,6 +20,7 @@ function gameLoop() {
         initializeLighting();
         setLevel();
         escaped = false;
+        notcaught = true;
         gameState = 'fade in';
 
     }
@@ -53,6 +56,12 @@ function gameLoop() {
                 playBackgroundSound();
             }
         }
+        if (timeToSpawnEnemy()){
+            createEnemyBody(1,1);
+            generateEnemyMesh(1,1);
+            scene.add(EnemyMesh);
+
+        }
         updatePhysicsWorld();
         updateRenderWorld();
         renderer.render(scene, camera);
@@ -73,7 +82,7 @@ function gameLoop() {
             }
         }
         else if(isTimeout()) {
-            writeToTextField("Time's up! You got caught!", "red", 2);
+            writeToTextField("You are out of time!", "red", 2);
             var score = Math.floor((mazeDimension-1)/2 - 4);
             if(score > localStorage.getItem("highscore")) {
                 localStorage.setItem("highscore", score);
@@ -84,11 +93,32 @@ function gameLoop() {
                 mazeDimension = parseInt(localStorage.getItem("startDifficulty"));
             }, 1000);
         }
-        else {
+        else if (notSpawned == false)
+        {
+            if (caughtByEnemy())
+            {
+                writeToTextField("YOU DIED", "red", 2);
+                if (notcaught)
+                {
+                    notcaught = false;
+                   playSlam();
+                }
+
+                var score = Math.floor((mazeDimension - 1) / 2 - 4);
+                if (score > localStorage.getItem("highscore")) {
+                    localStorage.setItem("highscore", score);
+                }
+                removeControls();
+                setTimeout(function () {
+                    gameState = 'fade out';
+                    mazeDimension = parseInt(localStorage.getItem("startDifficulty"));
+                }, 500);
+
+            }
+        }
             checkForChests();
             if(localStorage.getItem("atmosphere") == "horror"){
                 backgroundNoise();
-            }
         }
 
 
@@ -120,7 +150,6 @@ function gameLoop() {
 function createPhysicsWorld() {
     physicsWorld = new b2World(new b2Vec2(0, 0), true);
     createPlayerBody(1,1);
-    createEnemyBody(8,9);
     createMazeBody();
 }
 
@@ -139,9 +168,6 @@ function createRenderWorld() {
     generateHeadMesh();
     scene.add(headMesh);
 
-    generateEnemyMesh(8,9);
-    scene.add(EnemyMesh);
-
     scene.add(generateMazeMesh(maze));
     chestMesh = generateChestMesh(maze);
     scene.add(chestMesh);
@@ -154,14 +180,20 @@ function createRenderWorld() {
 
 function updatePhysicsWorld() {
     movePlayer();
-    //moveEnemy();
-    moveEnemyToCoordinate(5,8);
+    if (notSpawned == false)
+    {
+        var enemyPath = findNextStep();
+        moveEnemyToCoordinate(enemyPath[0], enemyPath[1]);
+    }
     physicsWorld.Step(1/60, 8, 3);
 }
 
 function updateRenderWorld() {
     updatePlayerMesh();
-    updateEnemyMesh();
+    if (notSpawned == false) {
+        updateEnemyMesh();
+    }
     updateCamera();
     updateLight();
 }
+
