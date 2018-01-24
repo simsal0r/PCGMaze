@@ -43,9 +43,12 @@ function gameLoop() {
             return timer_duration < 0;
         }
         function checkForChests() {
+            function isInMaze() {
+                return (mazeX <= mazeDimension && mazeY <= mazeDimension) && (mazeX >= 1 && mazeY >= 1)
+            }
             var mazeX = Math.floor(headMesh.position.x + 0.5);
             var mazeY = Math.floor(headMesh.position.y + 0.5);
-            if(mazeX <= mazeDimension && mazeY <= mazeDimension && chests[mazeX][mazeY] != null) {
+            if(isInMaze() && chests[mazeX][mazeY] != null) {
                 handleChest(mazeX, mazeY);
             }
         }
@@ -130,6 +133,10 @@ function gameLoop() {
         }
     }
     function fadeGameOut() {
+        if(steps != null) {
+            steps.pause();
+            steps = null;
+        }
         if(timer) {
             clearInterval(timer);
         }
