@@ -125,6 +125,10 @@ input[type=submit] {
     cursor:pointer;
 }
 
+#happy-option {
+    text-decoration: underline;
+}
+
 input[type=submit]:hover {
     background: #f3ae1f;
 }
