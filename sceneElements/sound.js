@@ -42,6 +42,16 @@ function playSteps() {
     stepSound.play();
     return stepSound;
 }
+function playGong(){
+    var stepG = new Audio("assets/gong.wav");
+    stepG.play();
+}
+function playBreathe(){
+    var Breathe = new Audio("assets/breathe.mp3");
+    Breathe.volume=0.12;
+    Breathe.play();
+    return Breathe;
+}
 
 function playBackgroundSound(){
     var d = Math.random();
@@ -55,7 +65,7 @@ function playBackgroundSound(){
     }
     else if (d < 0.6){
         var soundBG = new Audio("assets/bg2.mp3");
-        soundBG.volume = 0.3;
+        soundBG.volume = 0.15;
     }
     else if (d < 0.8){
         var soundBG = new Audio("assets/bg3.mp3");

@@ -3,6 +3,7 @@ var escaped = false;
 var notcaught = true;
 var deathSoundPlayed = false;
 var confirmationNeeded = false;
+var breathe = null;
 
 var IN_SURVEY_MODE = true;
 
@@ -83,6 +84,7 @@ function gameLoop() {
             createEnemyBody(1,1);
             generateEnemyMesh(1,1);
             scene.add(EnemyMesh);
+            breathe = playBreathe();
 
         }
         updatePhysicsWorld();
@@ -142,16 +144,18 @@ function gameLoop() {
                 }
             }
         }
-
+        //Slenderman
         if (notSpawned == false)
         {
             if (caughtByEnemy())
             {
                 writeToTextField("YOU DIED", "red", 2);
                 if (notcaught)
-                {
+                {   breathe.pause();
+                    breathe = null;
                     notcaught = false;
                    playSlam();
+                   playGong();
                 }
 
                 var score = Math.floor((mazeDimension - 1) / 2 - 4);
@@ -253,9 +257,12 @@ function ended(){
     var mazeX = Math.floor(headMesh.position.x + 0.5);
     var mazeY = Math.floor(headMesh.position.y + 0.5);
     return(mazeX == mazeDimension && mazeY == mazeDimension - 2  || mazeX == -1 && mazeY == mazeDimension - 2 || mazeX == mazeDimension && mazeY == 1);
+    //              top right                                              top left                                     bottom right
+
 }
 function stopit(){
     var mazeX = Math.floor(headMesh.position.x + 0.5);
     var mazeY = Math.floor(headMesh.position.y + 0.5);
-    return(mazeX == mazeDimension -1 && mazeY == mazeDimension - 2  || mazeX == 0 && mazeY == mazeDimension - 2 || mazeX == mazeDimension-1 && mazeY == 1);
+    return(mazeX == mazeDimension -1 && mazeY == mazeDimension - 2  || mazeX == 1 && mazeY == mazeDimension - 2 || mazeX == mazeDimension-1 && mazeY == 1);
+    //              top right                                              top left                                     bottom right
 }

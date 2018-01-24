@@ -3,7 +3,7 @@ function getAtmosphere(atmosphere, item) {
         switch(item) {
             case "font-family": return "scaryFont"; break;
             case "chest_items": return ["zoom_out", "jump_scare", "move_to_start", "rotate_maze", "light_darker", "increase_time", "decrease_time", "random_teleportation"]; break;
-            case "chest_probabilities": return [0.3, 0.04, 0.05, 0.14, 0.05, 0.16, 0.16, 0.1]; break;
+            case "chest_probabilities": return [0.3, 0.07, 0.04, 0.13, 0.05, 0.15, 0.16, 0.1]; break;
             case "chest_texture": return THREE.ImageUtils.loadTexture('./assets/chest.jpg'); break;
             case "head_texture": return THREE.ImageUtils.loadTexture('./assets/hair.jpg'); break;
             case "player_texture": return THREE.ImageUtils.loadTexture('./assets/cloak.jpg'); break;
@@ -13,6 +13,7 @@ function getAtmosphere(atmosphere, item) {
             case "death_sound": return "assets/gong.wav"; break;
             case "end_sound": return "assets/ghastlyboom.mp3"; break;
             case "light_intensity": return 0.5; break;
+            case "enemy_texture": return THREE.ImageUtils.loadTexture('./assets/ghost.jpg');
         }
     }
     else if(atmosphere == "happy") {

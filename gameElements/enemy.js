@@ -1,6 +1,5 @@
 var headRadius = 0.25;
-var headTexture = getAtmosphere(localStorage.getItem("atmosphere"), "head_texture");
-var EnemyTexture = getAtmosphere(localStorage.getItem("atmosphere"), "Enemy_texture");
+var EnemyTexture = getAtmosphere(localStorage.getItem("atmosphere"), "enemy_texture");
 var Enemy = undefined;
 var EnemyMesh = undefined;
 var leftHandMeshEnemy = undefined;
