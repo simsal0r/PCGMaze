@@ -142,10 +142,18 @@ function gameLoop() {
             removeControls();
             setTimeout(function(){
                 gameState = 'fade out';
-                if(IN_SURVEY_MODE) {
-                    localStorage.setItem("atmosphere", "happy");
-                    localStorage.setItem("startDifficulty", 13);
-                    window.location = "game.html";
+                confirmationNeeded = IN_SURVEY_MODE;
+                if (IN_SURVEY_MODE) {
+                    switch(mazeDimension){
+                        case 13: mazeDimension = 15; break;
+                        case 15: mazeDimension = 17; break;
+                        case 17: mazeDimension = 21; break;
+                        case 21: mazeDimension = 27; break;
+                        case 27: mazeDimension = localStorage.setItem("atmosphere", "happy");
+                            localStorage.setItem("startDifficulty", 13);
+                            window.location = "game.html"; break;
+                        default: mazeDimension += 2; break;
+                    }
                 }
                 else {
                     mazeDimension = parseInt(localStorage.getItem("startDifficulty"));
@@ -180,10 +188,18 @@ function gameLoop() {
                     removeControls();
                     setTimeout(function () {
                         gameState = 'fade out';
+                        confirmationNeeded = IN_SURVEY_MODE;
                         if (IN_SURVEY_MODE) {
-                            localStorage.setItem("atmosphere", "happy");
-                            localStorage.setItem("startDifficulty", 13);
-                            window.location = "game.html";
+                            switch(mazeDimension){
+                                case 13: mazeDimension = 15; break;
+                                case 15: mazeDimension = 17; break;
+                                case 17: mazeDimension = 21; break;
+                                case 21: mazeDimension = 27; break;
+                                case 27: mazeDimension = localStorage.setItem("atmosphere", "happy");
+                                    localStorage.setItem("startDifficulty", 13);
+                                    window.location = "game.html";; break;
+                                default: mazeDimension += 2; break;
+                            }
                         }
                         else {
                             mazeDimension = parseInt(localStorage.getItem("startDifficulty"));
