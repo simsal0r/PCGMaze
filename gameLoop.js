@@ -1,6 +1,9 @@
 var gameState = undefined;
 var escaped = false;
 var notcaught = true;
+var confirmationNeeded = false;
+
+var IN_SURVEY_MODE = true;
 
 function gameLoop() {
     function initializeGame() {
@@ -43,9 +46,12 @@ function gameLoop() {
             return timer_duration < 0;
         }
         function checkForChests() {
+            function isInMaze() {
+                return (mazeX <= mazeDimension && mazeY <= mazeDimension) && (mazeX >= 1 && mazeY >= 1)
+            }
             var mazeX = Math.floor(headMesh.position.x + 0.5);
             var mazeY = Math.floor(headMesh.position.y + 0.5);
-            if(mazeX <= mazeDimension && mazeY <= mazeDimension && chests[mazeX][mazeY] != null) {
+            if(isInMaze() && chests[mazeX][mazeY] != null) {
                 handleChest(mazeX, mazeY);
             }
         }
@@ -80,7 +86,8 @@ function gameLoop() {
                 if(score > localStorage.getItem("highscore")) {
                     localStorage.setItem("highscore", score);
                 }
-                escaped=true;
+                escaped = true;
+                confirmationNeeded = IN_SURVEY_MODE;
             }
         }
         else if(isTimeout()) {
@@ -130,6 +137,10 @@ function gameLoop() {
         }
     }
     function fadeGameOut() {
+        if(steps != null) {
+            steps.pause();
+            steps = null;
+        }
         if(timer) {
             clearInterval(timer);
         }
@@ -140,7 +151,12 @@ function gameLoop() {
         if (lightingIsOff()) {
             setLightingIntensity(0.0);
             renderer.render(scene, camera);
-            gameState = 'initialize'
+            if(!confirmationNeeded) {
+                gameState = 'initialize'
+            }
+            else{
+                $('#confirmationPopup').show();
+            }
         }
     }
 
