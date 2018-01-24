@@ -133,7 +133,14 @@ function gameLoop() {
             removeControls();
             setTimeout(function(){
                 gameState = 'fade out';
-                mazeDimension = parseInt(localStorage.getItem("startDifficulty"));
+                if(IN_SURVEY_MODE) {
+                    localStorage.setItem("atmosphere", "happy");
+                    localStorage.setItem("startDifficulty", 13);
+                    window.location = "game.html";
+                }
+                else {
+                    mazeDimension = parseInt(localStorage.getItem("startDifficulty"));
+                }
             }, 1000);
         }
         else {
@@ -165,7 +172,14 @@ function gameLoop() {
                 removeControls();
                 setTimeout(function () {
                     gameState = 'fade out';
-                    mazeDimension = parseInt(localStorage.getItem("startDifficulty"));
+                    if(IN_SURVEY_MODE) {
+                        localStorage.setItem("atmosphere", "happy");
+                        localStorage.setItem("startDifficulty", 13);
+                        window.location = "game.html";
+                    }
+                    else {
+                        mazeDimension = parseInt(localStorage.getItem("startDifficulty"));
+                    }
                 }, 500);
 
             }
