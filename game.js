@@ -86,6 +86,11 @@ $(document).ready(function() {
 function confirmLevel() {
     confirmationNeeded = false;
     $('#confirmationPopup').hide();
+    if(mazeDimension == 29) {
+        localStorage.setItem("atmosphere", "happy");
+        localStorage.setItem("startDifficulty", 13);
+        window.location = "game.html";
+    }
 }
 
 
