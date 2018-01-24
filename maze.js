@@ -292,3 +292,129 @@ function computeMazeCoefficient(maze, dimension, exit) {
         console.log("In method computeMazeCoeffiecent either the paramater maze and/or dimension is null/undefined!")
     }
 }
+
+
+
+function getHardcodedMaze(dimension) {
+    var mazelv1 = [];
+    mazelv1[0] = [true, true, true, true, true, true, true, true, true, true, true, false, true];
+    mazelv1[1] = [true, false, true, false, false, false, false, false, false, false, false, false, true];
+    mazelv1[2] = [true, false, true, true, true, true, true, true, true, false, true, true, true];
+    mazelv1[3] = [true, false, true, false, false, false, false, false, true, false, false, false, true];
+    mazelv1[4] =  [true, false, true, false, true, true, true, false, true, false, true, false, true];
+    mazelv1[5] =  [true, false, true, false, false, false, true, false, true, false, true, false, true];
+    mazelv1[6] = [true, false, true, true, true, false, true, false, true, true, true, false, true];
+    mazelv1[7] = [true, false, true, false, false, false, true, false, false, false, false, false, true];
+    mazelv1[8] = [true, false, true, false, true, true, true, true, true, true, true, false, true];
+    mazelv1[9] = [true, false, false, false, true, false, false, false, false, false, true, false, true];
+    mazelv1[10] = [true, true, true, true, true, false, true, true, true, false, true, false, true];
+    mazelv1[11] = [true, false, false, false, false, false, false, false, true, false, false, false, true];
+    mazelv1[12] = [true, true, true, true, true, true, true, true, true, true, true, true, true];
+    mazelv1.dimension = 13;
+
+    var mazelv2 = [];
+    mazelv2[0] = [true, true, true, true, true, true, true, true, true, true, true, true, true, true, true];
+    mazelv2[1] = [true, false, false, false, false, false, false, false, false, false, true, false, false, false, true];
+    mazelv2[2] = [true, true, true, true, true, true, true, true, true, false, true, false, true, false, true];
+    mazelv2[3] = [true, false, false, false, false, false, false, false, true, false, true, false, true, false, true];
+    mazelv2[4] = [true, false, true, true, true, true, true, true, true, false, true, true, true, false, true];
+    mazelv2[5] = [true, false, false, false, false, false, true, false, false, false, true, false, false, false, true];
+    mazelv2[6] = [true, false, true, true, true, false, true, false, true, true, true, false, true, false, true];
+    mazelv2[7] = [true, false, true, false, false, false, true, false, true, false, false, false, true, false, true];
+    mazelv2[8] = [true, false, true, false, true, true, true, false, true, false, true, true, true, false, true];
+    mazelv2[9] = [true, false, true, false, true, false, false, false, true, false, true, false, false, false, true];
+    mazelv2[10] = [true, false, true, false, true, false, true, true, true, false, true, false, true, true, true];
+    mazelv2[11] = [true, false, true, false, true, false, false, false, true, false, true, false, true, false, true];
+    mazelv2[12] = [true, false, true, false, true, true, true, false, true, false, true, false, true, false, true];
+    mazelv2[13] = [true, false, true, false, false, false, false, false, false, false, true, false, false, false, true];
+    mazelv2[14] = [true, false, true, true, true, true, true, true, true, true, true, true, true, true, true];
+    mazelv2.dimension = 15;
+
+    var mazelv3 = [];
+    mazelv3[0] = [true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, false, true];
+    mazelv3[1] = [true, false, true, false, false, false, false, false, true, false, false, false, false, false, false, false, true];
+    mazelv3[2] = [true, false, true, false, true, false, true, false, true, true, true, false, true, false, true, true, true];
+    mazelv3[3] = [true, false, true, false, true, false, true, false, false, false, true, false, true, false, false, false, true];
+    mazelv3[4] = [true, false, true, true, true, false, true, true, true, false, true, true, true, true, true, false, true];
+    mazelv3[5] = [true, false, true, false, false, false, true, false, true, false, false, false, true, false, false, false, true];
+    mazelv3[6] = [true, false, true, false, true, true, true, false, true, true, true, false, true, false, true, true, true];
+    mazelv3[7] = [true, false, false, false, true, false, true, false, false, false, false, false, true, false, false, false, true];
+    mazelv3[8] = [true, true, true, true, true, false, true, false, true, true, true, true, true, false, true, false, true];
+    mazelv3[9] = [true, false, false, false, false, false, true, false, true, false, false, false, false, false, true, false, true];
+    mazelv3[10] = [true, false, true, true, true, false, true, false, true, true, true, true, true, true, true, false, true];
+    mazelv3[11] = [true, false, true, false, false, false, true, false, false, false, true, false, false, false, false, false, true];
+    mazelv3[12] = [true, false, true, true, true, true, true, true, true, false, true, false, true, true, true, false, true];
+    mazelv3[13] = [true, false, false, false, true, false, false, false, false, false, true, false, true, false, true, false, true];
+    mazelv3[14] = [true, false, true, false, true, false, true, true, true, true, true, false, true, false, true, false, true];
+    mazelv3[15] = [true, false, true, false, false, false, false, false, false, false, false, false, true, false, false, false, true];
+    mazelv3[16] = [true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true];
+    mazelv3.dimension = 17;
+
+    var mazelv4 = [];
+    mazelv4[0] = [true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, false, true];
+    mazelv4[1] = [true, false, true, false, false, false, false, false, false, false, true, false, false, false, false, false, false, false, false, false, true];
+    mazelv4[2] = [true, false, true, false, true, false, true, true, true, true, true, false, true, true, true, false, true, true, true, false, true];
+    mazelv4[3] = [true, false, true, false, true, false, false, false, false, false, true, false, true, false, true, false, false, false, true, false, true];
+    mazelv4[4] = [true, false, true, true, true, true, true, false, true, false, true, false, true, false, true, true, true, false, true, true, true];
+    mazelv4[5] = [true, false, false, false, false, false, true, false, true, false, false, false, false, false, false, false, true, false, false, false, true];
+    mazelv4[6] = [true, true, true, true, true, false, true, true, true, true, true, true, true, true, true, true, true, false, true, false, true];
+    mazelv4[7] = [true, false, false, false, true, false, false, false, false, false, true, false, false, false, false, false, true, false, true, false, true];
+    mazelv4[8] = [true, false, true, true, true, true, true, true, true, false, true, false, true, true, true, false, true, true, true, false, true];
+    mazelv4[9] = [true, false, false, false, false, false, false, false, false, false, true, false, false, false, true, false, false, false, true, false, true];
+    mazelv4[10] = [true, false, true, true, true, true, true, true, true, true, true, false, true, false, true, true, true, false, true, false, true];
+    mazelv4[11] = [true, false, false, false, true, false, false, false, false, false, true, false, true, false, false, false, true, false, false, false, true];
+    mazelv4[12] = [true, true, true, false, true, true, true, false, true, true, true, false, true, true, true, false, true, true, true, false, true];
+    mazelv4[13] = [true, false, true, false, false, false, true, false, false, false, false, false, true, false, false, false, true, false, false, false, true];
+    mazelv4[14] = [true, false, true, true, true, false, true, true, true, true, true, false, true, false, true, true, true, false, true, true, true];
+    mazelv4[15] = [true, false, false, false, true, false, true, false, false, false, true, false, true, false, true, false, false, false, true, false, true];
+    mazelv4[16] = [true, true, true, false, true, false, true, false, true, false, true, true, true, false, true, false, true, true, true, false, true];
+    mazelv4[17] = [true, false, false, false, true, false, true, false, true, false, false, false, true, false, true, false, true, false, false, false, true];
+    mazelv4[18] = [true, false, true, true, true, false, true, false, true, true, true, false, true, false, true, false, true, false, true, false, true];
+    mazelv4[19] = [true, false, false, false, false, false, false, false, true, false, false, false, false, false, true, false, false, false, true, false, true];
+    mazelv4[20] = [true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true];
+    mazelv4.dimension = 19;
+
+    var mazelv5 = [];
+    mazelv5[0] = [true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true];
+    mazelv5[1] = [true, false, true, false, false, false, false, false, true, false, false, false, false, false, false, false, true, false, false, false, true, false, false, false, false, false, true];
+    mazelv5[2] = [true, false, true, false, true, false, true, true, true, false, true, true, true, false, true, false, true, false, true, true, true, false, true, false, true, true, true];
+    mazelv5[3] = [true, false, true, false, true, false, false, false, true, false, true, false, true, false, true, false, false, false, true, false, false, false, true, false, false, false, true];
+    mazelv5[4] = [true, false, true, true, true, true, true, false, true, false, true, false, true, false, true, true, true, true, true, false, true, true, true, true, true, false, true];
+    mazelv5[5] = [true, false, false, false, false, false, true, false, true, false, false, false, true, false, true, false, false, false, false, false, false, false, false, false, true, false, true];
+    mazelv5[6] = [true, true, true, true, true, false, true, false, true, true, true, false, true, false, true, false, true, true, true, true, true, true, true, false, true, false, true];
+    mazelv5[7] = [true, false, true, false, false, false, true, false, false, false, true, false, true, false, true, false, true, false, false, false, true, false, false, false, true, false, true];
+    mazelv5[8] = [true, false, true, false, true, true, true, false, true, false, true, false, true, false, true, false, true, false, true, false, true, true, true, true, true, false, true];
+    mazelv5[9] = [true, false, false, false, true, false, true, false, true, false, false, false, true, false, false, false, true, false, true, false, false, false, false, false, true, false, true];
+    mazelv5[10] = [true, false, true, true, true, false, true, false, true, true, true, true, true, true, true, true, true, false, true, true, true, true, true, false, true, false, true];
+    mazelv5[11] = [true, false, false, false, true, false, false, false, false, false, true, false, false, false, false, false, false, false, true, false, false, false, true, false, true, false, true];
+    mazelv5[12] = [true, true, true, false, true, false, true, true, true, true, true, false, true, true, true, true, true, true, true, false, true, false, true, false, true, false, true];
+    mazelv5[13] = [true, false, false, false, true, false, true, false, false, false, true, false, true, false, false, false, false, false, false, false, true, false, true, false, false, false, true];
+    mazelv5[14] = [true, false, true, true, true, false, true, false, true, false, true, false, true, false, true, true, true, true, true, true, true, false, true, true, true, false, true];
+    mazelv5[15] = [true, false, true, false, false, false, true, false, true, false, false, false, true, false, true, false, false, false, false, false, true, false, false, false, true, false, true];
+    mazelv5[16] = [true, false, true, true, true, true, true, false, true, true, true, true, true, false, true, false, true, true, true, false, true, true, true, false, true, false, true];
+    mazelv5[17] = [true, false, true, false, false, false, false, false, true, false, false, false, true, false, false, false, true, false, true, false, true, false, false, false, true, false, true];
+    mazelv5[18] = [true, false, true, false, true, true, true, true, true, false, true, false, true, false, true, true, true, false, true, false, true, true, true, true, true, false, true];
+    mazelv5[19] = [true, false, true, false, false, false, false, false, true, false, true, false, true, false, true, false, false, false, true, false, false, false, false, false, false, false, true];
+    mazelv5[20] = [true, false, true, true, true, true, true, false, true, false, true, false, true, false, true, true, true, false, true, true, true, true, true, true, true, true, true];
+    mazelv5[21] = [true, false, true, false, false, false, false, false, true, false, true, false, false, false, true, false, false, false, false, false, false, false, false, false, true, false, true];
+    mazelv5[22] = [true, false, true, false, true, true, true, true, true, false, true, true, true, true, true, false, true, true, true, true, true, true, true, false, true, false, true];
+    mazelv5[23] = [true, false, true, false, false, false, true, false, true, false, true, false, false, false, false, false, false, false, true, false, false, false, true, false, false, false, true];
+    mazelv5[24] = [true, false, true, true, true, false, true, false, true, false, true, true, true, true, true, true, true, false, true, false, true, true, true, true, true, false, true];
+    mazelv5[25] = [true, false, false, false, false, false, true, false, false, false, false, false, false, false, false, false, false, false, true, false, false, false, false, false, false, false, true];
+    mazelv5[26] = [true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, false, true];
+    mazelv5.dimension = 21;
+
+    if(dimension == 13) {
+        console.log(generateSquareMaze(dimension));
+        console.log(mazelv1);
+    }
+    switch(dimension) {
+        case 13: return mazelv1; break;
+        case 15: return mazelv2; break;
+        case 17: return mazelv3; break;
+        case 19: return mazelv4; break;
+        case 21: return mazelv5; break;
+        default: return generateSquareMaze(dimension); break;
+
+    }
+}

@@ -11,8 +11,7 @@ function gameLoop() {
             var level = Math.floor((mazeDimension-1)/2 - 4);
             $('#level').html('Difficulty ' + level);
         }
-        maze = generateSquareMaze(mazeDimension);
-        //maze[mazeDimension-1][mazeDimension-2] = false;
+        maze = getHardcodedMaze(mazeDimension);//generateSquareMaze(mazeDimension);
         timer_duration = mazeDimension * 4;
         chests = createChests(maze);
         notSpawned = true;
