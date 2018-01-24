@@ -32,7 +32,7 @@ function gameLoop() {
         else {
             maze = generateSquareMaze(mazeDimension);
         }
-        timer_duration = Math.floor(0.67 * Math.pow(mazeDimension, 1.55));
+        timer_duration = Math.floor(0.68 * Math.pow(mazeDimension, 1.6));
         chests = createChests(maze);
         notSpawned = true;
         createPhysicsWorld();
