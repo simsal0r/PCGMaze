@@ -12,6 +12,7 @@ function getAtmosphere(atmosphere, item) {
             case "background_music": return "assets/background.mp3"; break;
             case "death_sound": return "assets/gong.wav"; break;
             case "end_sound": return "assets/ghastlyboom.mp3"; break;
+            case "step_sound": return "assets/10-2 closeEnd.wav"; break;
             case "light_intensity": return 0.5; break;
             case "enemy_texture": return THREE.ImageUtils.loadTexture('./assets/ghost.jpg');
         }
@@ -21,15 +22,16 @@ function getAtmosphere(atmosphere, item) {
             case "font-family": return "happyFont"; break;
             case "chest_items": return ["zoom_out", "move_to_start", "rotate_maze", "increase_time", "decrease_time", "random_teleportation"]; break;
             case "chest_probabilities": return [0.3, 0.04, 0.06, 0.25, 0.25, 0.1]; break;
-            case "chest_texture": return THREE.ImageUtils.loadTexture('./assets/crystal.jpg'); break;
+            case "chest_texture": return THREE.ImageUtils.loadTexture('./assets/chest1.jpg'); break;
             case "head_texture": return THREE.ImageUtils.loadTexture('./assets/hair.jpg'); break;
             case "player_texture": return THREE.ImageUtils.loadTexture('./assets/cloak.jpg'); break;
-            case "ground_texture": return THREE.ImageUtils.loadTexture('./assets/grass.jpg'); break;
-            case "wall_texture": return THREE.ImageUtils.loadTexture('./assets/flower.jpg'); break;
+            case "ground_texture": return THREE.ImageUtils.loadTexture('./assets/ground1.jpg'); break;
+            case "wall_texture": return THREE.ImageUtils.loadTexture('./assets/flowers3.jpg'); break;
             case "background_music": return "assets/happyBackground.mp3"; break;
-            case "light_intensity": return 2; break;
+            case "light_intensity": return 1; break;
             case "death_sound": return "assets/jingle_fail.wav"; break;
             case "end_sound": return "assets/shipsbell.wav"; break;
+            case "step_sound": return "assets/piano1.wav"; break;
         }
     }
 }

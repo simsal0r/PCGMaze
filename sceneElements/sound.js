@@ -37,8 +37,8 @@ function playScare() {
 }
 
 function playSteps() {
-    var stepSound = new Audio("assets/10-2 closeEnd.wav");
-    stepSound.volume=0.8;
+    var stepSound = new Audio(getAtmosphere(localStorage.getItem("atmosphere"), "step_sound"));
+    stepSound.volume=0.9;
     stepSound.play();
     return stepSound;
 }

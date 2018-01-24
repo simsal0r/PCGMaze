@@ -13,9 +13,7 @@ function startTimer() {
         $('#timerText').text(timeToString(timer_duration));
         timer_duration--;
         if(!stepsPlayed && timer_duration < 10){
-            if(localStorage.getItem("atmosphere") == "horror"){
-                steps = playSteps();
-            }
+            steps = playSteps();
             stepsPlayed = true;
         }
     }, 1000);
