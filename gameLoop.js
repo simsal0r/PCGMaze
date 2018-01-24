@@ -79,6 +79,7 @@ function gameLoop() {
                 playBackgroundSound();
             }
         }
+        if(localStorage.getItem("atmosphere") == "horror"){
         if (timeToSpawnEnemy()){
             writeToTextField("He is coming for you...", "red");
             createEnemyBody(1,1);
@@ -86,13 +87,17 @@ function gameLoop() {
             scene.add(EnemyMesh);
             breathe = playBreathe();
 
-        }
+        }}
         updatePhysicsWorld();
         updateRenderWorld();
         renderer.render(scene, camera);
         if (isVictory()) {
             if(!escaped) {
                 playEndSound();
+                if (breathe != null) {
+                    breathe.pause();
+                    breathe = null;
+                }
                 writeToTextField("You escaped! Increasing difficulty...", "green");
                 removeControls();
                 clearPietimer();
@@ -126,6 +131,10 @@ function gameLoop() {
                 playDeathSound();
                 deathSoundPlayed = true;
             }
+            if (breathe != null) {
+                breathe.pause();
+                breathe = null;
+            }
             var score = Math.floor((mazeDimension-1)/2 - 4);
             if(score > localStorage.getItem("highscore")) {
                 localStorage.setItem("highscore", score);
@@ -152,36 +161,36 @@ function gameLoop() {
             }
         }
         //Slenderman
-        if (notSpawned == false)
-        {
-            if (caughtByEnemy())
-            {
-                writeToTextField("YOU DIED", "red", 2);
-                if (notcaught)
-                {   breathe.pause();
-                    breathe = null;
-                    notcaught = false;
-                   playSlam();
-                   playGong();
-                }
-
-                var score = Math.floor((mazeDimension - 1) / 2 - 4);
-                if (score > localStorage.getItem("highscore")) {
-                    localStorage.setItem("highscore", score);
-                }
-                removeControls();
-                setTimeout(function () {
-                    gameState = 'fade out';
-                    if(IN_SURVEY_MODE) {
-                        localStorage.setItem("atmosphere", "happy");
-                        localStorage.setItem("startDifficulty", 13);
-                        window.location = "game.html";
+        if(localStorage.getItem("atmosphere") == "horror") {
+            if (notSpawned == false) {
+                if (caughtByEnemy()) {
+                    writeToTextField("YOU DIED", "red", 2);
+                    if (notcaught) {
+                        breathe.pause();
+                        breathe = null;
+                        notcaught = false;
+                        playSlam();
+                        playGong();
                     }
-                    else {
-                        mazeDimension = parseInt(localStorage.getItem("startDifficulty"));
-                    }
-                }, 500);
 
+                    var score = Math.floor((mazeDimension - 1) / 2 - 4);
+                    if (score > localStorage.getItem("highscore")) {
+                        localStorage.setItem("highscore", score);
+                    }
+                    removeControls();
+                    setTimeout(function () {
+                        gameState = 'fade out';
+                        if (IN_SURVEY_MODE) {
+                            localStorage.setItem("atmosphere", "happy");
+                            localStorage.setItem("startDifficulty", 13);
+                            window.location = "game.html";
+                        }
+                        else {
+                            mazeDimension = parseInt(localStorage.getItem("startDifficulty"));
+                        }
+                    }, 500);
+
+                }
             }
         }
     }
@@ -248,11 +257,12 @@ function createRenderWorld() {
 
 function updatePhysicsWorld() {
     movePlayer();
-    if (notSpawned == false)
-    {
-        if (stopit()==false) {
-            var enemyPath = findNextStep();
-            moveEnemyToCoordinate(enemyPath[0], enemyPath[1]);
+    if(localStorage.getItem("atmosphere") == "horror") {
+        if (notSpawned == false) {
+            if (stopit() == false) {
+                var enemyPath = findNextStep();
+                moveEnemyToCoordinate(enemyPath[0], enemyPath[1]);
+            }
         }
     }
     physicsWorld.Step(1/60, 8, 3);
@@ -260,8 +270,10 @@ function updatePhysicsWorld() {
 
 function updateRenderWorld() {
     updatePlayerMesh();
-    if (notSpawned == false) {
-        updateEnemyMesh();
+    if(localStorage.getItem("atmosphere") == "horror") {
+        if (notSpawned == false) {
+            updateEnemyMesh();
+        }
     }
     updateCamera();
     updateLight();

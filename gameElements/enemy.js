@@ -157,7 +157,7 @@ function moveEnemyToCoordinate(goal_x,goal_y){
 
 function moveEnemy(xi,yi) {
     var lv = Enemy.GetLinearVelocity();
-    lv.Multiply(0.95);
+    lv.Multiply(0.94);
     Enemy.SetLinearVelocity(lv);
 
     var x = xi;
