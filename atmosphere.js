@@ -21,7 +21,7 @@ function getAtmosphere(atmosphere, item) {
         switch(item) {
             case "font-family": return "happyFont"; break;
             case "chest_items": return ["zoom_out", "move_to_start", "rotate_maze", "increase_time", "decrease_time", "random_teleportation"]; break;
-            case "chest_probabilities": return [0.3, 0.04,              0.13,           0.19,           0.18,           0.13]; break;
+            case "chest_probabilities": return [0.3, 0.04,              0.15,           0.18,           0.23,           0.1]; break;
             case "chest_texture": return THREE.ImageUtils.loadTexture('./assets/chest1.jpg'); break;
             case "head_texture": return THREE.ImageUtils.loadTexture('./assets/hairHappy.jpg'); break;
             case "player_texture": return THREE.ImageUtils.loadTexture('./assets/cloakHappy.png'); break;
