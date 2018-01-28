@@ -5,7 +5,7 @@ var deathSoundPlayed = false;
 var confirmationNeeded = false;
 var breathe = null;
 
-var IN_SURVEY_MODE = true;
+var IN_SURVEY_MODE = false;
 
 function gameLoop() {
     function initializeGame() {

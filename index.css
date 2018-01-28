@@ -51,10 +51,10 @@ input[type=submit] {
 .container{
     display: block;
     position: relative;
-    margin: 40px auto;
+    margin: auto;
     height: auto;
     width: 500px;
-    padding: 20px;
+    padding: 10px;
 }
 .container ul{
     list-style: none;
