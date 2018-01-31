@@ -2,8 +2,16 @@ var timer_duration = 60;
 var max_time;
 var timer = undefined;
 var stepsPlayed = false;
-var notSpawned = true;
+var spawned = false;
 var steps = null;
+
+function isTimeout() {
+    return timer_duration < 0;
+}
+
+function setTimerDuration() {
+    timer_duration = Math.floor(0.68 * Math.pow(mazeDimension, 1.6));
+}
 
 function startTimer() {
     max_time = timer_duration;
@@ -48,13 +56,13 @@ function clearPietimer() {
 
 function timeToSpawnEnemy()
 {
-    if (notSpawned)
+    if (!spawned)
     {
         if (timer_duration < max_time/3.5) // max_time - timer_duration > 7  appears after 1/4 of time
         {
             console.log(max_time + " " + timer_duration)
             //debugger;
-            notSpawned = false;
+            spawned = true;
             return true;
         }
     }
