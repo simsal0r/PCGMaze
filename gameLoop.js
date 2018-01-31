@@ -85,11 +85,11 @@ function setLevelDisplay() {
             case 17: level = 3; break;
             case 21: level = 4; break;
             case 27: level = 5; break;
-            default: level = Math.floor((mazeDimension-1)/2 - 4); break;
+            default: level = Math.floor((mazeDimension-1)/2 - 5); break;
         }
     }
     else {
-        level = Math.floor((mazeDimension-1)/2 - 4);
+        level = Math.floor((mazeDimension-1)/2 - 5);
     }
     $('#level').html('Level ' + level);
 }
