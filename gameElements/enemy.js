@@ -5,6 +5,21 @@ var EnemyMesh = undefined;
 var leftHandMeshEnemy = undefined;
 var rightHandMeshEnemy = undefined;
 
+function spawnEnemy() {
+    writeToTextField("He is coming for you...", "red");
+    createEnemyBody(1,1);
+    generateEnemyMesh(1,1);
+    scene.add(EnemyMesh);
+    breathe = playBreathe();
+}
+
+function stopEnemyBreathing() {
+    if (breathe != null) {
+        breathe.pause();
+        breathe = null;
+    }
+}
+
 function findNextStep()
 {
     try {

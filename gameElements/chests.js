@@ -27,6 +27,16 @@ function createChests(maze) {
     return chests;
 }
 
+function checkForChests() {
+    var mazeX = Math.floor(headMesh.position.x + 0.5);
+    var mazeY = Math.floor(headMesh.position.y + 0.5);
+    if(!ended()) {
+        if(chests[mazeX][mazeY] != null){
+            handleChest(mazeX, mazeY);
+        }
+    }
+}
+
 function getRandomChestItem() {
     var random = Math.random();
     var cumulativeProbabilities = [];

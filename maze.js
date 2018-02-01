@@ -1,5 +1,8 @@
-function generateSquareMaze(dimension) {
+function getMaze() {
+    return IN_SURVEY_MODE ? getHardcodedMaze(mazeDimension) : generateSquareMaze(mazeDimension);
+}
 
+function generateSquareMaze(dimension) {
     function shuffleArray(array) {
         for (var i = array.length - 1; i > 0; i--) {
             var j = Math.floor(Math.random() * (i + 1));

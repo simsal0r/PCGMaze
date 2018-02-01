@@ -1,50 +1,116 @@
 var gameState = undefined;
+var gameEnded = false;
 var escaped = false;
 var notcaught = true;
 var deathSoundPlayed = false;
 var confirmationNeeded = false;
 var breathe = null;
 
+
+
 var IN_SURVEY_MODE = false;
+
+
+
+function endLevel(levelSuccessful) {
+    function setScore() {
+        var score = Math.floor((mazeDimension-1)/2 - 4);
+        if(score > localStorage.getItem("highscore")) {
+            localStorage.setItem("highscore", score);
+        }
+    }
+    clearPietimer();
+    removeControls();
+    setScore();
+    stopEnemyBreathing();
+    confirmationNeeded = IN_SURVEY_MODE;
+    setTimeout(function(){
+        gameState = 'fade out';
+        setNextLevel(levelSuccessful);
+    }, 1000);
+}
+
+function setNextLevel(levelSuccessful) {
+    if(IN_SURVEY_MODE) {
+        switch(mazeDimension){
+            case 13: mazeDimension = 15; break;
+            case 15: mazeDimension = 17; break;
+            case 17: mazeDimension = 21; break;
+            case 21: mazeDimension = 27; break;
+            case 27: mazeDimension = 29; break;
+            default: mazeDimension += 2; break;
+        }
+        console.log(mazeDimension);
+        if(mazeDimension == 29) {
+            if (localStorage.getItem("atmosphere") == "happy") {
+                writeToTextField("Thanks for Playing!", "red",10);
+            }
+            else {
+                localStorage.setItem("atmosphere", "happy");
+                localStorage.setItem("startDifficulty", 13);
+                window.location = "game.html";
+            }
+        }
+    }
+    else {
+        mazeDimension = levelSuccessful ? mazeDimension + 2 : parseInt(localStorage.getItem("startDifficulty"));
+    }
+}
+
+function endGame_escaped() {
+    endLevel(true);
+    writeToTextField("You escaped! Increasing difficulty...", "green");
+    playEndSound();
+}
+
+function endGame_timeout() {
+    endLevel(false);
+    writeToTextField("You are out of time!", "red", 2);
+    playDeathSound();
+}
+
+function endGame_caught() {
+    endLevel(false);
+    writeToTextField("YOU DIED", "red", 2);
+    playSlam();
+    playGong();
+}
+
+function setLevelDisplay() {
+    var level = 0;
+    if(IN_SURVEY_MODE){
+        switch(mazeDimension) {
+            case 13: level = 1; break;
+            case 15: level = 2; break;
+            case 17: level = 3; break;
+            case 21: level = 4; break;
+            case 27: level = 5; break;
+            default: level = Math.floor((mazeDimension-1)/2 - 5); break;
+        }
+    }
+    else {
+        level = Math.floor((mazeDimension-1)/2 - 5);
+    }
+    $('#level').html('Level ' + level);
+}
 
 function gameLoop() {
     function initializeGame() {
-        function setLevel() {
-            var level = 0;
-            if(IN_SURVEY_MODE){
-                switch(mazeDimension) {
-                    case 13: level = 1; break;
-                    case 15: level = 2; break;
-                    case 17: level = 3; break;
-                    case 21: level = 4; break;
-                    case 27: level = 5; break;
-                    default: level = Math.floor((mazeDimension-1)/2 - 4); break;
-                }
-            }
-            else {
-                level = Math.floor((mazeDimension-1)/2 - 4);
-            }
-            $('#level').html('Level ' + level);
-        }
-        if(IN_SURVEY_MODE) {
-            maze = getHardcodedMaze(mazeDimension);//generateSquareMaze(mazeDimension);
-        }
-        else {
-            maze = generateSquareMaze(mazeDimension);
-        }
-        timer_duration = Math.floor(0.68 * Math.pow(mazeDimension, 1.6));
+        maze = getMaze();
+        setTimerDuration();
         chests = createChests(maze);
-        notSpawned = true;
+        spawned = false;
         createPhysicsWorld();
         createRenderWorld();
         assignControls();
         initializeCamera();
         initializeLighting();
-        setLevel();
+        setLevelDisplay();
         escaped = false;
         notcaught = true;
         deathSoundPlayed = false;
         gameState = 'fade in';
+        gameEnded = false;
     }
     function fadeGameIn() {
         increaseLighting();
@@ -56,195 +122,35 @@ function gameLoop() {
         }
     }
     function playGame() {
-        function isVictory() {
-            return ended();
-
-        }
-        function isTimeout() {
-            return timer_duration < 0;
-        }
-        function checkForChests() {
-            var mazeX = Math.floor(headMesh.position.x + 0.5);
-            var mazeY = Math.floor(headMesh.position.y + 0.5);
-            if(!ended()) {
-                if(chests[mazeX][mazeY] != null){
-                    handleChest(mazeX, mazeY);
-                }
-            }
-        }
-        function backgroundNoise()
-        {
-            var rng = Math.floor(Math.random()*10000);
-            if (rng <= 5 ) {
-                playBackgroundSound();
-            }
-        }
         if(localStorage.getItem("atmosphere") == "horror"){
-        if (timeToSpawnEnemy()){
-            writeToTextField("He is coming for you...", "red");
-            createEnemyBody(1,1);
-            generateEnemyMesh(1,1);
-            scene.add(EnemyMesh);
-            breathe = playBreathe();
-
-        }}
+            if (timeToSpawnEnemy()){
+                spawnEnemy();
+            }
+        }
         updatePhysicsWorld();
         updateRenderWorld();
         renderer.render(scene, camera);
-        if (isVictory()) {
-            if(!escaped) {
-                playEndSound();
-                if (breathe != null) {
-                    breathe.pause();
-                    breathe = null;
-                }
-                writeToTextField("You escaped! Increasing difficulty...", "green");
-                removeControls();
-                clearPietimer();
-                setTimeout(function(){
-                    if(IN_SURVEY_MODE) {
-                        switch(mazeDimension){
-                            case 13: mazeDimension = 15; break;
-                            case 15: mazeDimension = 17; break;
-                            case 17: mazeDimension = 21; break;
-                            case 21: mazeDimension = 27; break;
-                            case 27: mazeDimension = 29;
-                            if (localStorage.getItem("atmosphere") == "happy")
-                            {
-                                writeToTextField("Thanks for Playing!", "red",10);
-                            }
-                            break;
-                            default: mazeDimension += 2;
-                                if (localStorage.getItem("atmosphere") == "happy")
-                                {
-                                    writeToTextField("Thanks for Playing!", "red",10);
-                                }
-                            break;
-                        }
-                    }
-                    else {
-                        mazeDimension += 2;
-                    }
-                    gameState = 'fade out';
-                }, 1200);
-                var score = Math.floor((mazeDimension-1)/2 - 4);
-                if(score > localStorage.getItem("highscore")) {
-                    localStorage.setItem("highscore", score);
-                }
-                escaped = true;
-                confirmationNeeded = IN_SURVEY_MODE;
-            }
+        if (!gameEnded && ended()) {
+            endGame_escaped();
+            gameEnded = true;
         }
-        else if(isTimeout()) {
-            writeToTextField("You are out of time!", "red", 2);
-            if(!deathSoundPlayed) {
-                playDeathSound();
-                deathSoundPlayed = true;
-                setTimeout(function(){
-                    gameState = 'fade out';
-                    confirmationNeeded = IN_SURVEY_MODE;
-                    if (IN_SURVEY_MODE) {
-                        switch(mazeDimension){
-                            case 13: mazeDimension = 15; break;
-                            case 15: mazeDimension = 17; break;
-                            case 17: mazeDimension = 21; break;
-                            case 21: mazeDimension = 27; break;
-                            case 27: mazeDimension = localStorage.setItem("atmosphere", "happy");
-                                localStorage.setItem("startDifficulty", 13);
-                                window.location = "game.html"; break;
-                            default: mazeDimension += 2;
-                                if (localStorage.getItem("atmosphere") == "happy")
-                                {
-                                    writeToTextField("Thanks for Playing!", "red",10);
-                                }
-                                break;
-                        }
-                    }
-                    else {
-                        mazeDimension = parseInt(localStorage.getItem("startDifficulty"));
-                    }
-                }, 1000);
-            }
-            if (breathe != null) {
-                breathe.pause();
-                breathe = null;
-            }
-            var score = Math.floor((mazeDimension-1)/2 - 4);
-            if(score > localStorage.getItem("highscore")) {
-                localStorage.setItem("highscore", score);
-            }
-            removeControls();
+        else if(!gameEnded && isTimeout()) {
+            endGame_timeout();
+            gameEnded = true;
         }
-        else {
-            if (!escaped) {
-                checkForChests();
-                if (localStorage.getItem("atmosphere") == "horror") {
-                    backgroundNoise();
-                }
-            }
+        else if(!gameEnded && localStorage.getItem("atmosphere") == "horror" && spawned && caughtByEnemy()) {
+            endGame_caught();
+            gameEnded = true;
         }
-        //Slenderman
-        if(localStorage.getItem("atmosphere") == "horror") {
-            if (notSpawned == false) {
-                if (caughtByEnemy()) {
-                    writeToTextField("YOU DIED", "red", 2);
-                    if (notcaught) {
-                        breathe.pause();
-                        breathe = null;
-                        notcaught = false;
-                        playSlam();
-                        playGong();
-                        setTimeout(function () {
-                            gameState = 'fade out';
-                            confirmationNeeded = IN_SURVEY_MODE;
-                            if (IN_SURVEY_MODE) {
-                                switch (mazeDimension) {
-                                    case 13:
-                                        mazeDimension = 15;
-                                        break;
-                                    case 15:
-                                        mazeDimension = 17;
-                                        break;
-                                    case 17:
-                                        mazeDimension = 21;
-                                        break;
-                                    case 21:
-                                        mazeDimension = 27;
-                                        break;
-                                    case 27:
-                                        mazeDimension = localStorage.setItem("atmosphere", "happy");
-                                        localStorage.setItem("startDifficulty", 13);
-                                        window.location = "game.html";
-                                        break;
-                                    default:
-                                        mazeDimension += 2;
-                                        if (localStorage.getItem("atmosphere") == "happy")
-                                        {
-                                            writeToTextField("Thanks for Playing!", "red",10);
-                                        }
-                                        break;
-                                }
-                            }
-                            else {
-                                mazeDimension = parseInt(localStorage.getItem("startDifficulty"));
-                            }
-                        }, 500);
-                    }
-
-                    var score = Math.floor((mazeDimension - 1) / 2 - 4);
-                    if (score > localStorage.getItem("highscore")) {
-                        localStorage.setItem("highscore", score);
-                    }
-                    removeControls();
-                }
+        else if (!gameEnded) {
+            checkForChests();
+            if (localStorage.getItem("atmosphere") == "horror") {
+                backgroundNoise();
             }
         }
     }
     function fadeGameOut() {
-        if(steps != null) {
-            steps.pause();
-            steps = null;
-        }
+        stopSteps();
         if(timer) {
             clearInterval(timer);
         }
@@ -263,7 +169,6 @@ function gameLoop() {
             }
         }
     }
-
     switch(gameState) {
         case 'initialize': initializeGame();break;
         case 'fade in': fadeGameIn();break;
@@ -301,23 +206,17 @@ function createRenderWorld() {
 
 function updatePhysicsWorld() {
     movePlayer();
-    if(localStorage.getItem("atmosphere") == "horror") {
-        if (notSpawned == false) {
-            if (stopit() == false) {
-                var enemyPath = findNextStep();
-                moveEnemyToCoordinate(enemyPath[0], enemyPath[1]);
-            }
-        }
+    if(localStorage.getItem("atmosphere") == "horror" && spawned && !stopit()) {
+        var enemyPath = findNextStep();
+        moveEnemyToCoordinate(enemyPath[0], enemyPath[1]);
     }
     physicsWorld.Step(1/60, 8, 3);
 }
 
 function updateRenderWorld() {
     updatePlayerMesh();
-    if(localStorage.getItem("atmosphere") == "horror") {
-        if (notSpawned == false) {
-            updateEnemyMesh();
-        }
+    if(localStorage.getItem("atmosphere") == "horror" && spawned) {
+        updateEnemyMesh();
     }
     updateCamera();
     updateLight();

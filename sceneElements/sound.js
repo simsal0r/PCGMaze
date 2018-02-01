@@ -43,6 +43,14 @@ function playSteps() {
     stepSound.play();
     return stepSound;
 }
+
+function stopSteps() {
+    if(steps != null) {
+        steps.pause();
+        steps = null;
+    }
+}
+
 function playGong(){
     var stepG = new Audio("assets/gong.wav");
     stepG.play();
@@ -52,6 +60,14 @@ function playBreathe(){
     Breathe.volume=0.12;
     Breathe.play();
     return Breathe;
+}
+
+function backgroundNoise()
+{
+    var rng = Math.floor(Math.random()*10000);
+    if (rng <= 5 ) {
+        playBackgroundSound();
+    }
 }
 
 function playBackgroundSound(){
