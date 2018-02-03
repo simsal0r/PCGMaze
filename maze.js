@@ -12,7 +12,8 @@ function generateSquareMaze(dimension) {
         }
     }
 
-    function carve_passage(grid, cx, cy) {
+    // recursive backtracking to generate maze
+    function recursive_backtracking(grid, cx, cy) {
 
         var dx, dy, nx, ny;
         var directions = ['N', 'E', 'S', 'W'];
@@ -54,7 +55,7 @@ function generateSquareMaze(dimension) {
                     }
                     grid[nx][ny] = false;
                     //grid[nx][ny] = (grid[nx][ny] | getOpposite(directions[key]));
-                    carve_passage(grid, nx, ny);
+                    recursive_backtracking(grid, nx, ny);
                 }
             }
         }
@@ -62,6 +63,7 @@ function generateSquareMaze(dimension) {
         return grid;
     }
 
+    // transform maze into a specific grid matrix for mace coefficient computation
     function deadend_algorithm(grid){
         var grid_org = grid;
         var deadends = [];
@@ -158,8 +160,7 @@ function generateSquareMaze(dimension) {
         }
     }
 
-
-            // Initialize the field.
+    // Initialize the field.
     var field = new Array(dimension);
     field.dimension = dimension;
     for(var i = 0; i < dimension; i++) {
@@ -169,9 +170,10 @@ function generateSquareMaze(dimension) {
         }
     }
     field[1][1] = false;
-    field = carve_passage(field, 1, 1);
-    console.log(field);
+    // generate maze
+    field = recursive_backtracking(field, 1, 1);
 
+    // initialize one grid for each possible exit
     var grid1 = new Array(dimension);
     var grid2 = new Array(dimension);
     var grid3 = new Array(dimension);
@@ -212,6 +214,7 @@ function generateSquareMaze(dimension) {
     console.log('grid2: '+grid2);
     console.log('grid3: '+grid3);
 
+    // compute for each of these grids mace coefficient
     var mc1 = computeMazeCoefficient(grid1, dimension, exit1);
     var mc2 = computeMazeCoefficient(grid2, dimension, exit2);
     var mc3 = computeMazeCoefficient(grid3, dimension, exit3);
@@ -219,6 +222,7 @@ function generateSquareMaze(dimension) {
     console.log('mc2: '+mc2);
     console.log('mc3: '+mc3);
 
+    // set exit according to largest mace coefficient
     if (mc1>mc2)
         if (mc1>mc3) {
             exit = exit1;
@@ -284,12 +288,12 @@ function computeMazeCoefficient(maze, dimension, exit) {
         }
 
         mazeCoeff = (5*lengthShortestWay + lengthDeadends * quantDeadEnds/deadEndDepth) * (1 + crossRoadsShortestWay - badSquares);
-        console.log('lengthShortestWay: '+lengthShortestWay);
-        console.log('lengthDeadends: '+lengthDeadends);
-        console.log('quantDeadEnds: '+quantDeadEnds);
-        console.log('deadEndDepth: '+deadEndDepth);
-        console.log('crossRoadsShortestWay: '+crossRoadsShortestWay);
-        console.log('badSquares: '+badSquares);
+        //console.log('lengthShortestWay: '+lengthShortestWay);
+        //console.log('lengthDeadends: '+lengthDeadends);
+        //console.log('quantDeadEnds: '+quantDeadEnds);
+        //console.log('deadEndDepth: '+deadEndDepth);
+        //console.log('crossRoadsShortestWay: '+crossRoadsShortestWay);
+        //console.log('badSquares: '+badSquares);
         return (mazeCoeff);
     } else {
         console.log("In method computeMazeCoeffiecent either the paramater maze and/or dimension is null/undefined!")
