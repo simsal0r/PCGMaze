@@ -48,10 +48,5 @@ The survey can be found (and altered) on [Google forms](https://docs.google.com/
 The survey used 5 different mazes which are hardcoded in both settings.
 You can find those mazes in the maze.js file (in the rootfolder) in line 305.
 To enable the survey mode in our game, you have to set the following line (line 11) in the gameloop.js to **true**
-<addr>var IN_SURVEY_MODE = false;<addr>
-- Survey is survey results. google umfrage mit rein
-- libraries externe
-- gameelements nur teilweise ausgelagert
-- für umfrage dings. gameloop.js zeile 11
-- pcg weitere maze algrotihm (wird momentan nicht benutzt)
-- index.html + happy index -> game.html
+
+> var IN_SURVEY_MODE = false;
