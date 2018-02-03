@@ -19,11 +19,11 @@ The Maze.js contains the algorithm used to create the maze starting at line 16.
 Moreover it contains the computation of the maze coefficient starting at line 176.
 It creates three copies of the initial created maze and places an exit in one copy at top left corner, an exit on the top right corner in the other copy and an exit on the bottom left corner in the last copy. Afterwards a value of the mace coefficient for each of these mazes will be created. Currently we apply a naive selection method where we just choose the mace with the highest value of the mace coefficient to be used in the game.
 The mace coefficient currently involves the following parameters (line 290)
-** length of the direct way out
-** length of all deadends
-** number of deadends
-** depth of deadends
-** crossroads on the direct way out
+* length of the direct way out
+* length of all deadends
+* number of deadends
+* depth of deadends
+* crossroads on the direct way out
 Besides it contains the hardcoded mazes used in the survey starting at line 305
 
 * Assets Folder
