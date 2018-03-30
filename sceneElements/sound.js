@@ -1,17 +1,17 @@
 function playBackground() {
-    var backgroundSound = new Audio(getAtmosphere(localStorage.getItem("atmosphere"), "background_music"));
+    var backgroundSound = new Audio(getAtmosphere(localStorage.getItem("atmosphere"),localStorage.getItem("sound"), "background_music"));
     backgroundSound.volume = 0.1;
     backgroundSound.loop = true;
     backgroundSound.play();
 }
 function playEndSound() {
-    var EndSound = new Audio(getAtmosphere(localStorage.getItem("atmosphere"), "end_sound"));
+    var EndSound = new Audio(getAtmosphere(localStorage.getItem("atmosphere"),localStorage.getItem("sound"), "end_sound"));
     EndSound.volume = 0.5;
     EndSound.play();
 }
 
 function playDeathSound() {
-    var DeathSound = new Audio(getAtmosphere(localStorage.getItem("atmosphere"), "death_sound"));
+    var DeathSound = new Audio(getAtmosphere(localStorage.getItem("atmosphere"),localStorage.getItem("sound"), "death_sound"));
     DeathSound.volume = 0.1;
     DeathSound.play();
 }
@@ -38,7 +38,7 @@ function playScare() {
 }
 
 function playSteps() {
-    var stepSound = new Audio(getAtmosphere(localStorage.getItem("atmosphere"), "step_sound"));
+    var stepSound = new Audio(getAtmosphere(localStorage.getItem("atmosphere"),localStorage.getItem("sound"), "step_sound"));
     stepSound.volume=0.9;
     stepSound.play();
     return stepSound;

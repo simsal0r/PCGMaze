@@ -7,7 +7,6 @@ var confirmationNeeded = false;
 var breathe = null;
 
 
-
 var IN_SURVEY_MODE = false;
 
 
@@ -34,21 +33,34 @@ function setNextLevel(levelSuccessful) {
     if(IN_SURVEY_MODE) {
         switch(mazeDimension){
             case 13: mazeDimension = 15; break;
-            case 15: mazeDimension = 17; break;
+            /*case 15: mazeDimension = 17; break;
             case 17: mazeDimension = 21; break;
             case 21: mazeDimension = 27; break;
-            case 27: mazeDimension = 29; break;
+            case 27: mazeDimension = 29; break;*/
             default: mazeDimension += 2; break;
         }
         console.log(mazeDimension);
-        if(mazeDimension == 29) {
-            if (localStorage.getItem("atmosphere") == "happy") {
+        if(mazeDimension == 15) {
+            if (localStorage.getItem("atmosphere") == "happy" && localStorage.getItem("sound") == "happy") {
                 writeToTextField("Thanks for Playing!", "red",10);
             }
             else {
-                localStorage.setItem("atmosphere", "happy");
-                localStorage.setItem("startDifficulty", 13);
-                window.location = "game.html";
+                if (localStorage.getItem("atmosphere") == "horror" && localStorage.getItem("sound") == "horror") {
+                    localStorage.setItem("atmosphere", "happy");
+                    localStorage.setItem("sound", "horror");
+                    localStorage.setItem("startDifficulty", 13);
+                    window.location = "game.html";
+                } else if (localStorage.getItem("atmosphere") == "happy" && localStorage.getItem("sound") == "horror") {
+                    localStorage.setItem("atmosphere", "horror");
+                    localStorage.setItem("sound", "happy");
+                    localStorage.setItem("startDifficulty", 13);
+                    window.location = "game.html";
+                } else if (localStorage.getItem("atmosphere") == "horror" && localStorage.getItem("sound") == "happy") {
+                    localStorage.setItem("atmosphere", "happy");
+                    localStorage.setItem("sound", "happy");
+                    localStorage.setItem("startDifficulty", 13);
+                    window.location = "game.html";
+                }
             }
         }
     }
@@ -81,10 +93,10 @@ function setLevelDisplay() {
     if(IN_SURVEY_MODE){
         switch(mazeDimension) {
             case 13: level = 1; break;
-            case 15: level = 2; break;
+            /*case 15: level = 2; break;
             case 17: level = 3; break;
             case 21: level = 4; break;
-            case 27: level = 5; break;
+            case 27: level = 5; break;*/
             default: level = Math.floor((mazeDimension-1)/2 - 5); break;
         }
     }
@@ -144,7 +156,7 @@ function gameLoop() {
         }
         else if (!gameEnded) {
             checkForChests();
-            if (localStorage.getItem("atmosphere") == "horror") {
+            if (localStorage.getItem("sound") == "horror") {
                 backgroundNoise();
             }
         }

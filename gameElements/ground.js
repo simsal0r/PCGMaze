@@ -1,5 +1,5 @@
 var groundMesh = undefined;
-var groundTexture =  getAtmosphere(localStorage.getItem("atmosphere"), "ground_texture");
+var groundTexture =  getAtmosphere(localStorage.getItem("atmosphere"),localStorage.getItem("sound"), "ground_texture");
 
 function createGround() {
     g = new THREE.PlaneGeometry(mazeDimension*10, mazeDimension*10, mazeDimension, mazeDimension);
