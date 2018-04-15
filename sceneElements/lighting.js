@@ -1,7 +1,7 @@
 var light = undefined;
 var LIGHT_HEIGHT = 1.3;
 var LIGHT_MIN_HEIGHT = 3;
-var LIGHT_MAX_INTENSITY = getAtmosphere(localStorage.getItem("atmosphere"), "light_intensity");
+var LIGHT_MAX_INTENSITY = getAtmosphere(localStorage.getItem("atmosphere"), localStorage.getItem("sound"), "light_intensity");
 var torch = undefined;
 var torch_flickering = true;
 var TORCH_MIN_DISTANCE = 2.5;

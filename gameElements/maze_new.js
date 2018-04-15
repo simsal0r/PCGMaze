@@ -1,7 +1,7 @@
 var maze = undefined;
 var mazeMesh = undefined;
 var mazeDimension = 11;
-var mazeTexture   = getAtmosphere(localStorage.getItem("atmosphere"), "wall_texture");
+var mazeTexture   = getAtmosphere(localStorage.getItem("atmosphere"),localStorage.getItem("sound"), "wall_texture");
 
 function createMazeBody() {
     var bodyDef = new b2BodyDef();

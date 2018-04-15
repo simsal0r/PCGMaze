@@ -126,11 +126,9 @@ input[type=submit] {
 }
 
 #happy-option {
-    overflow:hidden;
     text-decoration: underline;
 }
-#happy-sound {
-    overflow:hidden;
+#horror-sound {
     text-decoration: underline;
 }
 

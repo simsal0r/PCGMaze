@@ -1,8 +1,8 @@
 var head = undefined;
 var headMesh = undefined;
 var headRadius = 0.25;
-var headTexture = getAtmosphere(localStorage.getItem("atmosphere"), "head_texture");
-var playerTexture = getAtmosphere(localStorage.getItem("atmosphere"), "player_texture");
+var headTexture = getAtmosphere(localStorage.getItem("atmosphere"),localStorage.getItem("sound"), "head_texture");
+var playerTexture = getAtmosphere(localStorage.getItem("atmosphere"),localStorage.getItem("sound"), "player_texture");
 var player = undefined;
 var playerMesh = undefined;
 var leftHandMesh = undefined;

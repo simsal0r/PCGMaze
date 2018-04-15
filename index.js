@@ -1,5 +1,6 @@
-function handleSubmit(startDifficulty, atmosphere) {
+function handleSubmit(startDifficulty, atmosphere, sound) {
     localStorage.setItem("atmosphere", atmosphere);
+    localStorage.setItem("sound", sound);
     localStorage.setItem("startDifficulty", startDifficulty);
     window.location = "game.html";
 }
