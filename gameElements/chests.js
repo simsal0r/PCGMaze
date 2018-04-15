@@ -74,10 +74,12 @@ function handleChest(mazeX, mazeY) {
     chests[mazeX][mazeY] = null;
     chestMesh = generateChestMesh(maze);
     scene.add(chestMesh);
+    console.log("CHEST TYPE: " + typeOfChest);
     switch(typeOfChest){
         case "zoom_out": chest_zoomOut(); break;
         case "move_to_start": chest_moveToStart(); break;
         case "jump_scare": chest_jumpScare(); break;
+        case "jump_happy": chest_jumpHappy(); break;
         case "rotate_maze": chest_rotateMaze(); break;
         case "light_darker": chest_lightDarker(); break;
         case "increase_time": chest_increaseTime(); break;
@@ -185,6 +187,39 @@ function chest_jumpScare() {
         }
     }
 }
+
+function chest_jumpHappy() {
+    var d = Math.random();
+    if (d < 0.25)
+    {
+        $('#jump_happy2').show();
+        setTimeout(function(){
+            $('#jump_happy2').hide();
+        }, 8000);
+    }
+    else {
+        if(d<0.5) {
+            $('#jump_happy').show();
+            setTimeout(function () {
+                $('#jump_happy').hide();
+            }, 2500);
+        }
+        else{
+            if(d<0.75) {
+                $('#jump_happy3').show();
+                setTimeout(function () {
+                    $('#jump_happy3').hide();
+                }, 3000);
+            }else {
+                $('#jump_happy4').show();
+                setTimeout(function () {
+                    $('#jump_happy4').hide();
+                }, 4000);
+            }
+        }
+    }
+}
+
 
 function chest_randomTeleportation(){
     writeToTextField("Opened random teleportation chest!");

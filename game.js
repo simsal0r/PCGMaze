@@ -67,6 +67,10 @@ $(document).ready(function() {
     $('#jump_scare2').hide();
     $('#jump_scare3').hide();
     $('#jump_scare4').hide();
+    $('#jump_happy').hide();
+    $('#jump_happy2').hide();
+    $('#jump_happy3').hide();
+    $('#jump_happy4').hide();
     KeyboardJS.bind.key('i', function(){$('#instructions').show()},
         function(){$('#instructions').hide()});
 
