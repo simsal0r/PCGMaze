@@ -1,7 +1,7 @@
 function playBackground() {
     var backgroundSound = new Audio(getAtmosphere(localStorage.getItem("atmosphere"),localStorage.getItem("sound"), "background_music"));
     backgroundSound.volume = 0.1;
-    backgroundSound.loop = true;
+    backgroundSound.loop = false;
     backgroundSound.play();
 }
 function playEndSound() {
