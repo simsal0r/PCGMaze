@@ -81,11 +81,34 @@ $(document).ready(function() {
 
     // Start the game loop.
     requestAnimationFrame(gameLoop);
+
+    // Get the modal
+    var modal = document.getElementById('myModal');
+
+// Get the button that opens the modal
+    var btn = document.getElementById("myBtn");
+
+// When the user clicks on the button, open the modal
+    btn.onclick = function() {
+        $('#displayTime').html('Time consumed: ' + getTimeElapsed() + '<//br>Chests opened: ' + getChestsOpened());
+        modal.style.display = "block";
+    }
+
+
 })
 
 function confirmLevel() {
     confirmationNeeded = false;
     $('#confirmationPopup').hide();
 }
+
+var nameValue;
+
+function handleData() {
+    nameValue = document.getElementById("uniqueID").value;
+    console.log(nameValue);
+    $('#confirmationPopup').show();
+}
+
 
 

@@ -13,6 +13,14 @@ function setTimerDuration() {
     timer_duration = Math.floor(0.68 * Math.pow(mazeDimension, 1.6));
 }
 
+function getTimerDuration(){
+    return timer_duration;
+}
+
+function getTimeElapsed(){
+    return max_time - timer_duration;
+}
+
 function startTimer() {
     max_time = timer_duration;
     $('#timerText').text(timeToString(timer_duration));

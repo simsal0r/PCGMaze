@@ -8,7 +8,7 @@ var breathe = null;
 
 
 
-var IN_SURVEY_MODE = false;
+var IN_SURVEY_MODE = true;
 
 
 
@@ -165,7 +165,14 @@ function gameLoop() {
                 gameState = 'initialize'
             }
             else{
-                $('#confirmationPopup').show();
+               // $('#confirmationPopup').show();
+               // writeToTextField(getTimeElapsed(), "red", 2);
+                // Get the modal
+                $('#displayTime').html('Time consumed: ' + getTimeElapsed());
+                var modal = document.getElementById('myModal');
+                modal.style.display = "block";
+
+
             }
         }
     }

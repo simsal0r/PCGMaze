@@ -3,7 +3,7 @@ function getAtmosphere(atmosphere, item) {
         switch(item) {
             case "font-family": return "scaryFont"; break;
             case "chest_items": return ["zoom_out", "jump_scare", "move_to_start", "rotate_maze", "light_darker", "increase_time", "decrease_time", "random_teleportation"]; break;
-            case "chest_probabilities": return [0.3, 0.07,          0.03,           0.13,           0.07,           0.15,           0.15,           0.1]; break;
+            case "chest_probabilities": return [0.0, 0.0,          0.00,           0,           0.0,           1,           0,           0]; break;
             case "chest_texture": return THREE.ImageUtils.loadTexture('./assets/chest.jpg'); break;
             case "head_texture": return THREE.ImageUtils.loadTexture('./assets/hair.jpg'); break;
             case "player_texture": return THREE.ImageUtils.loadTexture('./assets/cloak.jpg'); break;

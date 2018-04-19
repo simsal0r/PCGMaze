@@ -304,8 +304,8 @@ function computeMazeCoefficient(maze, dimension, exit) {
 
 function getHardcodedMaze(dimension) {
     var mazelv1 = [];
-    mazelv1[0] = [true, true, true, true, true, true, true, true, true, true, true, false, true];
-    mazelv1[1] = [true, false, true, false, false, false, false, false, false, false, false, false, true];
+    mazelv1[0] = [true, false, true, true, true, true, true, true, true, true, true, false, true];
+    mazelv1[1] = [false, false, true, false, false, false, false, false, false, false, false, false, true];
     mazelv1[2] = [true, false, true, true, true, true, true, true, true, false, true, true, true];
     mazelv1[3] = [true, false, true, false, false, false, false, false, true, false, false, false, true];
     mazelv1[4] =  [true, false, true, false, true, true, true, false, true, false, true, false, true];
