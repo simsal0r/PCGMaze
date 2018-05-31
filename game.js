@@ -54,11 +54,14 @@ jQuery.fn.center = function () {
 }
 
 
+
+
 $(document).ready(function() {
-    mazeDimension = parseInt(localStorage.getItem("startDifficulty"));
     document.body.style.fontFamily = getAtmosphere(localStorage.getItem("atmosphere"), localStorage.getItem("sound"), "font-family");
     console.log(localStorage.getItem("atmosphere"));
     console.log(localStorage.getItem("sound"));
+    console.log(localStorage.getItem("gameC"));
+    console.log(localStorage.getItem("gameS"));
     // Prepare the instructions.
     $('#instructions').center();
     $('#instructions').hide();
@@ -85,9 +88,11 @@ $(document).ready(function() {
     // Set the initial game state.
     gameState = 'initialize';
 
+
     // Start the game loop.
-    requestAnimationFrame(gameLoop);
+    requestAnimationFrame(gameLoop2); //todo: allow both
 })
+
 
 function confirmLevel() {
     confirmationNeeded = false;

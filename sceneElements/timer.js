@@ -13,6 +13,11 @@ function setTimerDuration() {
     timer_duration = Math.floor(0.68 * Math.pow(mazeDimension, 1.6));
 }
 
+function setTimerDurationSeconds(){
+   // timer_duration = 60;
+    timer_duration = Math.floor(0.68 * Math.pow(mazeDimension, 1.6));
+}
+
 function startTimer() {
     max_time = timer_duration;
     $('#timerText').text(timeToString(timer_duration));

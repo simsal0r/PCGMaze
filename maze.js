@@ -2,6 +2,42 @@ function getMaze() {
     return IN_SURVEY_MODE ? getHardcodedMaze(mazeDimension) : generateSquareMaze(mazeDimension);
 }
 
+function getExpGrid(mazeID){
+
+    switch(mazeID) {
+        case 1:
+            var mazelv1 = [];
+            mazelv1[0] = [true, true, true, true, true, true, true, true, true, true, true, false, true];
+            mazelv1[1] = [true, false, true, false, false, false, false, false, false, false, false, false, true];
+            mazelv1[2] = [true, false, true, true, true, true, true, true, true, false, true, true, true];
+            mazelv1[3] = [true, false, true, false, false, false, false, false, true, false, false, false, true];
+            mazelv1[4] =  [true, false, true, false, true, true, true, false, true, false, true, false, true];
+            mazelv1[5] =  [true, false, true, false, false, false, true, false, true, false, true, false, true];
+            mazelv1[6] = [true, false, true, true, true, false, true, false, true, true, true, false, true];
+            mazelv1[7] = [true, false, true, false, false, false, true, false, false, false, false, false, true];
+            mazelv1[8] = [true, false, true, false, true, true, true, true, true, true, true, false, true];
+            mazelv1[9] = [true, false, false, false, true, false, false, false, false, false, true, false, true];
+            mazelv1[10] = [true, true, true, true, true, false, true, true, true, false, true, false, true];
+            mazelv1[11] = [true, false, false, false, false, false, false, false, true, false, false, false, true];
+            mazelv1[12] = [true, true, true, true, true, true, true, true, true, true, true, true, true];
+            mazelv1.dimension = 13;
+
+            return mazelv1;
+            break;
+        case 2:
+
+            break;
+        case 3:
+
+            break;
+        case 4:
+
+            break;
+        default:
+            //error
+    }
+}
+
 function generateSquareMaze(dimension) {
     function shuffleArray(array) {
         for (var i = array.length - 1; i > 0; i--) {

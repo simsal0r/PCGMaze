@@ -5,6 +5,29 @@ var chestTexture = getAtmosphere(localStorage.getItem("atmosphere"),localStorage
 var chests = undefined;
 var chestMesh = undefined;
 
+function createExpChests(id,dimension){
+    var chests = new Array(dimension);
+    for (var i = 0; i < dimension; i++) {
+        chests[i] = new Array(dimension);
+    }
+    switch(id) {
+        case 1:
+            chests[2][1] = getRandomChestItem();
+            return chests;
+            break;
+        case 2:
+
+            break;
+        case 3:
+
+            break;
+        case 4:
+
+            break;
+        default:
+        //error
+    }
+}
 function createChests(maze) {
     var chests = new Array(maze.dimension);
     for (var i = 0; i < maze.dimension; i++) {
