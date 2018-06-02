@@ -79,7 +79,7 @@ function generateSquareMaze(dimension) {
                 }
             }
         }
-        console.log(deadends);
+        //console.log(deadends);
         deadends.forEach(function(x){
             var dx = x[0];
             var dy = x[1];
@@ -201,7 +201,7 @@ function generateSquareMaze(dimension) {
     grid1[dimension-1][dimension-2] = 0;
     var exit1 = [dimension-1, dimension-2];
     grid1 = deadend_algorithm(grid1);
-    console.log('grid1: '+grid1);
+    //console.log('grid1: '+grid1);
     //Generate second
     grid2[dimension-1][1] = 0;
     var exit2 = [dimension-1, 1];
@@ -211,16 +211,16 @@ function generateSquareMaze(dimension) {
     var exit3 = [dimension-2, 0];
     grid3 = deadend_algorithm(grid3);
 
-    console.log('grid2: '+grid2);
-    console.log('grid3: '+grid3);
+    //console.log('grid2: '+grid2);
+    //console.log('grid3: '+grid3);
 
     // compute for each of these grids mace coefficient
     var mc1 = computeMazeCoefficient(grid1, dimension, exit1);
     var mc2 = computeMazeCoefficient(grid2, dimension, exit2);
     var mc3 = computeMazeCoefficient(grid3, dimension, exit3);
-    console.log('mc1: '+mc1);
-    console.log('mc2: '+mc2);
-    console.log('mc3: '+mc3);
+   // console.log('mc1: '+mc1);
+   // console.log('mc2: '+mc2);
+   // console.log('mc3: '+mc3);
 
     // set exit according to largest mace coefficient
     if (mc1>mc2)
@@ -296,7 +296,7 @@ function computeMazeCoefficient(maze, dimension, exit) {
         //console.log('badSquares: '+badSquares);
         return (mazeCoeff);
     } else {
-        console.log("In method computeMazeCoeffiecent either the paramater maze and/or dimension is null/undefined!")
+        //console.log("In method computeMazeCoeffiecent either the paramater maze and/or dimension is null/undefined!")
     }
 }
 
@@ -412,8 +412,8 @@ function getHardcodedMaze(dimension) {
     mazelv5.dimension = 27;
 
     if(dimension == 13) {
-        console.log(generateSquareMaze(dimension));
-        console.log(mazelv1);
+        //console.log(generateSquareMaze(dimension));
+        //console.log(mazelv1);
     }
     switch(dimension) {
         case 13: return mazelv1; break;

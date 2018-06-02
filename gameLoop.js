@@ -167,12 +167,7 @@ function gameLoop() {
             else{
                // $('#confirmationPopup').show();
                // writeToTextField(getTimeElapsed(), "red", 2);
-                // Get the modal
-                $('#displayTime').html('Time consumed: ' + getTimeElapsed());
-                var modal = document.getElementById('myModal');
-                modal.style.display = "block";
-
-
+                showModal();
             }
         }
     }

@@ -154,6 +154,8 @@ body {
 
 /* The Modal (background) */
 .modal {
+    font-family: "Arial", Arial, sans-serif;
+    font-size: 0.875em; /* 14px/16=0.875em */
     display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
     z-index: 1; /* Sit on top */
@@ -168,24 +170,11 @@ body {
 
 /* Modal Content/Box */
 .modal-content {
+    font-family: "Arial", Arial, sans-serif;
+    font-size: 0.875em; /* 14px/16=0.875em */
     background-color: #fefefe;
     margin: 15% auto; /* 15% from the top and centered */
     padding: 20px;
     border: 1px solid #888;
     width: 80%; /* Could be more or less, depending on screen size */
-}
-
-/* The Close Button */
-.close {
-    color: #aaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-}
-
-.close:hover,
-.close:focus {
-    color: black;
-    text-decoration: none;
-    cursor: pointer;
 }

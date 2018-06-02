@@ -29,8 +29,8 @@
     </head>
     <body>
 
-    <!-- Trigger/Open The Modal -->
-    <button id="myBtn">Open Modal</button>
+    <!-- Trigger/Open The Modal
+    <button id="myBtn">Open Modal</button>-->
 
 
     <!-- The Modal -->
@@ -38,16 +38,24 @@
 
         <!-- Modal content -->
         <div class="modal-content">
-            <span class="close">&times;</span>
-            <p>Some text in the Modal..</p>
-            <div id="displayTime">Hallo</div>
-            <form id="frm1">
-                First name: <input type="text" name="fname"><br>
-                Last name: <input type="text" name="lname"><br><br>
-                <input type="button" onclick="handleData()" value="Submit">
+            <p>Please compare this maze to the maze before.</p>
+            <div id="displayTime">Hallo</div><br>
+            Did you enjoy this maze more or less than the maze before?<br><br>
+            <form id="radio1">
+                <input type="radio" name="fun" value="morefun"> More fun
+                <input type="radio" checked="checked" name="fun" value="same"> Same
+                <input type="radio" name="fun" value="lessfun"> Less fun
             </form>
-            <input type="text" name="name" id="uniqueID" value="value" />
-            <input type="button" onclick="handleData()" value="Test">
+            <br>
+            Do you think the last maze was (slightly) more difficult than the maze before?<br><br>
+            <form id="radio2">
+                <input type="radio" name="difficulty" value="morediff"> More difficult
+                <input type="radio" checked="checked" name="difficulty" value="same"> Same
+                <input type="radio" name="difficulty" value="lessdiff"> Less difficult
+            </form>
+            <br>
+            <input type="button" onclick="handleData()" id="formData" value="Submit & Proceed">
+
         </div>
 
     </div>

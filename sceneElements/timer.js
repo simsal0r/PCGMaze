@@ -1,4 +1,4 @@
-var timer_duration = 60;
+var timer_duration = 20;
 var max_time;
 var timer = undefined;
 var stepsPlayed = false;
@@ -10,7 +10,7 @@ function isTimeout() {
 }
 
 function setTimerDuration() {
-    timer_duration = Math.floor(0.68 * Math.pow(mazeDimension, 1.6));
+    timer_duration = 2;
 }
 
 function getTimerDuration(){
@@ -68,7 +68,7 @@ function timeToSpawnEnemy()
     {
         if (timer_duration < max_time/3.5) // max_time - timer_duration > 7  appears after 1/4 of time
         {
-            console.log(max_time + " " + timer_duration)
+            //console.log(max_time + " " + timer_duration)
             //debugger;
             spawned = true;
             return true;
