@@ -175,7 +175,7 @@ function endLevel(levelSuccessful) {
     setTimeout(function(){
         gameState = 'fade out';
         setNextLevel();
-    }, 1000);
+    }, 2500);
 }
 
 function setNextLevel() {

@@ -28,9 +28,12 @@ body {
 }
 
 #cookies {
-    position:absolute;
-    top: 20%;
-    left: 20%;
+    height: 90%;
+    width: 100%;
+    display: flex;
+    position: fixed;
+    align-items: center;
+    justify-content: center;
 }
 
 #jump_scare {
@@ -128,6 +131,7 @@ body {
     justify-content: center;
     color:white;
     font-size:3em;
+    background-color: rgba(111, 111, 111, 0.18);
 }
 
 #textField {
