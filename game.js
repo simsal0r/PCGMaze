@@ -74,6 +74,7 @@ $(document).ready(function() {
     $('#jump_happy2').hide();
     $('#jump_happy3').hide();
     $('#jump_happy4').hide();
+    $('#cookies').hide();
     KeyboardJS.bind.key('i', function(){$('#instructions').show()},
         function(){$('#instructions').hide()});
 

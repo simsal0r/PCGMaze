@@ -27,6 +27,12 @@ body {
     border: 2px solid white;
 }
 
+#cookies {
+    position:absolute;
+    top: 20%;
+    left: 20%;
+}
+
 #jump_scare {
     height:100vh;
     width:100vw;

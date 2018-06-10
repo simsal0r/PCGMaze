@@ -1,4 +1,4 @@
-var timer_duration = 60;
+var timer_duration = 5;
 var max_time;
 var timer = undefined;
 var stepsPlayed = false;
@@ -10,7 +10,8 @@ function isTimeout() {
 }
 
 function setTimerDuration() {
-    timer_duration = Math.floor(0.68 * Math.pow(mazeDimension, 1.6));
+    //timer_duration = Math.floor(0.68 * Math.pow(mazeDimension, 1.6));
+    timer_duration = 10;
 }
 
 function setTimerDurationSeconds(){

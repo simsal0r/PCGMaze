@@ -22,7 +22,7 @@ function playScream() {
 }
 
 function playSlam() {
-    var slamSound = new Audio("assets/slam.mp3");
+    var slamSound = new Audio(getAtmosphere(localStorage.getItem("atmosphere"),localStorage.getItem("sound"), "slam_sound"));
     slamSound.play();
 }
 
@@ -52,11 +52,11 @@ function stopSteps() {
 }
 
 function playGong(){
-    var stepG = new Audio("assets/gong.wav");
+    var stepG = new Audio(getAtmosphere(localStorage.getItem("atmosphere"),localStorage.getItem("sound"), "gong_sound"));
     stepG.play();
 }
 function playBreathe(){
-    var Breathe = new Audio("assets/breathe.mp3");
+    var Breathe = new Audio(getAtmosphere(localStorage.getItem("atmosphere"),localStorage.getItem("sound"), "breath_sound"));
     Breathe.volume=0.12;
     Breathe.play();
     return Breathe;

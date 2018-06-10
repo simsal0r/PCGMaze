@@ -1,12 +1,23 @@
 var headRadius = 0.25;
 var EnemyTexture = getAtmosphere(localStorage.getItem("atmosphere"),localStorage.getItem("sound"), "enemy_texture");
+var enemyHeadTexture = getAtmosphere(localStorage.getItem("atmosphere"),localStorage.getItem("sound"), "head_texture");
 var Enemy = undefined;
 var EnemyMesh = undefined;
+var HeadMesh = undefined;
 var leftHandMeshEnemy = undefined;
 var rightHandMeshEnemy = undefined;
+var headMeshG = undefined;
 
 function spawnEnemy() {
-    writeToTextField("He is coming for you...", "red");
+    if (localStorage.getItem("atmosphere")=="horror")
+    {
+        writeToTextField("He is coming for you...", "red");
+    }
+    else
+    {
+        writeToTextField("She is coming for you...", "red", 4);
+    }
+
     createEnemyBody(1,1);
     generateEnemyMesh(1,1);
     scene.add(EnemyMesh);
@@ -97,16 +108,25 @@ function generateEnemyMesh(posX, posY) {
     var g = new THREE.CubeGeometry(2*headRadius,headRadius,1-(headRadius*2),1,1,1);
     var leftHandg = new THREE.SphereGeometry(0.25*headRadius,32,16);
     var rightHandg = new THREE.SphereGeometry(0.25*headRadius,32,16);
+    var headg = new THREE.SphereGeometry(0.5*headRadius,32,16);
     leftHandMeshEnemy = new THREE.Mesh(leftHandg);
     rightHandMeshEnemy = new THREE.Mesh(rightHandg);
+    headMeshG = new THREE.Mesh(headg);
     leftHandMeshEnemy.position.x = -headRadius;
     leftHandMeshEnemy.position.y = 0.5*headRadius;
     rightHandMeshEnemy.position.x = headRadius;
     rightHandMeshEnemy.position.y = 0.5*headRadius;
+    headMeshG.position.x = 0;
+    headMeshG.position.y = 0;
+    headMeshG.position.z = 0.25;
     THREE.GeometryUtils.merge(g, leftHandMeshEnemy);
     THREE.GeometryUtils.merge(g, rightHandMeshEnemy);
+    THREE.GeometryUtils.merge(g, headMeshG);
     var material = new THREE.MeshPhongMaterial({map:EnemyTexture});
+   // var material2 = new THREE.MeshPhongMaterial({map:enemyHeadTexture});
+   // HeadMesh = new THREE.Mesh(headMeshG, material2);
     EnemyMesh = new THREE.Mesh(g, material);
+    THREE.GeometryUtils.merge(g, headMeshG);
     EnemyMesh.position.set(posX, posY, (1-(headRadius*2))/2);
 }
 

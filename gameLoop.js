@@ -82,7 +82,7 @@ function gameLoop2() {
         maze = getGameElements(gameCourse,gameStep).mazeGrid;
         chests = getGameElements(gameCourse,gameStep).chests;
         setTimerDuration();
-        //setTimerDurationSeconds(); //todo: Why does this not work?
+        //setTimerDurationSeconds(); //todo: Why does this not work? -> maybe just cache
         spawned = false;
         createPhysicsWorld();
         createRenderWorld();
@@ -147,7 +147,7 @@ function gameLoop2() {
                 gameState = 'initialize'
             }
             else{
-                $('#confirmationPopup').show();
+               // $('#confirmationPopup').show();
             }
         }
     }
@@ -199,9 +199,22 @@ function endGame_timeout() {
 
 function endGame_caught() {
     endLevel(false);
-    writeToTextField("YOU DIED", "red", 2);
+    if (localStorage.getItem("atmosphere")=="horror")
+    {
+        writeToTextField("YOU DIED", "red", 2);
+
+    }
+    else
+    {
+        writeToTextField("Too much cookies. You can't move anymore!", "red", 5);
+        $('#cookies').show();
+        setTimeout(function () {
+            $('#cookies').hide();
+        }, 2500);
+    }
     playSlam();
     playGong();
+
 }
 
 function setLevelDisplay() {
@@ -336,7 +349,7 @@ function createRenderWorld() {
 
 function updatePhysicsWorld() {
     movePlayer();
-    if(localStorage.getItem("atmosphere") == "horror" && spawned && !stopit()) {
+    if(spawned && !stopit()) {
         var enemyPath = findNextStep();
         moveEnemyToCoordinate(enemyPath[0], enemyPath[1]);
     }
@@ -345,7 +358,7 @@ function updatePhysicsWorld() {
 
 function updateRenderWorld() {
     updatePlayerMesh();
-    if(localStorage.getItem("atmosphere") == "horror" && spawned) {
+    if(spawned) {
         updateEnemyMesh();
     }
     updateCamera();

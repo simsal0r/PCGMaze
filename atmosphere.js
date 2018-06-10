@@ -15,6 +15,9 @@ function getAtmosphere(atmosphere, sound, item) {
             case "step_sound": return "assets/10-2 closeEnd.wav"; break;
             case "light_intensity": return 0.5; break;
             case "enemy_texture": return THREE.ImageUtils.loadTexture('./assets/ghost.jpg');
+            case "breath_sound": return "assets/breathe.mp3"; break;
+            case "gong_sound": return "assets/gong.wav"; break;
+            case "slam_sound": return "assets/slam.mp3"; break;
         }
     }
     else if(atmosphere == "happy" && sound == "happy") {
@@ -29,9 +32,13 @@ function getAtmosphere(atmosphere, sound, item) {
             case "wall_texture": return THREE.ImageUtils.loadTexture('./assets/flowerHedge.jpg'); break;
             case "background_music": return "assets/payday.mp3"; break;
             case "light_intensity": return 1; break;
+            case "enemy_texture": return THREE.ImageUtils.loadTexture('./assets/grandma.jpg');
             case "death_sound": return "assets/jingle_fail.wav"; break;
             case "end_sound": return "assets/shipsbell.wav"; break;
             case "step_sound": return "assets/piano1.wav"; break;
+            case "breath_sound": return "assets/breathe.mp3"; break;
+            case "gong_sound": return "assets/gong.wav"; break;
+            case "slam_sound": return "assets/slam.mp3"; break;
         }
     }
     else if(atmosphere == "happy" && sound == "horror") {
@@ -44,10 +51,14 @@ function getAtmosphere(atmosphere, sound, item) {
             case "ground_texture": return THREE.ImageUtils.loadTexture('./assets/ground1.jpg'); break;
             case "wall_texture": return THREE.ImageUtils.loadTexture('./assets/flowerHedge.jpg'); break;
             case "light_intensity": return 1; break;
+            case "enemy_texture": return THREE.ImageUtils.loadTexture('./assets/grandma.jpg');
             case "background_music": return "assets/background.mp3"; break;
             case "death_sound": return "assets/gong.wav"; break;
             case "end_sound": return "assets/ghastlyboom.mp3"; break;
             case "step_sound": return "assets/10-2 closeEnd.wav"; break;
+            case "breath_sound": return "assets/breathe.mp3"; break;
+            case "gong_sound": return "assets/gong.wav"; break;
+            case "slam_sound": return "assets/slam.mp3"; break;
         }
     }
     else if(atmosphere == "horror" && sound == "happy") {
@@ -66,6 +77,10 @@ function getAtmosphere(atmosphere, sound, item) {
             case "step_sound": return "assets/piano1.wav"; break;
             case "light_intensity": return 0.5; break;
             case "enemy_texture": return THREE.ImageUtils.loadTexture('./assets/ghost.jpg');
+            case "breath_sound": return "assets/breathe.mp3"; break;
+            case "gong_sound": return "assets/gong.wav"; break;
+            case "slam_sound": return "assets/slam.mp3"; break;
+
         }
     }
 }
