@@ -10,7 +10,7 @@ function isTimeout() {
 }
 
 function setTimerDuration() {
-    timer_duration = 2;
+    timer_duration = Math.floor(0.68 * Math.pow(mazeDimension, 1.6));
 }
 
 function getTimerDuration(){
