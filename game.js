@@ -131,10 +131,9 @@ function handleData() {
             break;
         }
     }
-
-
     modal.style.display = "none";
-    //$('#confirmationPopup').show();
+    //Start the game again
+    window.location = "game.html";
 }
 
 

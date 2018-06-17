@@ -98,5 +98,7 @@ function setSetting(gameCourse,gameStep){
             //error
             return null;
     }
-    window.location = "game.html";
+    if (gameStep == 1) {
+        window.location = "game.html";
+    }
 }

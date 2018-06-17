@@ -144,7 +144,7 @@ function gameLoop2() {
             setLightingIntensity(0.0);
             renderer.render(scene, camera);
             if(!confirmationNeeded) {
-                gameState = 'initialize'
+                //gameState = 'initialize';
             }
             else{
                 showModal();
@@ -233,93 +233,6 @@ function setLevelDisplay() {
     }
     $('#level').html('Level ' + level);
 }
-
-function gameLoop() {
-    function initializeGame() {
-        maze = getMaze();
-        setTimerDuration();
-        chests = createChests(maze);
-        spawned = false;
-        createPhysicsWorld();
-        createRenderWorld();
-        assignControls();
-        initializeCamera();
-        initializeLighting();
-        setLevelDisplay();
-        escaped = false;
-        notcaught = true;
-        deathSoundPlayed = false;
-        gameState = 'fade in';
-        gameEnded = false;
-    }
-    function fadeGameIn() {
-        increaseLighting();
-        renderer.render(scene, camera);
-        if (lightingIsOn()) {
-            setLightingMaxIntensity();
-            gameState = 'play';
-            startTimer();
-        }
-    }
-    function playGame() {
-        if(localStorage.getItem("atmosphere") == "horror"){
-            if (timeToSpawnEnemy()){
-                spawnEnemy();
-            }
-        }
-        updatePhysicsWorld();
-        updateRenderWorld();
-        renderer.render(scene, camera);
-        if (!gameEnded && ended()) {
-            endGame_escaped();
-            gameEnded = true;
-        }
-        else if(!gameEnded && isTimeout()) {
-            endGame_timeout();
-            gameEnded = true;
-        }
-        else if(!gameEnded && localStorage.getItem("atmosphere") == "horror" && spawned && caughtByEnemy()) {
-            endGame_caught();
-            gameEnded = true;
-        }
-        else if (!gameEnded) {
-            checkForChests();
-            if (localStorage.getItem("sound") == "horror") {
-                backgroundNoise();
-            }
-        }
-    }
-    function fadeGameOut() {
-        stopSteps();
-        if(timer) {
-            clearInterval(timer);
-        }
-        updatePhysicsWorld();
-        updateRenderWorld();
-        decreaseLighting();
-        renderer.render(scene, camera);
-        if (lightingIsOff()) {
-            setLightingIntensity(0.0);
-            renderer.render(scene, camera);
-            if(!confirmationNeeded) {
-                gameState = 'initialize'
-            }
-            else{
-               // $('#confirmationPopup').show();
-               // writeToTextField(getTimeElapsed(), "red", 2);
-                showModal();
-            }
-        }
-    }
-    switch(gameState) {
-        case 'initialize': initializeGame();break;
-        case 'fade in': fadeGameIn();break;
-        case 'play': playGame();break;
-        case 'fade out': fadeGameOut();break;
-    }
-    requestAnimationFrame(gameLoop);
-}
-
 function createPhysicsWorld() {
     physicsWorld = new b2World(new b2Vec2(0, 0), true);
     createPlayerBody(1,1);
