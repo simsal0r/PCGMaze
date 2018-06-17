@@ -17,3 +17,14 @@ function assignControls() {
         case -270: KeyboardJS.bind.axis('up', 'down', 'left', 'right', onMoveKey);
     }
 }
+function disableControls() {
+    document.onkeydown = function(){
+        return false;
+    }
+}
+
+function enableControls() {
+    document.onkeydown = function(){
+        return true;
+    }
+}

@@ -193,28 +193,36 @@ function chest_jumpHappy() {
     var d = Math.random();
     if (d < 0.25)
     {
+        removeControls();
         $('#jump_happy2').show();
         setTimeout(function(){
             $('#jump_happy2').hide();
+            assignControls();
         }, 8000);
     }
     else {
         if(d<0.5) {
+            removeControls();
             $('#jump_happy').show();
             setTimeout(function () {
                 $('#jump_happy').hide();
+                assignControls();
             }, 2500);
         }
         else{
             if(d<0.75) {
+                removeControls();
                 $('#jump_happy3').show();
                 setTimeout(function () {
                     $('#jump_happy3').hide();
+                    assignControls();
                 }, 3000);
             }else {
+                removeControls();
                 $('#jump_happy4').show();
                 setTimeout(function () {
                     $('#jump_happy4').hide();
+                    assignControls();
                 }, 4000);
             }
         }
