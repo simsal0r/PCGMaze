@@ -39,7 +39,7 @@ function setNextLevel(levelSuccessful) {
             case 27: mazeDimension = 29; break;*/
             default: mazeDimension += 2; break;
         }
-        console.log(mazeDimension);
+        //console.log(mazeDimension);
         if(mazeDimension == 15) {
             if (localStorage.getItem("atmosphere") == "happy" && localStorage.getItem("sound") == "happy") {
                 writeToTextField("Thanks for Playing!", "red",10);
