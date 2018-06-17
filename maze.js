@@ -211,8 +211,8 @@ function generateSquareMaze(dimension) {
     var exit3 = [dimension-2, 0];
     grid3 = deadend_algorithm(grid3);
 
-    console.log('grid2: '+grid2);
-    console.log('grid3: '+grid3);
+    //console.log('grid2: '+grid2);
+    //console.log('grid3: '+grid3);
 
     // compute for each of these grids mace coefficient
     var mc1 = computeMazeCoefficient(grid1, dimension, exit1);
@@ -412,8 +412,8 @@ function getHardcodedMaze(dimension) {
     mazelv5.dimension = 27;
 
     if(dimension == 13) {
-        console.log(generateSquareMaze(dimension));
-        console.log(mazelv1);
+        //console.log(generateSquareMaze(dimension));
+        //console.log(mazelv1);
     }
     switch(dimension) {
         case 13: return mazelv1; break;

@@ -18,21 +18,25 @@ function playDeathSound() {
 
 function playScream() {
     var screamSound = new Audio("assets/scream.wav");
+    console.log(new Date().toLocaleTimeString()+": scream sound");
     screamSound.play();
 }
 
 function playSlam() {
     var slamSound = new Audio("assets/slam.mp3");
+    console.log(new Date().toLocaleTimeString()+": slam sound");
     slamSound.play();
 }
 
 function playKick() {
     var kickSound = new Audio("assets/kick_scare.mp3");
+    console.log(new Date().toLocaleTimeString()+": kick_scare sound");
     kickSound.play();
 }
 
 function playScare() {
     var scareSound = new Audio("assets/jumpscare4.wav");
+    console.log(new Date().toLocaleTimeString()+": jumpscare sound");
     scareSound.volume=0.5;
     scareSound.play();
 }
@@ -57,6 +61,7 @@ function playGong(){
 }
 function playBreathe(){
     var Breathe = new Audio("assets/breathe.mp3");
+    console.log(new Date().toLocaleTimeString()+": breathing sound");
     Breathe.volume=0.12;
     Breathe.play();
     return Breathe;
