@@ -54,8 +54,6 @@ jQuery.fn.center = function () {
 }
 
 
-
-
 $(document).ready(function() {
     document.body.style.fontFamily = getAtmosphere(localStorage.getItem("atmosphere"), localStorage.getItem("sound"), "font-family");
     console.log(localStorage.getItem("atmosphere"));
@@ -89,15 +87,55 @@ $(document).ready(function() {
     // Set the initial game state.
     gameState = 'initialize';
 
-
     // Start the game loop.
     requestAnimationFrame(gameLoop2); //todo: allow both
 })
 
+var modal;
+
+function showModal(){
+    $('#displayTime').html('Time consumed: ' + getTimeElapsed());
+    modal = document.getElementById('myModal');
+    modal.style.display = "block";
+}
 
 function confirmLevel() {
-    confirmationNeeded = false;
+
     $('#confirmationPopup').hide();
 }
+
+
+function handleData() {
+    confirmationNeeded = false;
+    // Get the modal
+    modal = document.getElementById('myModal');
+    var radios = document.getElementsByName('fun');
+
+    for (var i = 0, length = radios.length; i < length; i++)
+    {
+        if (radios[i].checked)
+        {
+            console.log("Erstes: " + radios[i].value);
+            // only one radio can be logically checked, don't check the rest
+            break;
+        }
+    }
+    var radios2 = document.getElementsByName('difficulty');
+
+    for (var i = 0, length = radios2.length; i < length; i++)
+    {
+        if (radios2[i].checked)
+        {
+            console.log("Zweites: " + radios2[i].value);
+            // only one radio can be logically checked, don't check the rest
+            break;
+        }
+    }
+
+
+    modal.style.display = "none";
+    //$('#confirmationPopup').show();
+}
+
 
 

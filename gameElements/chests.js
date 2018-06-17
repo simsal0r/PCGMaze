@@ -4,6 +4,11 @@ var CHEST_PROBABILITIES = getAtmosphere(localStorage.getItem("atmosphere"),local
 var chestTexture = getAtmosphere(localStorage.getItem("atmosphere"),localStorage.getItem("sound"), "chest_texture");
 var chests = undefined;
 var chestMesh = undefined;
+var chestCounter = 0;
+
+function getChestsOpened() {
+    return chestCounter;
+}
 
 function createExpChests(id,dimension){
     var chests = new Array(dimension);
@@ -98,6 +103,7 @@ function handleChest(mazeX, mazeY) {
     chestMesh = generateChestMesh(maze);
     scene.add(chestMesh);
     console.log("CHEST TYPE: " + typeOfChest);
+    chestCounter += 1;
     switch(typeOfChest){
         case "zoom_out": chest_zoomOut(); break;
         case "move_to_start": chest_moveToStart(); break;

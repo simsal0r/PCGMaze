@@ -214,7 +214,6 @@ function endGame_caught() {
     }
     playSlam();
     playGong();
-
 }
 
 function setLevelDisplay() {
@@ -222,10 +221,10 @@ function setLevelDisplay() {
     if(IN_SURVEY_MODE){
         switch(mazeDimension) {
             case 13: level = 1; break;
-            /*case 15: level = 2; break;
+            case 15: level = 2; break;
             case 17: level = 3; break;
             case 21: level = 4; break;
-            case 27: level = 5; break;*/
+            case 27: level = 5; break;
             default: level = Math.floor((mazeDimension-1)/2 - 5); break;
         }
     }
@@ -234,8 +233,6 @@ function setLevelDisplay() {
     }
     $('#level').html('Level ' + level);
 }
-
-
 
 function gameLoop() {
     function initializeGame() {
@@ -308,7 +305,9 @@ function gameLoop() {
                 gameState = 'initialize'
             }
             else{
-                $('#confirmationPopup').show();
+               // $('#confirmationPopup').show();
+               // writeToTextField(getTimeElapsed(), "red", 2);
+                showModal();
             }
         }
     }
