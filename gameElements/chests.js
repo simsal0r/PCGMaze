@@ -75,14 +75,14 @@ function handleChest(mazeX, mazeY) {
     chestMesh = generateChestMesh(maze);
     scene.add(chestMesh);
     switch(typeOfChest){
-        case "zoom_out": chest_zoomOut(); break;
-        case "move_to_start": chest_moveToStart(); break;
-        case "jump_scare": chest_jumpScare(); break;
-        case "rotate_maze": chest_rotateMaze(); break;
-        case "light_darker": chest_lightDarker(); break;
-        case "increase_time": chest_increaseTime(); break;
-        case "decrease_time": chest_decreaseTime(); break;
-        case "random_teleportation": chest_randomTeleportation(); break;
+        case "zoom_out": chest_zoomOut(); console.log(new Date().toLocaleTimeString()+": zoom out chest opened");break;
+        case "move_to_start": chest_moveToStart(); console.log(new Date().toLocaleTimeString()+": move to start chest opened"); break;
+        case "jump_scare": chest_jumpScare(); console.log(new Date().toLocaleTimeString()+": jump scare chest opened"); break;
+        case "rotate_maze": chest_rotateMaze(); console.log(new Date().toLocaleTimeString()+": rotate maze chest opened");break;
+        case "light_darker": chest_lightDarker(); console.log(new Date().toLocaleTimeString()+": darken light chest opened");break;
+        case "increase_time": chest_increaseTime(); console.log(new Date().toLocaleTimeString()+": increase time chest opened");break;
+        case "decrease_time": chest_decreaseTime(); console.log(new Date().toLocaleTimeString()+": decrease time chest opened");break;
+        case "random_teleportation": chest_randomTeleportation(); console.log(new Date().toLocaleTimeString()+": random teleportation chest opened");break;
         default: break;
     }
 }
