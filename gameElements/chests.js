@@ -191,6 +191,7 @@ function chest_jumpScare() {
 
 function chest_jumpHappy() {
     var d = Math.random();
+    var currentTime = stopTimer();
     if (d < 0.25)
     {
         removeControls();
@@ -198,6 +199,7 @@ function chest_jumpHappy() {
         setTimeout(function(){
             $('#jump_happy2').hide();
             assignControls();
+            restartTimer(currentTime);
         }, 8000);
     }
     else {
@@ -207,6 +209,7 @@ function chest_jumpHappy() {
             setTimeout(function () {
                 $('#jump_happy').hide();
                 assignControls();
+                restartTimer(currentTime);
             }, 2500);
         }
         else{
@@ -216,6 +219,7 @@ function chest_jumpHappy() {
                 setTimeout(function () {
                     $('#jump_happy3').hide();
                     assignControls();
+                    restartTimer(currentTime);
                 }, 3000);
             }else {
                 removeControls();
@@ -223,6 +227,7 @@ function chest_jumpHappy() {
                 setTimeout(function () {
                     $('#jump_happy4').hide();
                     assignControls();
+                    restartTimer(currentTime);
                 }, 4000);
             }
         }
