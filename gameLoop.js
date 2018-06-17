@@ -147,7 +147,7 @@ function gameLoop2() {
                 gameState = 'initialize'
             }
             else{
-               // $('#confirmationPopup').show();
+                showModal();
             }
         }
     }
