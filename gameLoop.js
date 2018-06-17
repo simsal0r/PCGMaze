@@ -5,6 +5,7 @@ var notcaught = true;
 var deathSoundPlayed = false;
 var confirmationNeeded = false;
 var breathe = null;
+var background_music = null;
 
 var IN_SURVEY_MODE = true;
 
@@ -95,6 +96,7 @@ function gameLoop() {
         deathSoundPlayed = false;
         gameState = 'fade in';
         gameEnded = false;
+        console.log(new Date().toLocaleTimeString()+" - [Event] - Start Game");
     }
     function fadeGameIn() {
         increaseLighting();
@@ -108,6 +110,7 @@ function gameLoop() {
     function playGame() {
         if (timeToSpawnEnemy()){
             spawnEnemy();
+            console.log(new Date().toLocaleTimeString()+" - [Event] - Enemy spawned");
         }
         updatePhysicsWorld();
         updateRenderWorld();
@@ -115,14 +118,17 @@ function gameLoop() {
         if (!gameEnded && ended()) {
             endGame_escaped();
             gameEnded = true;
+            console.log(new Date().toLocaleTimeString()+" - [Event] - Escaped maze");
         }
         else if(!gameEnded && isTimeout()) {
             endGame_timeout();
             gameEnded = true;
+            console.log(new Date().toLocaleTimeString()+" - [Event] - Run out of time");
         }
         else if(!gameEnded && spawned && caughtByEnemy()) {
             endGame_caught();
             gameEnded = true;
+            console.log(new Date().toLocaleTimeString()+" - [Event] - Caught by Enemy");
         }
         else if (!gameEnded) {
             checkForChests();
@@ -144,7 +150,7 @@ function gameLoop() {
             setLightingIntensity(0.0);
             renderer.render(scene, camera);
             if(!confirmationNeeded) {
-                //gameState = 'initialize';
+                gameState = 'initialize'
             }
             else{
                 showModal();
@@ -256,7 +262,9 @@ function createRenderWorld() {
     scene.add(chestMesh);
     createGround();
     scene.add(groundMesh);
-    playBackground();
+    if (background_music != undefined && background_music != null)
+        background_music.pause();
+    background_music = playBackground();
 }
 
 function updatePhysicsWorld() {

@@ -5,6 +5,7 @@ var stepsPlayed = false;
 var spawned = false;
 var steps = null;
 
+
 function isTimeout() {
     return timer_duration < 0;
 }
@@ -34,6 +35,29 @@ function startTimer() {
         }
     }, 1000);
     stepsPlayed=false;
+}
+
+function restartTimer(remTime) {
+    timer_duration = remTime;
+    $('#timerText').text(timeToString(timer_duration));
+    timer_duration--;
+    timer = setInterval(function() {
+        $('#timerText').text(timeToString(timer_duration));
+        timer_duration--;
+        if(!stepsPlayed && timer_duration < 10){
+            steps = playSteps();
+            stepsPlayed = true;
+        }
+    }, 1000);
+    stepsPlayed=false;
+}
+
+function stopTimer() {
+    var currentTime = timer_duration;
+    $('#timerText').text(timeToString(currentTime));
+    clearInterval(timer);
+    timer = null
+    return currentTime
 }
 
 function timeToString(time) {

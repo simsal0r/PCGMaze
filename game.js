@@ -55,8 +55,10 @@ jQuery.fn.center = function () {
 
 
 $(document).ready(function() {
+    mazeDimension = parseInt(localStorage.getItem("startDifficulty"));
     document.body.style.fontFamily = getAtmosphere(localStorage.getItem("atmosphere"), localStorage.getItem("sound"), "font-family");
     console.log(localStorage.getItem("atmosphere"));
+    console.log(localStorage.getItem("sound"));
     console.log(localStorage.getItem("sound"));
     console.log(localStorage.getItem("gameC"));
     console.log(localStorage.getItem("gameS"));
@@ -88,7 +90,7 @@ $(document).ready(function() {
     gameState = 'initialize';
 
     // Start the game loop.
-    requestAnimationFrame(gameLoop); //todo: allow both
+    requestAnimationFrame(gameLoop);
 })
 
 var modal;
