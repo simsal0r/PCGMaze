@@ -123,6 +123,7 @@ function gameLoop() {
         deathSoundPlayed = false;
         gameState = 'fade in';
         gameEnded = false;
+        console.log(new Date().toLocaleTimeString()+": start game");
     }
     function fadeGameIn() {
         increaseLighting();
@@ -137,6 +138,7 @@ function gameLoop() {
         if(localStorage.getItem("atmosphere") == "horror"){
             if (timeToSpawnEnemy()){
                 spawnEnemy();
+                console.log(new Date().toLocaleTimeString()+": enemy is coming");
             }
         }
         updatePhysicsWorld();
@@ -145,14 +147,17 @@ function gameLoop() {
         if (!gameEnded && ended()) {
             endGame_escaped();
             gameEnded = true;
+            console.log(new Date().toLocaleTimeString()+": escaped maze");
         }
         else if(!gameEnded && isTimeout()) {
             endGame_timeout();
             gameEnded = true;
+            console.log(new Date().toLocaleTimeString()+": time run out");
         }
         else if(!gameEnded && localStorage.getItem("atmosphere") == "horror" && spawned && caughtByEnemy()) {
             endGame_caught();
             gameEnded = true;
+            console.log(new Date().toLocaleTimeString()+": caught by enemy");
         }
         else if (!gameEnded) {
             checkForChests();
