@@ -191,30 +191,35 @@ function chest_jumpScare() {
 
 function chest_jumpHappy() {
     var d = Math.random();
+    var currentTime = stopTimer();
     if (d < 0.25)
     {
-        $('#jump_happy2').show();
+        $('#jump_happy2').show();   
         setTimeout(function(){
             $('#jump_happy2').hide();
-        }, 8000);
+            restartTimer(currentTime);
+        }, 8000);   
     }
     else {
         if(d<0.5) {
             $('#jump_happy').show();
             setTimeout(function () {
                 $('#jump_happy').hide();
-            }, 2500);
+                restartTimer(currentTime);
+            }, 2500);           
         }
         else{
             if(d<0.75) {
                 $('#jump_happy3').show();
                 setTimeout(function () {
                     $('#jump_happy3').hide();
-                }, 3000);
+                    restartTimer(currentTime);
+                }, 3000);               
             }else {
                 $('#jump_happy4').show();
                 setTimeout(function () {
                     $('#jump_happy4').hide();
+                    restartTimer(currentTime);
                 }, 4000);
             }
         }
