@@ -21,7 +21,7 @@ function getAtmosphere(atmosphere, sound, item) {
         switch(item) {
             case "font-family": return "happyFont"; break;
             case "chest_items": return ["zoom_out", "jump_happy", "move_to_start", "rotate_maze", "increase_time", "decrease_time", "random_teleportation"]; break;
-            case "chest_probabilities": return [0, 1,              0,           0,           0,           0,0]; break;
+            case "chest_probabilities": return [0.3,     0.14,             0.03,           0.13,          0.15,            0.15,              0.1]; break;
             case "chest_texture": return THREE.ImageUtils.loadTexture('./assets/chest1.jpg'); break;
             case "head_texture": return THREE.ImageUtils.loadTexture('./assets/hairHappy.jpg'); break;
             case "player_texture": return THREE.ImageUtils.loadTexture('./assets/cloakHappy.png'); break;
@@ -38,7 +38,7 @@ function getAtmosphere(atmosphere, sound, item) {
         switch(item) {
             case "font-family": return "happyFont"; break;
             case "chest_items": return ["zoom_out", "jump_happy", "move_to_start", "rotate_maze", "increase_time", "decrease_time", "random_teleportation"]; break;
-            case "chest_probabilities": return [0, 1,              0,           0,           0,           0,0]; break;            
+            case "chest_probabilities": return [0.3,     0.14,             0.03,           0.13,          0.15,            0.15,              0.1]; break;            case "chest_texture": return THREE.ImageUtils.loadTexture('./assets/chest1.jpg'); break;
             case "chest_texture": return THREE.ImageUtils.loadTexture('./assets/chest1.jpg'); break;
             case "head_texture": return THREE.ImageUtils.loadTexture('./assets/hairHappy.jpg'); break;
             case "player_texture": return THREE.ImageUtils.loadTexture('./assets/cloakHappy.png'); break;

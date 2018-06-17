@@ -5,6 +5,7 @@ var notcaught = true;
 var deathSoundPlayed = false;
 var confirmationNeeded = false;
 var breathe = null;
+var background_music = null;
 
 
 var IN_SURVEY_MODE = false;
@@ -123,7 +124,7 @@ function gameLoop() {
         deathSoundPlayed = false;
         gameState = 'fade in';
         gameEnded = false;
-        console.log(new Date().toLocaleTimeString()+": start game");
+        console.log(new Date().toLocaleTimeString()+" - [Event] - Start Game");
     }
     function fadeGameIn() {
         increaseLighting();
@@ -138,7 +139,7 @@ function gameLoop() {
         if(localStorage.getItem("atmosphere") == "horror"){
             if (timeToSpawnEnemy()){
                 spawnEnemy();
-                console.log(new Date().toLocaleTimeString()+": enemy is coming");
+                console.log(new Date().toLocaleTimeString()+" - [Event] - Enemy spawned");
             }
         }
         updatePhysicsWorld();
@@ -147,17 +148,17 @@ function gameLoop() {
         if (!gameEnded && ended()) {
             endGame_escaped();
             gameEnded = true;
-            console.log(new Date().toLocaleTimeString()+": escaped maze");
+            console.log(new Date().toLocaleTimeString()+" - [Event] - Escaped maze");
         }
         else if(!gameEnded && isTimeout()) {
             endGame_timeout();
             gameEnded = true;
-            console.log(new Date().toLocaleTimeString()+": time run out");
+            console.log(new Date().toLocaleTimeString()+" - [Event] - Run out of time");
         }
         else if(!gameEnded && localStorage.getItem("atmosphere") == "horror" && spawned && caughtByEnemy()) {
             endGame_caught();
             gameEnded = true;
-            console.log(new Date().toLocaleTimeString()+": caught by enemy");
+            console.log(new Date().toLocaleTimeString()+" - [Event] - Caught by Enemy");
         }
         else if (!gameEnded) {
             checkForChests();
@@ -218,7 +219,9 @@ function createRenderWorld() {
     scene.add(chestMesh);
     createGround();
     scene.add(groundMesh);
-    playBackground();
+    if (background_music != undefined && background_music != null)
+        background_music.pause();
+    background_music = playBackground();
 }
 
 function updatePhysicsWorld() {
