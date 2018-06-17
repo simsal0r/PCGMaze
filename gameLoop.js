@@ -73,7 +73,7 @@ function getGameElements(gameCourse, gameStep)
     return {mazeGrid:maze1.grid, mazeID:maze1.id, chests: chests1, time: time1};
 }
 
-function gameLoop2() {
+function gameLoop() {
     function initializeGame() {
         //Called from cache
         var gameCourse = parseInt(localStorage.getItem("gameC"));
@@ -157,7 +157,7 @@ function gameLoop2() {
         case 'play': playGame();break;
         case 'fade out': fadeGameOut();break;
     }
-    requestAnimationFrame(gameLoop2);
+    requestAnimationFrame(gameLoop);
 }
 
 function endLevel(levelSuccessful) {

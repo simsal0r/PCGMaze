@@ -88,7 +88,7 @@ $(document).ready(function() {
     gameState = 'initialize';
 
     // Start the game loop.
-    requestAnimationFrame(gameLoop2); //todo: allow both
+    requestAnimationFrame(gameLoop); //todo: allow both
 })
 
 var modal;
