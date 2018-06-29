@@ -94,6 +94,7 @@ $(document).ready(function() {
 })
 
 var modal;
+var modalA;
 
 function showModal(){
     $('#displayTime').html('Time consumed: ' + getTimeElapsed());
@@ -101,11 +102,23 @@ function showModal(){
     modal.style.display = "block";
 }
 
+function showAnnotation(){
+    modalA = document.getElementById('annotationModal');
+    modalA.style.display = "block";
+}
+
 function confirmLevel() {
 
     $('#confirmationPopup').hide();
 }
 
+function handleAnnotation(){
+    annotationConfirmationNeeded = false;
+    document.getElementById('annotationModal').style.display = "none";
+    if (parseInt(localStorage.getItem("gameS"))) {
+        restart();
+    }
+}
 
 function handleData() {
     confirmationNeeded = false;
@@ -135,7 +148,7 @@ function handleData() {
     }
     modal.style.display = "none";
     //Start the game again
-    window.location = "game.html";
+    restart();
 }
 
 

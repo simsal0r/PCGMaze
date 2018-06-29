@@ -4,6 +4,7 @@ var escaped = false;
 var notcaught = true;
 var deathSoundPlayed = false;
 var confirmationNeeded = false;
+var annotationConfirmationNeeded = false;
 var breathe = null;
 var background_music = null;
 
@@ -149,10 +150,11 @@ function gameLoop() {
         if (lightingIsOff()) {
             setLightingIntensity(0.0);
             renderer.render(scene, camera);
-            if(!confirmationNeeded) {
-                gameState = 'initialize'
+            if (annotationConfirmationNeeded){
+                showAnnotation();
             }
-            else{
+            else if(confirmationNeeded)
+            {
                 showModal();
             }
         }
@@ -177,7 +179,14 @@ function endLevel(levelSuccessful) {
     removeControls();
     //setScore();
     stopEnemyBreathing();
-    confirmationNeeded = IN_SURVEY_MODE;
+    annotationConfirmationNeeded = IN_SURVEY_MODE;
+    // What ?  console.log("test4:" + typeof(parseInt(localStorage.getItem("gameS")) == 1)); todo: this is unintended
+    if (parseInt(localStorage.getItem("gameS"))) {
+        confirmationNeeded = false;
+    }
+    else{
+        confirmationNeeded = IN_SURVEY_MODE;
+    }
     setTimeout(function(){
         gameState = 'fade out';
         setNextLevel();
@@ -297,4 +306,9 @@ function stopit(){
     var mazeY = Math.floor(headMesh.position.y + 0.5);
     return(mazeX == mazeDim1 -1 && mazeY == mazeDim1 - 2  || mazeX == 1 && mazeY == mazeDim1 - 2 || mazeX == mazeDim1-1 && mazeY == 1);
     //              top right                                              top left                                     bottom right
+}
+
+function restart()
+{
+    window.location = "game.html";
 }
