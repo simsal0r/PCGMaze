@@ -151,13 +151,13 @@ function chest_lightDarker() {
 }
 
 function chest_increaseTime() {
-    var value = Math.floor((mazeDimension*4)*0.1);
+    var value = Math.floor((mazeDim1*4)*0.1);
     writeToTextField("Opened increase time chest! +" + value + " sec", "white");
     timer_duration += value;
 }
 
 function chest_decreaseTime() {
-    var value = Math.floor((mazeDimension*4)*0.1);
+    var value = Math.floor((mazeDim1*4)*0.1);
     writeToTextField("Opened decrease time chest! -" + value + " sec");
     timer_duration -= value;
 }
