@@ -182,13 +182,12 @@ function gameLoop() {
         assignControls();
         initializeCamera();
         initializeLighting();
-        setLevelDisplay();
         escaped = false;
         notcaught = true;
         deathSoundPlayed = false;
         gameState = 'fade in';
         gameEnded = false;
-        console.log(new Date().toLocaleTimeString()+" - [Event] - Start Game" + localStorage.getItem("atmosphere") + " " + localStorage.getItem("sound"));
+        console.log(new Date().toLocaleTimeString()+" - [Event] - Start Game " + localStorage.getItem("atmosphere") + " " + localStorage.getItem("sound"));
     }
     function fadeGameIn() {
         increaseLighting();
@@ -263,20 +262,14 @@ function gameLoop() {
     requestAnimationFrame(gameLoop);
 }
 
-function endLevel(levelSuccessful) {
-    function setScore() {
-        var score = Math.floor((mazeDimension-1)/2 - 4);
-        if(score > localStorage.getItem("highscore")) {
-            localStorage.setItem("highscore", score);
-        }
-    }
+function endLevel() {
     clearPietimer();
     removeControls();
     //setScore();
     stopEnemyBreathing();
     annotationConfirmationNeeded = IN_SURVEY_MODE;
     // What ?  console.log("test4:" + typeof(parseInt(localStorage.getItem("gameS")) == 1)); todo: this is unintended
-    if (parseInt(localStorage.getItem("gameS"))) {
+    if (parseInt(localStorage.getItem("gameS"))===1) {
         confirmationNeeded = false;
     }
     else{
@@ -316,11 +309,11 @@ function endGame_caught() {
     }
     else
     {
-        writeToTextField("Too much cookies. You can't move anymore!", "red", 5);
+        writeToTextField("Too much cookies. You can't move anymore!", "white", 5);
         $('#cookies').show();
         setTimeout(function () {
             $('#cookies').hide();
-        }, 2500);
+        }, 4000);
     }
     playSlam();
     playGong();

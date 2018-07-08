@@ -57,11 +57,11 @@ jQuery.fn.center = function () {
 $(document).ready(function() {
     mazeDimension = parseInt(localStorage.getItem("startDifficulty"));
     document.body.style.fontFamily = getAtmosphere(localStorage.getItem("atmosphere"), localStorage.getItem("sound"), "font-family");
-    console.log(localStorage.getItem("atmosphere"));
-    console.log(localStorage.getItem("sound"));
-    console.log(localStorage.getItem("sound"));
-    console.log(localStorage.getItem("gameC"));
-    console.log(localStorage.getItem("gameS"));
+    // console.log(localStorage.getItem("atmosphere"));
+    // console.log(localStorage.getItem("sound"));
+    // console.log(localStorage.getItem("sound"));
+    // console.log(localStorage.getItem("gameC"));
+    // console.log(localStorage.getItem("gameS"));
     // Prepare the instructions.
     $('#instructions').center();
     $('#instructions').hide();
@@ -110,6 +110,7 @@ function showAnnotation(){
 function showThanks(){
     modalB = document.getElementById('thanksModal');
     modalB.style.display = "block";
+    console.log(new Date().toLocaleTimeString() + "[Game]" +  " - Completed");
 }
 
 function confirmLevel() {
@@ -118,13 +119,20 @@ function confirmLevel() {
 }
 
 function handleAnnotation(){
+
     annotationConfirmationNeeded = false;
     document.getElementById('annotationModal').style.display = "none";
-    console.log(new Date().toLocaleTimeString() + "[Survey]" -  "Annotation conducted");
-    if (parseInt(localStorage.getItem("gameS"))) {
+    //1+1=2
+    if (parseInt(localStorage.getItem("gameS"))===2) {
         restart();
     }
-}
+    else if (parseInt(localStorage.getItem("gameS"))===2){
+        showThanks();
+    }
+    else{
+        showModal();
+    }
+ }
 
 function handleData() {
     confirmationNeeded = false;
@@ -136,7 +144,7 @@ function handleData() {
     {
         if (radios[i].checked)
         {
-            console.log("Erstes: " + radios[i].value);
+            console.log(new Date().toLocaleTimeString() + " - [SurveyQ1]"  + " - Questionnaire conducted " + radios[i].value);
             // only one radio can be logically checked, don't check the rest
             break;
         }
@@ -147,13 +155,13 @@ function handleData() {
     {
         if (radios2[i].checked)
         {
-            console.log("Zweites: " + radios2[i].value);
+            console.log(new Date().toLocaleTimeString() + " - [SurveyQ2]"  + " - Questionnaire conducted " + radios2[i].value);
             // only one radio can be logically checked, don't check the rest
             break;
         }
     }
     modal.style.display = "none";
-    console.log(new Date().toLocaleTimeString() + "[Survey]" -  "Questionnaire conducted");
+    console.log(new Date().toLocaleTimeString() + " - [Survey]" +  " - Questionnaire conducted");
     var gamestep1 = parseInt(localStorage.getItem("gameS"));
     //Start the game again
     if (gamestep1 <= 4)
