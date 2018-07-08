@@ -1,7 +1,7 @@
 
 function handleSubmit(startDifficulty, atmosphere, sound) {
     // Assign a game course
-    var gameCourse = 1; //todo: make random
+    var gameCourse = Math.floor(Math.random() * (4 - 1 + 1)) + 1;
     var gameStep = 1;
     localStorage.setItem("gameC", gameCourse + "");
     localStorage.setItem("gameS", gameStep + "");

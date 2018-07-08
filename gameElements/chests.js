@@ -102,7 +102,6 @@ function handleChest(mazeX, mazeY) {
     chests[mazeX][mazeY] = null;
     chestMesh = generateChestMesh(maze);
     scene.add(chestMesh);
-    console.log("CHEST TYPE: " + typeOfChest);
     switch(typeOfChest){
         case "zoom_out": chest_zoomOut(); console.log(new Date().toLocaleTimeString()+" Event[Chest] Type[Zoom_out]");break;
         case "move_to_start": chest_moveToStart(); console.log(new Date().toLocaleTimeString()+" Event[Chest] Type[Move_to_start]"); break;
