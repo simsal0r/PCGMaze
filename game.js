@@ -110,7 +110,7 @@ function showAnnotation(){
 function showThanks(){
     modalB = document.getElementById('thanksModal');
     modalB.style.display = "block";
-    console.log(new Date().toLocaleTimeString() + "[Game]" +  " - Completed");
+    console.log(new Date().toLocaleTimeString() + " Thank you message");
 }
 
 function confirmLevel() {
@@ -132,6 +132,7 @@ function handleAnnotation(){
     else{
         showModal();
     }
+    console.log(new Date().toLocaleTimeString() + " Annotation[Done]");
  }
 
 function handleData() {
@@ -144,7 +145,7 @@ function handleData() {
     {
         if (radios[i].checked)
         {
-            console.log(new Date().toLocaleTimeString() + " - [SurveyQ1]"  + " - Questionnaire conducted " + radios[i].value);
+            console.log(new Date().toLocaleTimeString() + " Survey[Q1]"  + " Value[" + radios[i].value +"]");
             // only one radio can be logically checked, don't check the rest
             break;
         }
@@ -155,13 +156,13 @@ function handleData() {
     {
         if (radios2[i].checked)
         {
-            console.log(new Date().toLocaleTimeString() + " - [SurveyQ2]"  + " - Questionnaire conducted " + radios2[i].value);
+            console.log(new Date().toLocaleTimeString() + " Survey[Q2]"  + " Value[" + radios2[i].value +"]");
             // only one radio can be logically checked, don't check the rest
             break;
         }
     }
     modal.style.display = "none";
-    console.log(new Date().toLocaleTimeString() + " - [Survey]" +  " - Questionnaire conducted");
+    console.log(new Date().toLocaleTimeString() + " Survey[Done]");
     var gamestep1 = parseInt(localStorage.getItem("gameS"));
     //Start the game again
     if (gamestep1 <= 4)
