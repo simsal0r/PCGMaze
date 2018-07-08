@@ -110,7 +110,7 @@ function showAnnotation(){
 function showThanks(){
     modalB = document.getElementById('thanksModal');
     modalB.style.display = "block";
-    console.log(new Date().toLocaleTimeString() + " Thank you message");
+    console.log(new Date().toLocaleTimeString() + " Event[Game] Type[Thank you message]");
 }
 
 function confirmLevel() {
@@ -132,7 +132,7 @@ function handleAnnotation(){
     else{
         showModal();
     }
-    console.log(new Date().toLocaleTimeString() + " Annotation[Done]");
+    console.log(new Date().toLocaleTimeString() + " Event[Annotaion] Type[Done]");
  }
 
 function handleData() {
@@ -140,12 +140,12 @@ function handleData() {
     // Get the modal
     modal = document.getElementById('myModal');
     var radios = document.getElementsByName('fun');
-
+    console.log(new Date().toLocaleTimeString() + " Event[Survey] Type[Begin]");
     for (var i = 0, length = radios.length; i < length; i++)
     {
         if (radios[i].checked)
         {
-            console.log(new Date().toLocaleTimeString() + " Survey[Q1]"  + " Value[" + radios[i].value +"]");
+            console.log(new Date().toLocaleTimeString() + " Event[Survey] Question[Q1] Value[" + radios[i].value +"]");
             // only one radio can be logically checked, don't check the rest
             break;
         }
@@ -156,13 +156,13 @@ function handleData() {
     {
         if (radios2[i].checked)
         {
-            console.log(new Date().toLocaleTimeString() + " Survey[Q2]"  + " Value[" + radios2[i].value +"]");
+            console.log(new Date().toLocaleTimeString() + " Event[Survey] Question[Q2] Value[" + radios2[i].value +"]");
             // only one radio can be logically checked, don't check the rest
             break;
         }
     }
     modal.style.display = "none";
-    console.log(new Date().toLocaleTimeString() + " Survey[Done]");
+    console.log(new Date().toLocaleTimeString() + " Event[Survey] Type[Done]");
     var gamestep1 = parseInt(localStorage.getItem("gameS"));
     //Start the game again
     if (gamestep1 <= 4)

@@ -9,14 +9,14 @@ function playEndSound() {
     var EndSound = new Audio(getAtmosphere(localStorage.getItem("atmosphere"),localStorage.getItem("sound"), "end_sound"));
     EndSound.volume = 0.5;
     EndSound.play();
-    console.log(new Date().toLocaleTimeString()+  " Event[Sound] End, Type: " + localStorage.getItem("sound"));
+    console.log(new Date().toLocaleTimeString()+  " Event[Sound] File[LocalStorage_EndSound]");
 }
 
 function playDeathSound() {
     var DeathSound = new Audio(getAtmosphere(localStorage.getItem("atmosphere"),localStorage.getItem("sound"), "death_sound"));
     DeathSound.volume = 0.1;
     DeathSound.play();
-    console.log(new Date().toLocaleTimeString()+" Event[Sound] Death, Type: " + localStorage.getItem("sound"));
+    console.log(new Date().toLocaleTimeString()+" Event[Sound] File[LocalStorage_DeathSound]");
 }
 
 function playScream() {
@@ -48,7 +48,7 @@ function playSteps() {
     var stepSound = new Audio(getAtmosphere(localStorage.getItem("atmosphere"),localStorage.getItem("sound"), "step_sound"));
     stepSound.volume=0.9;
     stepSound.play();
-    console.log(new Date().toLocaleTimeString()+" Event[Sound] Close-to-End, Type: " + localStorage.getItem("sound"));
+    console.log(new Date().toLocaleTimeString()+" Event[Sound] File[LocalStorage_StepSound]");
     return stepSound;
 }
 
@@ -62,19 +62,19 @@ function stopSteps() {
 function playGong(){
     var stepG = new Audio(getAtmosphere(localStorage.getItem("atmosphere"),localStorage.getItem("sound"), "gong_sound"));
     stepG.play();
-    console.log(new Date().toLocaleTimeString()+  " Event[Sound] Gong, Type: " + localStorage.getItem("sound"));
+    console.log(new Date().toLocaleTimeString()+  " Event[Sound] File[LocalStorage_GongSound]");
 }
 function playBreathe(){
     var Breathe = new Audio(getAtmosphere(localStorage.getItem("atmosphere"),localStorage.getItem("sound"), "breath_sound"));
     if (localStorage.getItem("sound") == "horror")
     {
-        console.log(new Date().toLocaleTimeString()+" Event[Sound] - File[breath.mp3]");
+        console.log(new Date().toLocaleTimeString()+" Event[Sound] File[breath.mp3]");
         Breathe.volume=0.12;
         Breathe.play();
     }
     else
     {
-        console.log(new Date().toLocaleTimeString()+" Event[Sound] - File[hey-sweatness.mp3]");
+        console.log(new Date().toLocaleTimeString()+" Event[Sound] File[hey-sweatness.mp3]");
         Breathe.volume=0.8;
         Breathe.play();
     }

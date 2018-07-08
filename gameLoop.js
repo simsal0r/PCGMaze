@@ -35,27 +35,27 @@ function getGameElements(gameCourse, gameStep)
                     mazeDim1 = maze1.grid.dimension;
                     chests1 = createExpChests(1,mazeDim1);
                     time1 = 40;
-                    console.log(new Date().toLocaleTimeString()+" [Level] Course=" + gameCourse + " Step=" + gameStep);
+                    console.log(new Date().toLocaleTimeString()+" [Level] Course[" + gameCourse + "] Step[" + gameStep + "]");
                     break;
                 case 2:
                     maze1 = getExpMaze(1);
                     mazeDim1 = maze1.grid.dimension;
                     chests1 = createExpChests(1,mazeDim1);
                     time1 = 40;
-                    console.log(new Date().toLocaleTimeString()+" [Level] Course=" + gameCourse + " Step=" + gameStep);
+                    console.log(new Date().toLocaleTimeString()+" [Level] Course[" + gameCourse + "] Step[" + gameStep + "]");
                     break;
                 case 3:
                     maze1 = getExpMaze(1);
                     mazeDim1 = maze1.grid.dimension;
                     chests1 = createExpChests(1,mazeDim1);
-                    console.log(new Date().toLocaleTimeString()+" [Level] Course=" + gameCourse + " Step=" + gameStep);
+                    console.log(new Date().toLocaleTimeString()+" [Level] Course[" + gameCourse + "] Step[" + gameStep + "]");
                     time1 = 40;
                     break;
                 case 4:
                     maze1 = getExpMaze(1);
                     mazeDim1 = maze1.grid.dimension;
                     chests1 = createExpChests(1,mazeDim1);
-                    console.log(new Date().toLocaleTimeString()+" [Level] Course=" + gameCourse + " Step=" + gameStep);
+                    console.log(new Date().toLocaleTimeString()+" [Level] Course[" + gameCourse + "] Step[" + gameStep + "]");
                     time1 = 40;
                     break;
             }
@@ -68,27 +68,27 @@ function getGameElements(gameCourse, gameStep)
                     mazeDim1 = maze1.grid.dimension;
                     chests1 = createExpChests(1,mazeDim1);
                     time1 = 40;
-                    console.log(new Date().toLocaleTimeString()+" [Level] Course=" + gameCourse + " Step=" + gameStep);
+                    console.log(new Date().toLocaleTimeString()+" [Level] Course[" + gameCourse + "] Step[" + gameStep + "]");
                     break;
                 case 2:
                     maze1 = getExpMaze(1);
                     mazeDim1 = maze1.grid.dimension;
                     chests1 = createExpChests(1,mazeDim1);
                     time1 = 40;
-                    console.log(new Date().toLocaleTimeString()+" [Level] Course=" + gameCourse + " Step=" + gameStep);
+                    console.log(new Date().toLocaleTimeString()+" [Level] Course[" + gameCourse + "] Step[" + gameStep + "]");
                     break;
                 case 3:
                     maze1 = getExpMaze(1);
                     mazeDim1 = maze1.grid.dimension;
                     chests1 = createExpChests(1,mazeDim1);
-                    console.log(new Date().toLocaleTimeString()+" [Level] Course=" + gameCourse + " Step=" + gameStep);
+                    console.log(new Date().toLocaleTimeString()+" [Level] Course[" + gameCourse + "] Step[" + gameStep + "]");
                     time1 = 40;
                     break;
                 case 4:
                     maze1 = getExpMaze(1);
                     mazeDim1 = maze1.grid.dimension;
                     chests1 = createExpChests(1,mazeDim1);
-                    console.log(new Date().toLocaleTimeString()+" [Level] Course=" + gameCourse + " Step=" + gameStep);
+                    console.log(new Date().toLocaleTimeString()+" [Level] Course[" + gameCourse + "] Step[" + gameStep + "]");
                     time1 = 40;
                     break;
             }
@@ -101,27 +101,27 @@ function getGameElements(gameCourse, gameStep)
                     mazeDim1 = maze1.grid.dimension;
                     chests1 = createExpChests(1,mazeDim1);
                     time1 = 40;
-                    console.log(new Date().toLocaleTimeString()+" [Level] Course=" + gameCourse + " Step=" + gameStep);
+                    console.log(new Date().toLocaleTimeString()+" [Level] Course[" + gameCourse + "] Step[" + gameStep + "]");
                     break;
                 case 2:
                     maze1 = getExpMaze(1);
                     mazeDim1 = maze1.grid.dimension;
                     chests1 = createExpChests(1,mazeDim1);
                     time1 = 40;
-                    console.log(new Date().toLocaleTimeString()+" [Level] Course=" + gameCourse + " Step=" + gameStep);
+                    console.log(new Date().toLocaleTimeString()+" [Level] Course[" + gameCourse + "] Step[" + gameStep + "]");
                     break;
                 case 3:
                     maze1 = getExpMaze(1);
                     mazeDim1 = maze1.grid.dimension;
                     chests1 = createExpChests(1,mazeDim1);
-                    console.log(new Date().toLocaleTimeString()+" [Level] Course=" + gameCourse + " Step=" + gameStep);
+                    console.log(new Date().toLocaleTimeString()+" [Level] Course[" + gameCourse + "] Step[" + gameStep + "]");
                     time1 = 40;
                     break;
                 case 4:
                     maze1 = getExpMaze(1);
                     mazeDim1 = maze1.grid.dimension;
                     chests1 = createExpChests(1,mazeDim1);
-                    console.log(new Date().toLocaleTimeString()+" [Level] Course=" + gameCourse + " Step=" + gameStep);
+                    console.log(new Date().toLocaleTimeString()+" [Level] Course[" + gameCourse + "] Step[" + gameStep + "]");
                     time1 = 40;
                     break;
             }
@@ -134,27 +134,27 @@ function getGameElements(gameCourse, gameStep)
                     mazeDim1 = maze1.grid.dimension;
                     chests1 = createExpChests(1,mazeDim1);
                     time1 = 40;
-                    console.log(new Date().toLocaleTimeString()+" [Level] Course=" + gameCourse + " Step=" + gameStep);
+                    console.log(new Date().toLocaleTimeString()+" [Level] Course[" + gameCourse + "] Step[" + gameStep + "]");
                     break;
                 case 2:
                     maze1 = getExpMaze(1);
                     mazeDim1 = maze1.grid.dimension;
                     chests1 = createExpChests(1,mazeDim1);
                     time1 = 40;
-                    console.log(new Date().toLocaleTimeString()+" [Level] Course=" + gameCourse + " Step=" + gameStep);
+                    console.log(new Date().toLocaleTimeString()+" [Level] Course[" + gameCourse + "] Step[" + gameStep + "]");
                     break;
                 case 3:
                     maze1 = getExpMaze(1);
                     mazeDim1 = maze1.grid.dimension;
                     chests1 = createExpChests(1,mazeDim1);
-                    console.log(new Date().toLocaleTimeString()+" [Level] Course=" + gameCourse + " Step=" + gameStep);
+                    console.log(new Date().toLocaleTimeString()+" [Level] Course[" + gameCourse + "] Step[" + gameStep + "]");
                     time1 = 40;
                     break;
                 case 4:
                     maze1 = getExpMaze(1);
                     mazeDim1 = maze1.grid.dimension;
                     chests1 = createExpChests(1,mazeDim1);
-                    console.log(new Date().toLocaleTimeString()+" [Level] Course=" + gameCourse + " Step=" + gameStep);
+                    console.log(new Date().toLocaleTimeString()+" [Level] Course[" + gameCourse + "] Step[" + gameStep + "]");
                     time1 = 40;
                     break;
             }
@@ -187,7 +187,7 @@ function gameLoop() {
         deathSoundPlayed = false;
         gameState = 'fade in';
         gameEnded = false;
-        console.log(new Date().toLocaleTimeString()+" Event[Game] Type[Start] " + "Visuals[" + localStorage.getItem("atmosphere") + "] " + "Sounds[" + localStorage.getItem("sound") +"]");
+        console.log(new Date().toLocaleTimeString()+" Event[Game] Type[Start] Visuals[" + localStorage.getItem("atmosphere") + "] Sounds[" + localStorage.getItem("sound") +"]");
     }
     function fadeGameIn() {
         increaseLighting();
