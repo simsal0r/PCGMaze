@@ -102,16 +102,17 @@ function handleChest(mazeX, mazeY) {
     chests[mazeX][mazeY] = null;
     chestMesh = generateChestMesh(maze);
     scene.add(chestMesh);
+    console.log("CHEST TYPE: " + typeOfChest);
     switch(typeOfChest){
-        case "zoom_out": chest_zoomOut(); console.log(new Date().toLocaleTimeString()+" [CHEST TYPE]: zoom out chest opened");break;
-        case "move_to_start": chest_moveToStart(); console.log(new Date().toLocaleTimeString()+" [CHEST TYPE]: move to start chest opened"); break;
-        case "jump_scare": chest_jumpScare(); console.log(new Date().toLocaleTimeString()+" [CHEST TYPE]: jump scare chest opened"); break;
-        case "jump_happy": chest_jumpHappy(); console.log(new Date().toLocaleTimeString()+" [CHEST TYPE]: happy scare chest opened"); break;
-        case "rotate_maze": chest_rotateMaze(); console.log(new Date().toLocaleTimeString()+" [CHEST TYPE]: rotate maze chest opened");break;
-        case "light_darker": chest_lightDarker(); console.log(new Date().toLocaleTimeString()+" [CHEST TYPE]: darken light chest opened");break;
-        case "increase_time": chest_increaseTime(); console.log(new Date().toLocaleTimeString()+" [CHEST TYPE]: increase time chest opened");break;
-        case "decrease_time": chest_decreaseTime(); console.log(new Date().toLocaleTimeString()+" [CHEST TYPE]: decrease time chest opened");break;
-        case "random_teleportation": chest_randomTeleportation(); console.log(new Date().toLocaleTimeString()+"[CHEST TYPE]: random teleportation chest opened");break;
+        case "zoom_out": chest_zoomOut(); console.log(new Date().toLocaleTimeString()+" Event[Chest] Type[Zoom_out]");break;
+        case "move_to_start": chest_moveToStart(); console.log(new Date().toLocaleTimeString()+" Event[Chest] Type[Move_to_start]"); break;
+        case "jump_scare": chest_jumpScare(); console.log(new Date().toLocaleTimeString()+" Event[Chest] Type[Horror_Jump_Scare]"); break;
+        case "jump_happy": chest_jumpHappy(); console.log(new Date().toLocaleTimeString()+" Event[Chest] Type[Happy_Jump_Scare]"); break;
+        case "rotate_maze": chest_rotateMaze(); console.log(new Date().toLocaleTimeString()+" Event[Chest] Type[Rotate_Maze]");break;
+        case "light_darker": chest_lightDarker(); console.log(new Date().toLocaleTimeString()+" Event[Chest] Type[Darken_Light]");break;
+        case "increase_time": chest_increaseTime(); console.log(new Date().toLocaleTimeString()+" Event[Chest] Type[Increase_Time]");break;
+        case "decrease_time": chest_decreaseTime(); console.log(new Date().toLocaleTimeString()+" Event[Chest] Type[Decrease_Time]");break;
+        case "random_teleportation": chest_randomTeleportation(); console.log(new Date().toLocaleTimeString()+" Event[Chest] Type[Random_Teleportation]");break;
         default: break;
     }
 }
