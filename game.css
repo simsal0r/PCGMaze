@@ -29,7 +29,7 @@ body {
 }
 
 #cookies {
-    height: 90%;
+    height: 100%;
     width: 100%;
     display: flex;
     position: fixed;
@@ -131,6 +131,7 @@ body {
     align-items: center;
     justify-content: center;
     font-size:3em;
+
 }
 
 #textField {

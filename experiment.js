@@ -1,3 +1,4 @@
+
 function handleSubmit(startDifficulty, atmosphere, sound) {
     // Assign a game course
     var gameCourse = 1; //todo: make random

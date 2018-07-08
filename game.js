@@ -95,9 +95,9 @@ $(document).ready(function() {
 
 var modal;
 var modalA;
+var modalB;
 
 function showModal(){
-    $('#displayTime').html('Time consumed: ' + getTimeElapsed());
     modal = document.getElementById('myModal');
     modal.style.display = "block";
 }
@@ -105,6 +105,11 @@ function showModal(){
 function showAnnotation(){
     modalA = document.getElementById('annotationModal');
     modalA.style.display = "block";
+}
+
+function showThanks(){
+    modalB = document.getElementById('thanksModal');
+    modalB.style.display = "block";
 }
 
 function confirmLevel() {
@@ -115,6 +120,7 @@ function confirmLevel() {
 function handleAnnotation(){
     annotationConfirmationNeeded = false;
     document.getElementById('annotationModal').style.display = "none";
+    console.log(new Date().toLocaleTimeString() + "[Survey]" -  "Annotation conducted");
     if (parseInt(localStorage.getItem("gameS"))) {
         restart();
     }
@@ -147,8 +153,18 @@ function handleData() {
         }
     }
     modal.style.display = "none";
+    console.log(new Date().toLocaleTimeString() + "[Survey]" -  "Questionnaire conducted");
+    var gamestep1 = parseInt(localStorage.getItem("gameS"));
     //Start the game again
-    restart();
+    if (gamestep1 <= 4)
+    {
+        restart();
+    }
+    else
+    {
+       showThanks();
+    }
+
 }
 
 

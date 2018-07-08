@@ -35,38 +35,129 @@ function getGameElements(gameCourse, gameStep)
                     mazeDim1 = maze1.grid.dimension;
                     chests1 = createExpChests(1,mazeDim1);
                     time1 = 40;
+                    console.log(new Date().toLocaleTimeString()+" - [Level] - Course=" + gameCourse + " Step=" + gameStep);
                     break;
                 case 2:
                     maze1 = getExpMaze(1);
                     mazeDim1 = maze1.grid.dimension;
                     chests1 = createExpChests(1,mazeDim1);
                     time1 = 40;
+                    console.log(new Date().toLocaleTimeString()+" - [Level] - Course=" + gameCourse + " Step=" + gameStep);
                     break;
                 case 3:
                     maze1 = getExpMaze(1);
                     mazeDim1 = maze1.grid.dimension;
                     chests1 = createExpChests(1,mazeDim1);
+                    console.log(new Date().toLocaleTimeString()+" - [Level] - Course=" + gameCourse + " Step=" + gameStep);
                     time1 = 40;
                     break;
                 case 4:
                     maze1 = getExpMaze(1);
                     mazeDim1 = maze1.grid.dimension;
                     chests1 = createExpChests(1,mazeDim1);
+                    console.log(new Date().toLocaleTimeString()+" - [Level] - Course=" + gameCourse + " Step=" + gameStep);
                     time1 = 40;
                     break;
             }
         break;
         case 2:
-            maze1 = getExpMaze(1);
-            mazeDim1 = maze1.grid.dimension;
-            chests1 = createExpChests(1,mazeDim1);
-            time1 = 40;
+            switch (gameStep)
+            {
+                case 1:
+                    maze1 = getExpMaze(1);
+                    mazeDim1 = maze1.grid.dimension;
+                    chests1 = createExpChests(1,mazeDim1);
+                    time1 = 40;
+                    console.log(new Date().toLocaleTimeString()+" - [Level] - Course=" + gameCourse + " Step=" + gameStep);
+                    break;
+                case 2:
+                    maze1 = getExpMaze(1);
+                    mazeDim1 = maze1.grid.dimension;
+                    chests1 = createExpChests(1,mazeDim1);
+                    time1 = 40;
+                    console.log(new Date().toLocaleTimeString()+" - [Level] - Course=" + gameCourse + " Step=" + gameStep);
+                    break;
+                case 3:
+                    maze1 = getExpMaze(1);
+                    mazeDim1 = maze1.grid.dimension;
+                    chests1 = createExpChests(1,mazeDim1);
+                    console.log(new Date().toLocaleTimeString()+" - [Level] - Course=" + gameCourse + " Step=" + gameStep);
+                    time1 = 40;
+                    break;
+                case 4:
+                    maze1 = getExpMaze(1);
+                    mazeDim1 = maze1.grid.dimension;
+                    chests1 = createExpChests(1,mazeDim1);
+                    console.log(new Date().toLocaleTimeString()+" - [Level] - Course=" + gameCourse + " Step=" + gameStep);
+                    time1 = 40;
+                    break;
+            }
             break;
         case 3:
-            return getExpMaze(1);
+            switch (gameStep)
+            {
+                case 1:
+                    maze1 = getExpMaze(1);
+                    mazeDim1 = maze1.grid.dimension;
+                    chests1 = createExpChests(1,mazeDim1);
+                    time1 = 40;
+                    console.log(new Date().toLocaleTimeString()+" - [Level] - Course=" + gameCourse + " Step=" + gameStep);
+                    break;
+                case 2:
+                    maze1 = getExpMaze(1);
+                    mazeDim1 = maze1.grid.dimension;
+                    chests1 = createExpChests(1,mazeDim1);
+                    time1 = 40;
+                    console.log(new Date().toLocaleTimeString()+" - [Level] - Course=" + gameCourse + " Step=" + gameStep);
+                    break;
+                case 3:
+                    maze1 = getExpMaze(1);
+                    mazeDim1 = maze1.grid.dimension;
+                    chests1 = createExpChests(1,mazeDim1);
+                    console.log(new Date().toLocaleTimeString()+" - [Level] - Course=" + gameCourse + " Step=" + gameStep);
+                    time1 = 40;
+                    break;
+                case 4:
+                    maze1 = getExpMaze(1);
+                    mazeDim1 = maze1.grid.dimension;
+                    chests1 = createExpChests(1,mazeDim1);
+                    console.log(new Date().toLocaleTimeString()+" - [Level] - Course=" + gameCourse + " Step=" + gameStep);
+                    time1 = 40;
+                    break;
+            }
             break
         case 4:
-            return getExpMaze(1);
+            switch (gameStep)
+            {
+                case 1:
+                    maze1 = getExpMaze(1);
+                    mazeDim1 = maze1.grid.dimension;
+                    chests1 = createExpChests(1,mazeDim1);
+                    time1 = 40;
+                    console.log(new Date().toLocaleTimeString()+" - [Level] - Course=" + gameCourse + " Step=" + gameStep);
+                    break;
+                case 2:
+                    maze1 = getExpMaze(1);
+                    mazeDim1 = maze1.grid.dimension;
+                    chests1 = createExpChests(1,mazeDim1);
+                    time1 = 40;
+                    console.log(new Date().toLocaleTimeString()+" - [Level] - Course=" + gameCourse + " Step=" + gameStep);
+                    break;
+                case 3:
+                    maze1 = getExpMaze(1);
+                    mazeDim1 = maze1.grid.dimension;
+                    chests1 = createExpChests(1,mazeDim1);
+                    console.log(new Date().toLocaleTimeString()+" - [Level] - Course=" + gameCourse + " Step=" + gameStep);
+                    time1 = 40;
+                    break;
+                case 4:
+                    maze1 = getExpMaze(1);
+                    mazeDim1 = maze1.grid.dimension;
+                    chests1 = createExpChests(1,mazeDim1);
+                    console.log(new Date().toLocaleTimeString()+" - [Level] - Course=" + gameCourse + " Step=" + gameStep);
+                    time1 = 40;
+                    break;
+            }
             break
         default:
         //error
@@ -97,7 +188,7 @@ function gameLoop() {
         deathSoundPlayed = false;
         gameState = 'fade in';
         gameEnded = false;
-        console.log(new Date().toLocaleTimeString()+" - [Event] - Start Game");
+        console.log(new Date().toLocaleTimeString()+" - [Event] - Start Game" + localStorage.getItem("atmosphere") + " " + localStorage.getItem("sound"));
     }
     function fadeGameIn() {
         increaseLighting();
@@ -150,6 +241,10 @@ function gameLoop() {
         if (lightingIsOff()) {
             setLightingIntensity(0.0);
             renderer.render(scene, camera);
+            background_music.pause();
+            if (breathe != undefined || breathe != null) {
+                breathe.pause();
+            }
             if (annotationConfirmationNeeded){
                 showAnnotation();
             }
@@ -202,7 +297,7 @@ function setNextLevel() {
 
 function endGame_escaped() {
     endLevel(true);
-    writeToTextField("You escaped! Increasing difficulty...", "green");
+    writeToTextField("You escaped! Increasing difficulty...", "white");
     playEndSound();
 }
 
@@ -231,23 +326,6 @@ function endGame_caught() {
     playGong();
 }
 
-function setLevelDisplay() {
-    var level = 0;
-    if(IN_SURVEY_MODE){
-        switch(mazeDimension) {
-            case 13: level = 1; break;
-            case 15: level = 2; break;
-            case 17: level = 3; break;
-            case 21: level = 4; break;
-            case 27: level = 5; break;
-            default: level = Math.floor((mazeDimension-1)/2 - 5); break;
-        }
-    }
-    else {
-        level = Math.floor((mazeDimension-1)/2 - 5);
-    }
-    $('#level').html('Level ' + level);
-}
 function createPhysicsWorld() {
     physicsWorld = new b2World(new b2Vec2(0, 0), true);
     createPlayerBody(1,1);
@@ -271,8 +349,6 @@ function createRenderWorld() {
     scene.add(chestMesh);
     createGround();
     scene.add(groundMesh);
-    if (background_music != undefined && background_music != null)
-        background_music.pause();
     background_music = playBackground();
 }
 

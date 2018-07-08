@@ -102,17 +102,16 @@ function handleChest(mazeX, mazeY) {
     chests[mazeX][mazeY] = null;
     chestMesh = generateChestMesh(maze);
     scene.add(chestMesh);
-    console.log("CHEST TYPE: " + typeOfChest);
     switch(typeOfChest){
-        case "zoom_out": chest_zoomOut(); console.log(new Date().toLocaleTimeString()+": zoom out chest opened");break;
-        case "move_to_start": chest_moveToStart(); console.log(new Date().toLocaleTimeString()+": move to start chest opened"); break;
-        case "jump_scare": chest_jumpScare(); console.log(new Date().toLocaleTimeString()+": jump scare chest opened"); break;
-        case "jump_happy": chest_jumpHappy(); console.log(new Date().toLocaleTimeString()+": happy scare chest opened"); break;
-        case "rotate_maze": chest_rotateMaze(); console.log(new Date().toLocaleTimeString()+": rotate maze chest opened");break;
-        case "light_darker": chest_lightDarker(); console.log(new Date().toLocaleTimeString()+": darken light chest opened");break;
-        case "increase_time": chest_increaseTime(); console.log(new Date().toLocaleTimeString()+": increase time chest opened");break;
-        case "decrease_time": chest_decreaseTime(); console.log(new Date().toLocaleTimeString()+": decrease time chest opened");break;
-        case "random_teleportation": chest_randomTeleportation(); console.log(new Date().toLocaleTimeString()+": random teleportation chest opened");break;
+        case "zoom_out": chest_zoomOut(); console.log(new Date().toLocaleTimeString()+" [CHEST TYPE]: zoom out chest opened");break;
+        case "move_to_start": chest_moveToStart(); console.log(new Date().toLocaleTimeString()+" [CHEST TYPE]: move to start chest opened"); break;
+        case "jump_scare": chest_jumpScare(); console.log(new Date().toLocaleTimeString()+" [CHEST TYPE]: jump scare chest opened"); break;
+        case "jump_happy": chest_jumpHappy(); console.log(new Date().toLocaleTimeString()+" [CHEST TYPE]: happy scare chest opened"); break;
+        case "rotate_maze": chest_rotateMaze(); console.log(new Date().toLocaleTimeString()+" [CHEST TYPE]: rotate maze chest opened");break;
+        case "light_darker": chest_lightDarker(); console.log(new Date().toLocaleTimeString()+" [CHEST TYPE]: darken light chest opened");break;
+        case "increase_time": chest_increaseTime(); console.log(new Date().toLocaleTimeString()+" [CHEST TYPE]: increase time chest opened");break;
+        case "decrease_time": chest_decreaseTime(); console.log(new Date().toLocaleTimeString()+" [CHEST TYPE]: decrease time chest opened");break;
+        case "random_teleportation": chest_randomTeleportation(); console.log(new Date().toLocaleTimeString()+"[CHEST TYPE]: random teleportation chest opened");break;
         default: break;
     }
 }
@@ -153,7 +152,7 @@ function chest_lightDarker() {
 
 function chest_increaseTime() {
     var value = Math.floor((mazeDimension*4)*0.1);
-    writeToTextField("Opened increase time chest! +" + value + " sec", "green");
+    writeToTextField("Opened increase time chest! +" + value + " sec", "white");
     timer_duration += value;
 }
 
@@ -164,7 +163,7 @@ function chest_decreaseTime() {
 }
 
 function chest_zoomOut() {
-    writeToTextField("Opened zoom out chest!", "green");
+    writeToTextField("Opened zoom out chest!", "white");
     ZOOM_LEVEL = 8;
     startPietimer(4, function(){ZOOM_LEVEL = ZOOM_LEVEL_INITIAL}, "zoom_out");
 }

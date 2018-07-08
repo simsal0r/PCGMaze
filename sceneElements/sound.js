@@ -63,10 +63,19 @@ function playGong(){
 }
 function playBreathe(){
     var Breathe = new Audio(getAtmosphere(localStorage.getItem("atmosphere"),localStorage.getItem("sound"), "breath_sound"));
-    //todo: different breathing sounds of each setting . Also always starts with the enemy spawning
-    console.log(new Date().toLocaleTimeString()+": breathing sound");
-    Breathe.volume=0.12;
-    Breathe.play();
+    if (localStorage.getItem("sound") == "horror")
+    {
+        console.log(new Date().toLocaleTimeString()+":- [Sound] - Breathing sound ");
+        Breathe.volume=0.12;
+        Breathe.play();
+    }
+    else
+    {
+        console.log(new Date().toLocaleTimeString()+":- [Sound] - Hey sweatness ");
+        Breathe.volume=0.8;
+        Breathe.play();
+    }
+
     return Breathe;
 }
 
