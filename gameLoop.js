@@ -124,7 +124,7 @@ function gameLoop() {
         deathSoundPlayed = false;
         gameState = 'fade in';
         gameEnded = false;
-        console.log(new Date().toLocaleTimeString()+" - [Event] - Start Game");
+        console.log(new Date().toLocaleTimeString()+" Event[Game] Type[Start]");
     }
     function fadeGameIn() {
         increaseLighting();
@@ -139,7 +139,7 @@ function gameLoop() {
         if(localStorage.getItem("atmosphere") == "horror"){
             if (timeToSpawnEnemy()){
                 spawnEnemy();
-                console.log(new Date().toLocaleTimeString()+" - [Event] - Enemy spawned");
+                console.log(new Date().toLocaleTimeString()+" Event[Game] Type[Spawn_Enemy]");
             }
         }
         updatePhysicsWorld();
@@ -148,17 +148,17 @@ function gameLoop() {
         if (!gameEnded && ended()) {
             endGame_escaped();
             gameEnded = true;
-            console.log(new Date().toLocaleTimeString()+" - [Event] - Escaped maze");
+            console.log(new Date().toLocaleTimeString()+" Event[Game] Type[Successful_Escape]");
         }
         else if(!gameEnded && isTimeout()) {
             endGame_timeout();
             gameEnded = true;
-            console.log(new Date().toLocaleTimeString()+" - [Event] - Run out of time");
+            console.log(new Date().toLocaleTimeString()+" Event[Game] Type[Unsuccessful_Out_of_Time]");
         }
         else if(!gameEnded && localStorage.getItem("atmosphere") == "horror" && spawned && caughtByEnemy()) {
             endGame_caught();
             gameEnded = true;
-            console.log(new Date().toLocaleTimeString()+" - [Event] - Caught by Enemy");
+            console.log(new Date().toLocaleTimeString()+" Event[Game] Type[Unsuccessful_Caught_by_Enemy]");
         }
         else if (!gameEnded) {
             checkForChests();

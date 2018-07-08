@@ -19,25 +19,25 @@ function playDeathSound() {
 
 function playScream() {
     var screamSound = new Audio("assets/scream.wav");
-    console.log(new Date().toLocaleTimeString()+": scream sound");
+    console.log(new Date().toLocaleTimeString()+" Event[Sound] File[scream.wav]");
     screamSound.play();
 }
 
 function playSlam() {
     var slamSound = new Audio("assets/slam.mp3");
-    console.log(new Date().toLocaleTimeString()+": slam sound");
+    console.log(new Date().toLocaleTimeString()+" Event[Sound] File[slam.mp3]");
     slamSound.play();
 }
 
 function playKick() {
     var kickSound = new Audio("assets/kick_scare.mp3");
-    console.log(new Date().toLocaleTimeString()+": kick_scare sound");
+    console.log(new Date().toLocaleTimeString()+" Event[Sound] File[kick_scare.mp3]");
     kickSound.play();
 }
 
 function playScare() {
     var scareSound = new Audio("assets/jumpscare4.wav");
-    console.log(new Date().toLocaleTimeString()+": jumpscare sound");
+    console.log(new Date().toLocaleTimeString()+" Event[Sound] File[jumpscare4.wav]");
     scareSound.volume=0.5;
     scareSound.play();
 }
@@ -62,7 +62,7 @@ function playGong(){
 }
 function playBreathe(){
     var Breathe = new Audio("assets/breathe.mp3");
-    console.log(new Date().toLocaleTimeString()+": breathing sound");
+    console.log(new Date().toLocaleTimeString()+" Event[Sound] File[breathe.mp3]");
     Breathe.volume=0.12;
     Breathe.play();
     return Breathe;
@@ -81,27 +81,27 @@ function playBackgroundSound(){
     if (d < 0.2){
     var soundBG = new Audio("assets/backgroundScream1.wav");
     soundBG.volume = 0.1;
-    console.log(new Date().toLocaleTimeString()+": - [Sound] - Scream [backgroundScream1.wav]");
+    console.log(new Date().toLocaleTimeString()+" Event[Sound] File[backgroundScream1.wav]");
     }
     else if (d < 0.4){
         var soundBG = new Audio("assets/bg1.wav");
         soundBG.volume = 0.1;
-        console.log(new Date().toLocaleTimeString()+": - [Sound] - Scream [bg1.wav]");
+        console.log(new Date().toLocaleTimeString()+" Event[Sound] File[bg1.wav]");
     }
     else if (d < 0.6){
         var soundBG = new Audio("assets/bg2.mp3");
         soundBG.volume = 0.15;
-        console.log(new Date().toLocaleTimeString()+": - [Sound] - Scream [bg2.wav]");
+        console.log(new Date().toLocaleTimeString()+" Event[Sound] File[bg2.wav]");
     }
     else if (d < 0.8){
         var soundBG = new Audio("assets/bg3.mp3");
         soundBG.volume = 0.2;
-        console.log(new Date().toLocaleTimeString()+": - [Sound] - Scream [bg3.wav]");
+        console.log(new Date().toLocaleTimeString()+" Event[Sound] File[bg3.wav]");
     }
     else {
         var soundBG = new Audio("assets/bg4.mp3");
         soundBG.volume = 0.3;
-        console.log(new Date().toLocaleTimeString()+": - [Sound] - Baby_crying [bg4.wav]");
+        console.log(new Date().toLocaleTimeString()+" Event[Sound] File[bg4.wav]");
     }
     soundBG.play();
 }
