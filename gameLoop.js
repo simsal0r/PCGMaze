@@ -308,7 +308,7 @@ function endGame_caught() {
     }
     else
     {
-        writeToTextField("Too much cookies. You can't move anymore!", "white", 5);
+        writeToTextField("Too many cookies. You can't move anymore!", "white", 5);
         $('#cookies').show();
         setTimeout(function () {
             $('#cookies').hide();
