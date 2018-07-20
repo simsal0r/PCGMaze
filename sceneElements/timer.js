@@ -6,6 +6,17 @@ var spawned = false;
 var steps = null;
 
 
+function fiveSecondTimer() {
+    var j = 5;
+    for (i = 0; i  < 5; i++) { 
+        count = setInterval(function() {
+            // document.getElementById("five_second_timer_text").innerHTML('5')
+            $('#five_second_timer_text' ).text(j);
+            j = j - 1
+         }, 1000);
+    }
+}
+
 function isTimeout() {
     return timer_duration < 0;
 }
