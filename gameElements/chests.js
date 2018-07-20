@@ -17,7 +17,7 @@ function createExpChests(id,dimension){
     }
     switch(id) {
         case 1:
-            chests[2][1] = getRandomChestItem();
+            chests[2][1] = getScareChestItem();
             return chests;
             break;
         case 2:
@@ -77,6 +77,12 @@ function getRandomChestItem() {
     return CHEST_ITEMS[Math.floor(Math.random() * CHEST_ITEMS.length)];
 }
 
+function getScareChestItem() {
+
+    return "jump_scare";
+}
+
+
 function generateChestMesh(maze) {
     var dummy = new THREE.Geometry();
     for (var i = 0; i < maze.dimension; i++) {
@@ -120,7 +126,7 @@ function chest_rotateMaze() {
     var possibleDegrees = [90, 180, 270, -90, -180, -270];
     var rotation_degree = possibleDegrees[Math.floor(Math.random() * possibleDegrees.length)];
     removeControls();
-    writeToTextField("Opened rotation chest!");
+    writeToTextField("Rotation!");
     var oldRotation = Math.round(camera.rotation.z * 180/Math.PI);
     ZOOM_LEVEL = 8;
     var rotationSpeed = 1000/Math.sqrt(Math.pow(rotation_degree,2));
@@ -145,25 +151,25 @@ function chest_rotateMaze() {
 }
 
 function chest_lightDarker() {
-    writeToTextField("Opened light darker chest!");
+    writeToTextField("Light darker!");
     light.intensity = 0.1;
     startPietimer(30, function(){light.intensity = 0.5;}, "light_darker");
 }
 
 function chest_increaseTime() {
     var value = Math.floor((mazeDim1*4)*0.1);
-    writeToTextField("Opened increase time chest! +" + value + " sec", "white");
+    writeToTextField("Increased time! +" + value + " sec", "white");
     timer_duration += value;
 }
 
 function chest_decreaseTime() {
     var value = Math.floor((mazeDim1*4)*0.1);
-    writeToTextField("Opened decrease time chest! -" + value + " sec");
+    writeToTextField("Decreased time! -" + value + " sec");
     timer_duration -= value;
 }
 
 function chest_zoomOut() {
-    writeToTextField("Opened zoom out chest!", "white");
+    writeToTextField("Zoomed out!", "white");
     ZOOM_LEVEL = 8;
     startPietimer(4, function(){ZOOM_LEVEL = ZOOM_LEVEL_INITIAL}, "zoom_out");
 }
@@ -262,7 +268,7 @@ function chest_jumpHappy() {
 }
 
 function chest_randomTeleportation(){
-    writeToTextField("Opened random teleportation chest!");
+    writeToTextField("Teleportation!");
     var possibleValues = _.range(1, maze.dimension, 2);
     var newXValue = possibleValues[Math.floor(Math.random() * possibleValues.length)];
     var newYValue = possibleValues[Math.floor(Math.random() * possibleValues.length)];
@@ -279,6 +285,6 @@ function chest_randomTeleportation(){
 }
 
 function chest_moveToStart() {
-    writeToTextField("Opened move to start chest!");
+    writeToTextField("Move to start!");
     movePlayerTo(1,1);
 }
