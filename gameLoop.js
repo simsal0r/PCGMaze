@@ -5,6 +5,7 @@ var notcaught = true;
 var deathSoundPlayed = false;
 var confirmationNeeded = false;
 var annotationConfirmationNeeded = false;
+var videoReminderNeeded = true;
 var breathe = null;
 var background_music = null;
 
@@ -168,6 +169,7 @@ function getGameElements(gameCourse, gameStep)
 
 function gameLoop() {
     function initializeGame() {
+
         //Called from cache
         var gameCourse = parseInt(localStorage.getItem("gameC"));
         var gameStep = parseInt(localStorage.getItem("gameS"));
@@ -253,7 +255,16 @@ function gameLoop() {
         }
     }
     switch(gameState) {
-        case 'initialize': initializeGame();break;
+        case 'initialize':{
+            console.log("videoReminder :"+videoReminderNeeded);
+            if (videoReminderNeeded){
+                showVideoReminder();
+            }
+            console.log("after videoReminder :"+videoReminderNeeded);
+            if(!videoReminderNeeded){
+                initializeGame();
+            } break;
+        }
         case 'fade in': fadeGameIn();break;
         case 'play': playGame();break;
         case 'fade out': fadeGameOut();break;

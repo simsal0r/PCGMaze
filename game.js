@@ -96,6 +96,7 @@ $(document).ready(function() {
 var modal;
 var modalA;
 var modalB;
+var modalC;
 
 function showModal(){
     modal = document.getElementById('myModal');
@@ -105,6 +106,11 @@ function showModal(){
 function showAnnotation(){
     modalA = document.getElementById('annotationModal');
     modalA.style.display = "block";
+}
+
+function showVideoReminder(){
+    modalC = document.getElementById('videoReminderModal');
+    modalC.style.display = "block";
 }
 
 function showThanks(){
@@ -122,6 +128,7 @@ function handleAnnotation(){
 
     annotationConfirmationNeeded = false;
     document.getElementById('annotationModal').style.display = "none";
+
     //1+1=2
     if (parseInt(localStorage.getItem("gameS"))===2) {
         restart();
@@ -133,6 +140,13 @@ function handleAnnotation(){
         showModal();
     }
     console.log(new Date().toLocaleTimeString() + " Event[Annotaion] Type[Done]");
+ }
+
+ function handleVideoReminder() {
+     videoReminderNeeded = false;
+     console.log("in videoReminder handle function :"+videoReminderNeeded);
+     document.getElementById('videoReminderModal').style.display = "none";
+     console.log(new Date().toLocaleTimeString() + " Event[VideoReminder] Type[Done]");
  }
 
 function handleData() {
