@@ -20,28 +20,35 @@ function createExpChests(id,dimension){
     }
     switch(id) {
         case 1:
-            par_rotation = 720;
-            par_X = 10;
-            par_Y = 10;
-            chests[2][1] = "random_teleportation";
+            par_rotation = 270;
+            par_X = 3;
+            par_Y = 7;
+            chests[7][5] = "random_teleportation";
+            chests[3][9] = "rotate_maze";
+            chests[2][9] = "increase_time";
+            chests[2][11] = "zoom_out";
+            chests[9][15] = "rotate_maze";
+            chests[9][10] = "jump_happy";
+            chests[14][3] = "rotate_maze";
+            chests[15][15] = "increase_time";
             return chests;
             break;
         case 2:
-            par_rotation = 720;
+            par_rotation = 270;
             par_X = 10;
             par_Y = 10;
             chests[2][1] = "random_teleportation";
             return chests;
             break;
         case 3:
-            par_rotation = 720;
+            par_rotation = 180;
             par_X = 10;
             par_Y = 10;
             chests[2][1] = "random_teleportation";
             return chests;
             break;
         case 4:
-            par_rotation = 720;
+            par_rotation = 270;
             par_X = 10;
             par_Y = 10;
             chests[2][1] = "random_teleportation";
