@@ -260,6 +260,7 @@ function gameLoop() {
                 showVideoReminder();
             }
             if(!videoReminderNeeded){
+                fiveSecondTimer();
                 initializeGame();
             } break;
         }
