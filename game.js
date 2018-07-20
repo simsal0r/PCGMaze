@@ -63,8 +63,6 @@ $(document).ready(function() {
     // console.log(localStorage.getItem("gameC"));
     // console.log(localStorage.getItem("gameS"));
     // Prepare the instructions.
-    $('#instructions').center();
-    $('#instructions').hide();
     $('#confirmationPopup').hide();
     $('#jump_scare').hide();
     $('#jump_scare2').hide();
@@ -75,8 +73,6 @@ $(document).ready(function() {
     $('#jump_happy3').hide();
     $('#jump_happy4').hide();
     $('#cookies').hide();
-    KeyboardJS.bind.key('i', function(){$('#instructions').show()},
-        function(){$('#instructions').hide()});
 
     // Create the renderer.
     renderer = new THREE.WebGLRenderer();

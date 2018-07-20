@@ -256,11 +256,9 @@ function gameLoop() {
     }
     switch(gameState) {
         case 'initialize':{
-            console.log("videoReminder :"+videoReminderNeeded);
             if (videoReminderNeeded){
                 showVideoReminder();
             }
-            console.log("after videoReminder :"+videoReminderNeeded);
             if(!videoReminderNeeded){
                 initializeGame();
             } break;
