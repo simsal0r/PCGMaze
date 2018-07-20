@@ -5,6 +5,9 @@ var chestTexture = getAtmosphere(localStorage.getItem("atmosphere"),localStorage
 var chests = undefined;
 var chestMesh = undefined;
 var chestCounter = 0;
+var par_rotation;
+var par_X;
+var par_Y;
 
 function getChestsOpened() {
     return chestCounter;
@@ -17,17 +20,32 @@ function createExpChests(id,dimension){
     }
     switch(id) {
         case 1:
-            chests[2][1] = getScareChestItem();
+            par_rotation = 720;
+            par_X = 10;
+            par_Y = 10;
+            chests[2][1] = "random_teleportation";
             return chests;
             break;
         case 2:
-
+            par_rotation = 720;
+            par_X = 10;
+            par_Y = 10;
+            chests[2][1] = "random_teleportation";
+            return chests;
             break;
         case 3:
-
+            par_rotation = 720;
+            par_X = 10;
+            par_Y = 10;
+            chests[2][1] = "random_teleportation";
+            return chests;
             break;
         case 4:
-
+            par_rotation = 720;
+            par_X = 10;
+            par_Y = 10;
+            chests[2][1] = "random_teleportation";
+            return chests;
             break;
         default:
         //error
@@ -77,12 +95,6 @@ function getRandomChestItem() {
     return CHEST_ITEMS[Math.floor(Math.random() * CHEST_ITEMS.length)];
 }
 
-function getScareChestItem() {
-
-    return "jump_scare";
-}
-
-
 function generateChestMesh(maze) {
     var dummy = new THREE.Geometry();
     for (var i = 0; i < maze.dimension; i++) {
@@ -113,7 +125,7 @@ function handleChest(mazeX, mazeY) {
         case "move_to_start": chest_moveToStart(); console.log(new Date().toLocaleTimeString()+" Event[Chest] Type[Move_to_start]"); break;
         case "jump_scare": chest_jumpScare(); console.log(new Date().toLocaleTimeString()+" Event[Chest] Type[Horror_Jump_Scare]"); break;
         case "jump_happy": chest_jumpHappy(); console.log(new Date().toLocaleTimeString()+" Event[Chest] Type[Happy_Jump_Scare]"); break;
-        case "rotate_maze": chest_rotateMaze(); console.log(new Date().toLocaleTimeString()+" Event[Chest] Type[Rotate_Maze]");break;
+        case "rotate_maze": chest_rotateMaze(par_rotation); console.log(new Date().toLocaleTimeString()+" Event[Chest] Type[Rotate_Maze] Amount[" + par_rotation + "]");break;
         case "light_darker": chest_lightDarker(); console.log(new Date().toLocaleTimeString()+" Event[Chest] Type[Darken_Light]");break;
         case "increase_time": chest_increaseTime(); console.log(new Date().toLocaleTimeString()+" Event[Chest] Type[Increase_Time]");break;
         case "decrease_time": chest_decreaseTime(); console.log(new Date().toLocaleTimeString()+" Event[Chest] Type[Decrease_Time]");break;
@@ -122,9 +134,9 @@ function handleChest(mazeX, mazeY) {
     }
 }
 
-function chest_rotateMaze() {
-    var possibleDegrees = [90, 180, 270, -90, -180, -270];
-    var rotation_degree = possibleDegrees[Math.floor(Math.random() * possibleDegrees.length)];
+function chest_rotateMaze(global_rotation) {
+   // var possibleDegrees = [90, 180, 270, -90, -180, -270];
+    var rotation_degree = global_rotation;
     removeControls();
     writeToTextField("Rotation!");
     var oldRotation = Math.round(camera.rotation.z * 180/Math.PI);
@@ -269,9 +281,9 @@ function chest_jumpHappy() {
 
 function chest_randomTeleportation(){
     writeToTextField("Teleportation!");
-    var possibleValues = _.range(1, maze.dimension, 2);
-    var newXValue = possibleValues[Math.floor(Math.random() * possibleValues.length)];
-    var newYValue = possibleValues[Math.floor(Math.random() * possibleValues.length)];
+    //var possibleValues = _.range(1, maze.dimension, 2);
+    var newXValue = par_X;//possibleValues[Math.floor(Math.random() * possibleValues.length)];
+    var newYValue = par_Y;//possibleValues[Math.floor(Math.random() * possibleValues.length)];
     removeControls();
     ZOOM_LEVEL = 8;
     setTimeout(function(){
