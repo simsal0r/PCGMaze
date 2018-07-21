@@ -169,14 +169,13 @@ function getGameElements(gameCourse, gameStep)
 
 function gameLoop() {
     function initializeGame() {
-
+        var global_timer = null;
         //Called from cache
         var gameCourse = parseInt(localStorage.getItem("gameC"));
         var gameStep = parseInt(localStorage.getItem("gameS"));
 
         maze = getGameElements(gameCourse,gameStep).mazeGrid;
         chests = getGameElements(gameCourse,gameStep).chests;
-        setTimerDuration();
         //setTimerDurationSeconds(); //todo: Why does this not work? -> maybe just cache
         spawned = false;
         createPhysicsWorld();
@@ -189,6 +188,11 @@ function gameLoop() {
         deathSoundPlayed = false;
         gameState = 'fade in';
         gameEnded = false;
+
+
+
+        setTimerDuration();
+
         console.log(new Date().toLocaleTimeString()+" Event[Game] Type[Start] Visuals[" + localStorage.getItem("atmosphere") + "] Sounds[" + localStorage.getItem("sound") +"]");
     }
     function fadeGameIn() {
@@ -197,6 +201,9 @@ function gameLoop() {
         if (lightingIsOn()) {
             setLightingMaxIntensity();
             gameState = 'play';
+            removeControls();
+            fiveSecondTimer();
+            assignControls();
             startTimer();
         }
     }
@@ -260,11 +267,10 @@ function gameLoop() {
                 showVideoReminder();
             }
             if(!videoReminderNeeded){
-                fiveSecondTimer();
                 initializeGame();
             } break;
         }
-        case 'fade in': fadeGameIn();break;
+        case 'fade in': global_timer = fadeGameIn();break;
         case 'play': playGame();break;
         case 'fade out': fadeGameOut();break;
     }

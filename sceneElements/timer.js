@@ -7,13 +7,24 @@ var steps = null;
 
 
 function fiveSecondTimer() {
-    var j = 5;
-    for (i = 0; i  < 5; i++) { 
-        count = setInterval(function() {
-            // document.getElementById("five_second_timer_text").innerHTML('5')
-            $('#five_second_timer_text' ).text(j);
-            j = j - 1
-         }, 1000);
+
+    var start = new Date();
+    start.setSeconds(start.getSeconds() + 5);
+    var old_time = 0;
+    var remaining_time = 5;
+    while (true) {
+        var cur_time = new Date();
+        remaining_time = Math.round(start - cur_time);
+        if (start - cur_time < 0 ) {
+            $('#textField').text("");
+            break;
+        }
+        if (remaining_time != old_time) {
+            //writeToTextField(Math.round(start - cur_time), "red", 1)
+            $('#textField').text(remaining_time);
+            $('#textFieldContainer').css('color', "red");
+            old_time = remaining_time
+        }   
     }
 }
 

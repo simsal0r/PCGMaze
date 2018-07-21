@@ -134,6 +134,18 @@ body {
 
 }
 
+#five_second_timer{
+    height: 40%;
+    width: 100%;
+    display: flex;
+    position: fixed;
+    align-items: center;
+    justify-content: center;
+    font-size:6em;
+    color: red;
+
+}
+
 #textField {
 }
 
