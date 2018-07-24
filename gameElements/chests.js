@@ -4,14 +4,9 @@ var CHEST_PROBABILITIES = getAtmosphere(localStorage.getItem("atmosphere"),local
 var chestTexture = getAtmosphere(localStorage.getItem("atmosphere"),localStorage.getItem("sound"), "chest_texture");
 var chests = undefined;
 var chestMesh = undefined;
-var chestCounter = 0;
 var par_rotation;
 var par_X;
 var par_Y;
-
-function getChestsOpened() {
-    return chestCounter;
-}
 
 function createExpChests(id,dimension){
     var chests = new Array(dimension);
@@ -28,36 +23,65 @@ function createExpChests(id,dimension){
             chests[2][9] = "increase_time";
             chests[2][11] = "zoom_out";
             chests[9][15] = "rotate_maze";
-            chests[9][10] = "jump_happy";
+            chests[9][10] = getTypeOfScare();
             chests[14][3] = "rotate_maze";
             chests[15][15] = "increase_time";
             return chests;
             break;
         case 2:
             par_rotation = 270;
-            par_X = 10;
-            par_Y = 10;
-            chests[2][1] = "random_teleportation";
+            par_X = 9;
+            par_Y = 1;
+            chests[3][1] = "random_teleportation";
+            chests[11][6] = "zoom_out";
+            chests[15][8] = getTypeOfScare();
+            chests[15][11] = "increase_time";
+            chests[11][14] = getTypeOfScare();
+            chests[11][15] = "rotate_maze";
+            chests[9][13] = "rotate_maze";
             return chests;
             break;
         case 3:
             par_rotation = 180;
-            par_X = 10;
-            par_Y = 10;
-            chests[2][1] = "random_teleportation";
+            par_X = 9;
+            par_Y = 13;
+            chests[3][1] = "increase_time";
+            chests[12][1] = getTypeOfScare();
+            chests[13][7] = "random_teleportation";
+            chests[11][1] = "zoom_out";
+            chests[3][11] = "rotate_maze";
+            chests[7][14] = "rotate_maze";
+            chests[11][13] = getTypeOfScare();
             return chests;
             break;
         case 4:
             par_rotation = 270;
-            par_X = 10;
-            par_Y = 10;
-            chests[2][1] = "random_teleportation";
+            par_X = 13;
+            par_Y = 15;
+            chests[1][3] = "increase_time";
+            chests[15][3] = "zoom_out";
+            chests[3][7] = getTypeOfScare();
+            chests[13][11] = getTypeOfScare();
+            chests[15][12] = "rotate_maze";
+            chests[5][11] = "rotate_maze";
+            chests[5][2] = "random_teleportation";
             return chests;
             break;
         default:
         //error
     }
 }
+
+function getTypeOfScare() {
+    if(localStorage.getItem("atmosphere" == "horror"))
+    {
+        return "jump_scare";
+    }
+    else {
+        return "jump_happy";
+    }
+}
+
 function createChests(maze) {
     var chests = new Array(maze.dimension);
     for (var i = 0; i < maze.dimension; i++) {
@@ -140,6 +164,7 @@ function handleChest(mazeX, mazeY) {
         default: break;
     }
 }
+
 
 function chest_rotateMaze(global_rotation) {
    // var possibleDegrees = [90, 180, 270, -90, -180, -270];
