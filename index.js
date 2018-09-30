@@ -2,6 +2,7 @@
 function handleSubmit(startDifficulty, atmosphere, sound) {
     // Assign a game course
     var gameCourse = Math.floor(Math.random() * (4 - 1 + 1)) + 1;
+    console.log(gameCourse);
     var gameStep = 1;
     localStorage.setItem("gameC", gameCourse + "");
     localStorage.setItem("gameS", gameStep + "");
@@ -35,19 +36,19 @@ function setSetting(gameCourse,gameStep){
         case 2:
             switch(gameStep)
             {
-                case 1:
+                case 4:
                     localStorage.setItem("atmosphere", "happy");
                     localStorage.setItem("sound", "happy");
                     break;
-                case 2:
+                case 1:
                     localStorage.setItem("atmosphere", "horror");
                     localStorage.setItem("sound", "horror");
                     break;
-                case 3:
+                case 2:
                     localStorage.setItem("atmosphere", "happy");
                     localStorage.setItem("sound", "horror");
                     break;
-                case 4:
+                case 3:
                     localStorage.setItem("atmosphere", "horror");
                     localStorage.setItem("sound", "happy");
                     break;
@@ -56,19 +57,19 @@ function setSetting(gameCourse,gameStep){
         case 3:
             switch(gameStep)
             {
-                case 1:
+                case 3:
                     localStorage.setItem("atmosphere", "happy");
                     localStorage.setItem("sound", "happy");
                     break;
-                case 2:
+                case 4:
                     localStorage.setItem("atmosphere", "horror");
                     localStorage.setItem("sound", "horror");
                     break;
-                case 3:
+                case 1:
                     localStorage.setItem("atmosphere", "happy");
                     localStorage.setItem("sound", "horror");
                     break;
-                case 4:
+                case 2:
                     localStorage.setItem("atmosphere", "horror");
                     localStorage.setItem("sound", "happy");
                     break;
@@ -77,19 +78,19 @@ function setSetting(gameCourse,gameStep){
         case 4:
             switch(gameStep)
             {
-                case 1:
+                case 2:
                     localStorage.setItem("atmosphere", "happy");
                     localStorage.setItem("sound", "happy");
                     break;
-                case 2:
+                case 3:
                     localStorage.setItem("atmosphere", "horror");
                     localStorage.setItem("sound", "horror");
                     break;
-                case 3:
+                case 4:
                     localStorage.setItem("atmosphere", "happy");
                     localStorage.setItem("sound", "horror");
                     break;
-                case 4:
+                case 1:
                     localStorage.setItem("atmosphere", "horror");
                     localStorage.setItem("sound", "happy");
                     break;

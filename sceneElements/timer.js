@@ -9,9 +9,9 @@ var steps = null;
 function fiveSecondTimer() {
 
     var start = new Date();
-    start.setSeconds(start.getSeconds() + 5);
+    start.setSeconds(start.getSeconds() + 2);
     var old_time = 0;
-    var remaining_time = 5;
+    var remaining_time = 2;
     while (true) {
         var cur_time = new Date();
         remaining_time = Math.round(start - cur_time);
