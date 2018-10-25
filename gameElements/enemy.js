@@ -15,7 +15,7 @@ function spawnEnemy() {
     }
     else
     {
-        writeToTextField("She is coming for you...", "white", 4);
+        writeToTextField("She is coming for you...", "white");
     }
 
     createEnemyBody(1,1);

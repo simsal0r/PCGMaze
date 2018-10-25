@@ -61,7 +61,7 @@ function startTimer() {
         if(spawned) {
             console.log(new Date().toLocaleTimeString()+" Event[GameState] EnemyLocation["+getEnemyPositionX()+", "+getEnemyPositionY()+"]");
         }
-    }, 500);
+    }, 250);
     stepsPlayed=false;
 }
 
