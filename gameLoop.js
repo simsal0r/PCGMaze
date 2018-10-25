@@ -8,6 +8,7 @@ var annotationConfirmationNeeded = false;
 var videoReminderNeeded = true;
 var breathe = null;
 var background_music = null;
+var logInterval = 20;
 
 var IN_SURVEY_MODE = true;
 
@@ -208,33 +209,37 @@ function gameLoop() {
         }
     }
     function playGame() {
-        if (timeToSpawnEnemy()){
-            spawnEnemy();
-            console.log(new Date().toLocaleTimeString()+" Event[Game] Type[Spawn_Enemy]");         }
-        updatePhysicsWorld();
-        updateRenderWorld();
-        renderer.render(scene, camera);
-        if (!gameEnded && ended()) {
-            endGame_escaped();
-            gameEnded = true;
-            console.log(new Date().toLocaleTimeString()+" Event[Game] Type[Successful_Escape]");
-        }
-        else if(!gameEnded && isTimeout()) {
-            endGame_timeout();
-            gameEnded = true;
-            console.log(new Date().toLocaleTimeString()+" Event[Game] Type[Unsuccessful_Out_of_Time]");
-        }
-        else if(!gameEnded && spawned && caughtByEnemy()) {
-            endGame_caught();
-            gameEnded = true;
-            console.log(new Date().toLocaleTimeString()+" Event[Game] Type[Unsuccessful_Caught_by_Enemy]");
-        }
-        else if (!gameEnded) {
-            checkForChests();
-            if (localStorage.getItem("sound") == "horror") {
-                backgroundNoise();
+            if (timeToSpawnEnemy()) {
+                spawnEnemy();
+                console.log(new Date().toLocaleTimeString() + " Event[Game] Type[Spawn_Enemy]");
             }
-        }
+            updatePhysicsWorld();
+            updateRenderWorld();
+            renderer.render(scene, camera);
+            if (!gameEnded && ended()) {
+                endGame_escaped();
+                stopTimer();
+                gameEnded = true;
+                console.log(new Date().toLocaleTimeString() + " Event[Game] Type[Successful_Escape]");
+            }
+            else if (!gameEnded && isTimeout()) {
+                endGame_timeout();
+                stopTimer();
+                gameEnded = true;
+                console.log(new Date().toLocaleTimeString() + " Event[Game] Type[Unsuccessful_Out_of_Time]");
+            }
+            else if (!gameEnded && spawned && caughtByEnemy()) {
+                endGame_caught();
+                stopTimer();
+                gameEnded = true;
+                console.log(new Date().toLocaleTimeString() + " Event[Game] Type[Unsuccessful_Caught_by_Enemy]");
+            }
+            else if (!gameEnded) {
+                checkForChests();
+                if (localStorage.getItem("sound") == "horror") {
+                    backgroundNoise();
+                }
+            }
     }
     function fadeGameOut() {
         stopSteps();

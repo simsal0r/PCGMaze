@@ -11,11 +11,11 @@ var headMeshG = undefined;
 function spawnEnemy() {
     if (localStorage.getItem("atmosphere")=="horror")
     {
-        writeToTextField("He is coming for you...", "red");
+        writeToTextField("He is coming for you...", "white");
     }
     else
     {
-        writeToTextField("She is coming for you...", "red", 4);
+        writeToTextField("She is coming for you...", "white", 4);
     }
 
     createEnemyBody(1,1);

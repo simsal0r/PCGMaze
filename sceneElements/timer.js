@@ -56,6 +56,12 @@ function startTimer() {
             stepsPlayed = true;
         }
     }, 1000);
+    logLocation = setInterval(function() {
+        console.log(new Date().toLocaleTimeString()+" Event[GameState] PlayerLocation["+getPositionX()+", "+getPositionY()+"]");
+        if(spawned) {
+            console.log(new Date().toLocaleTimeString()+" Event[GameState] EnemyLocation["+getEnemyPositionX()+", "+getEnemyPositionY()+"]");
+        }
+    }, 500);
     stepsPlayed=false;
 }
 
@@ -71,6 +77,12 @@ function restartTimer(remTime) {
             stepsPlayed = true;
         }
     }, 1000);
+    logLocation = setInterval(function() {
+        console.log(new Date().toLocaleTimeString()+" Event[GameState] PlayerLocation["+getPositionX()+", "+getPositionY()+"]");
+        if(spawned) {
+            console.log(new Date().toLocaleTimeString()+" Event[GameState] EnemyLocation["+getEnemyPositionX()+", "+getEnemyPositionY()+"]");
+        }
+    }, 250);
     stepsPlayed=false;
 }
 
@@ -78,7 +90,8 @@ function stopTimer() {
     var currentTime = timer_duration;
     $('#timerText').text(timeToString(currentTime));
     clearInterval(timer);
-    timer = null
+    clearInterval(logLocation);
+    timer = null;
     return currentTime
 }
 

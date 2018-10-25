@@ -170,7 +170,7 @@ function chest_rotateMaze(global_rotation) {
    // var possibleDegrees = [90, 180, 270, -90, -180, -270];
     var rotation_degree = global_rotation;
     removeControls();
-    writeToTextField("Rotation!");
+    writeToTextField("Rotation!", "white");
     var oldRotation = Math.round(camera.rotation.z * 180/Math.PI);
     ZOOM_LEVEL = 8;
     var rotationSpeed = 1000/Math.sqrt(Math.pow(rotation_degree,2));
@@ -195,7 +195,7 @@ function chest_rotateMaze(global_rotation) {
 }
 
 function chest_lightDarker() {
-    writeToTextField("Light darker!");
+    writeToTextField("Light darker!", "white");
     light.intensity = 0.1;
     startPietimer(30, function(){light.intensity = 0.5;}, "light_darker");
 }
@@ -208,7 +208,7 @@ function chest_increaseTime() {
 
 function chest_decreaseTime() {
     var value = Math.floor((mazeDim1*4)*0.1);
-    writeToTextField("Decreased time! -" + value + " sec");
+    writeToTextField("Decreased time! -" + value + " sec", "white");
     timer_duration -= value;
 }
 
@@ -312,7 +312,7 @@ function chest_jumpHappy() {
 }
 
 function chest_randomTeleportation(){
-    writeToTextField("Teleportation!");
+    writeToTextField("Teleportation!", "white");
     //var possibleValues = _.range(1, maze.dimension, 2);
     var newXValue = par_X;//possibleValues[Math.floor(Math.random() * possibleValues.length)];
     var newYValue = par_Y;//possibleValues[Math.floor(Math.random() * possibleValues.length)];
@@ -329,6 +329,6 @@ function chest_randomTeleportation(){
 }
 
 function chest_moveToStart() {
-    writeToTextField("Move to start!");
+    writeToTextField("Move to start!", "white");
     movePlayerTo(1,1);
 }
