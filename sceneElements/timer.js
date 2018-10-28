@@ -57,9 +57,9 @@ function startTimer() {
         }
     }, 1000);
     logLocation = setInterval(function() {
-        console.log(new Date().toLocaleTimeString()+" Event[GameState] PlayerLocation["+getPositionX()+", "+getPositionY()+"]");
+        console.log(new Date().toLocaleTimeString()+" Event[GameState] PlayerLocation["+getPositionX()+","+getPositionY()+"]");
         if(spawned) {
-            console.log(new Date().toLocaleTimeString()+" Event[GameState] EnemyLocation["+getEnemyPositionX()+", "+getEnemyPositionY()+"]");
+            console.log(new Date().toLocaleTimeString()+" Event[GameState] EnemyLocation["+getEnemyPositionX()+","+getEnemyPositionY()+"]");
         }
     }, 250);
     stepsPlayed=false;
@@ -78,9 +78,9 @@ function restartTimer(remTime) {
         }
     }, 1000);
     logLocation = setInterval(function() {
-        console.log(new Date().toLocaleTimeString()+" Event[GameState] PlayerLocation["+getPositionX()+", "+getPositionY()+"]");
+        console.log(new Date().toLocaleTimeString()+" Event[GameState] PlayerLocation["+getPositionX()+","+getPositionY()+"]");
         if(spawned) {
-            console.log(new Date().toLocaleTimeString()+" Event[GameState] EnemyLocation["+getEnemyPositionX()+", "+getEnemyPositionY()+"]");
+            console.log(new Date().toLocaleTimeString()+" Event[GameState] EnemyLocation["+getEnemyPositionX()+","+getEnemyPositionY()+"]");
         }
     }, 250);
     stepsPlayed=false;
